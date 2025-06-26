@@ -39,7 +39,7 @@ export default function Header() {
 
         <div className="flex flex-1 justify-center">
            <Link href="/" className="flex items-center space-x-6">
-              <Image src="https://i.imgur.com/k4p4gKO.png" alt="babystore Logo" width={80} height={80} className="h-20 w-20"/>
+              <Image src="https://i.imgur.com/ZKz2ztR.png" alt="babystore Logo" width={80} height={80} className="h-20 w-20"/>
               <span className="text-8xl font-bold font-headline">babystore</span>
            </Link>
         </div>
