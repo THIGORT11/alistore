@@ -1,0 +1,133 @@
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  images: string[];
+  category: string;
+  tags: string[];
+  aiHint: string;
+}
+
+export const products: Product[] = [
+  {
+    id: '1',
+    name: 'Vintage Polaroid Camera',
+    description: 'A classic Polaroid 600 camera, fully refurbished and ready to shoot. A true icon of instant photography.',
+    price: 129.99,
+    images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+    category: 'Cameras',
+    tags: ['popular', 'vintage'],
+    aiHint: 'vintage camera',
+  },
+  {
+    id: '2',
+    name: 'Limited Edition Fountain Pen',
+    description: 'An exquisitely crafted fountain pen with a gold nib and a marbled resin body. Limited to 200 pieces worldwide.',
+    price: 450.0,
+    images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+    category: 'Stationery',
+    tags: ['new-arrival', 'luxury'],
+    aiHint: 'fountain pen',
+  },
+  {
+    id: '3',
+    name: 'Antique World Map',
+    description: 'A beautifully preserved 18th-century map of the world, perfect for framing. Shows fascinating historical details.',
+    price: 750.0,
+    images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+    category: 'Decor',
+    tags: ['popular', 'antique'],
+    aiHint: 'antique map',
+  },
+  {
+    id: '4',
+    name: 'Mechanical Flip Clock',
+    description: 'A retro-style mechanical flip clock that brings a touch of mid-century modern design to any space.',
+    price: 89.5,
+    images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+    category: 'Decor',
+    tags: ['popular'],
+    aiHint: 'flip clock',
+  },
+  {
+    id: '5',
+    name: 'First Edition Classic Novel',
+    description: 'A rare, first-edition copy of a beloved 20th-century novel in excellent condition. A must-have for any bibliophile.',
+    price: 1200.0,
+    images: ['https://placehold.co/600x400.png'],
+    category: 'Books',
+    tags: ['new-arrival', 'rare'],
+    aiHint: 'old book',
+  },
+  {
+    id: '6',
+    name: 'Artisan Ceramic Vase',
+    description: 'A unique, handcrafted ceramic vase with a minimalist design and a textured glaze. Made by a renowned local artist.',
+    price: 180.0,
+    images: ['https://placehold.co/600x400.png'],
+    category: 'Decor',
+    tags: ['new-arrival'],
+    aiHint: 'ceramic vase',
+  },
+  {
+    id: '7',
+    name: 'Vintage Film Projector',
+    description: 'A working 8mm film projector from the 1960s. A fantastic piece of cinematic history and a great conversation starter.',
+    price: 275.0,
+    images: ['https://placehold.co/600x400.png'],
+    category: 'Electronics',
+    tags: ['vintage'],
+    aiHint: 'film projector',
+  },
+  {
+    id: '8',
+    name: 'Handmade Leather Journal',
+    description: 'A beautiful, full-grain leather journal with 200 pages of high-quality, acid-free paper. Perfect for writing or sketching.',
+    price: 65.0,
+    images: ['https://placehold.co/600x400.png'],
+    category: 'Stationery',
+    tags: ['popular', 'new-arrival'],
+    aiHint: 'leather journal',
+  },
+  {
+    id: '9',
+    name: 'Set of 4 Botanical Prints',
+    description: 'A collection of four high-quality lithograph prints of 19th-century botanical illustrations. Ready for framing.',
+    price: 95.0,
+    images: ['https://placehold.co/600x400.png'],
+    category: 'Art',
+    tags: ['new-arrival', 'decor'],
+    aiHint: 'botanical prints',
+  },
+  {
+    id: '10',
+    name: 'Retro Handheld Game Console',
+    description: 'A refurbished retro handheld console that plays all the classics from your childhood. Comes with three games.',
+    price: 150.0,
+    images: ['https://placehold.co/600x400.png'],
+    category: 'Electronics',
+    tags: ['vintage'],
+    aiHint: 'game console',
+  },
+  {
+    id: '11',
+    name: 'Model Ship in a Bottle',
+    description: 'An incredibly detailed, hand-built model of a 19th-century clipper ship, housed inside a clear glass bottle.',
+    price: 220.0,
+    images: ['https://placehold.co/600x400.png'],
+    category: 'Models',
+    tags: ['antique'],
+    aiHint: 'ship bottle',
+  },
+  {
+    id: '12',
+    name: 'Designer Chess Set',
+    description: 'A modern, minimalist chess set with weighted, polished metal pieces and a solid walnut board.',
+    price: 350.0,
+    images: ['https://placehold.co/600x400.png'],
+    category: 'Games',
+    tags: ['new-arrival', 'luxury'],
+    aiHint: 'chess set',
+  },
+];
