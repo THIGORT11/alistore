@@ -13,10 +13,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
 
-  const categories = useMemo(() => {
-    const allCategories = products.map(p => p.category);
-    return ['Todos', ...Array.from(new Set(allCategories))];
-  }, []);
+  const categories = ['Todos', 'Muñecos', 'Figuras', 'Cajas', 'Otros', 'Libros', 'Packs', 'Accesorios', 'Cottom Doll'];
 
   const filteredProducts = useMemo(() => {
     return products.filter(product => {
