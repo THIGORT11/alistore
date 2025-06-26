@@ -24,13 +24,13 @@ export default function SignupPage() {
     try {
       await signup(email, password);
       toast({
-        title: 'Signup Successful',
-        description: 'Your account has been created.',
+        title: 'Registro Exitoso',
+        description: 'Tu cuenta ha sido creada.',
       });
       router.push('/');
     } catch (error: any) {
       toast({
-        title: 'Signup Failed',
+        title: 'Error en el Registro',
         description: error.message,
         variant: 'destructive',
       });
@@ -42,20 +42,20 @@ export default function SignupPage() {
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="mx-auto max-w-sm w-full">
         <CardHeader>
-          <CardTitle className="text-xl">Sign Up</CardTitle>
+          <CardTitle className="text-xl">Registrarse</CardTitle>
           <CardDescription>
-            Enter your information to create an account
+            Ingresa tu información para crear una cuenta
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSignup}>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Correo Electrónico</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="tu@ejemplo.com"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -63,7 +63,7 @@ export default function SignupPage() {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Contraseña</Label>
                 <Input 
                   id="password" 
                   type="password" 
@@ -75,14 +75,14 @@ export default function SignupPage() {
                 />
               </div>
               <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? 'Creating account...' : 'Create an account'}
+                {loading ? 'Creando cuenta...' : 'Crear una cuenta'}
               </Button>
             </div>
           </form>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{' '}
+            ¿Ya tienes una cuenta?{' '}
             <Link href="/login" className="underline text-primary">
-              Login
+              Inicia Sesión
             </Link>
           </div>
         </CardContent>

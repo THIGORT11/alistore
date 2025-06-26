@@ -24,13 +24,13 @@ export default function LoginPage() {
     try {
       await login(email, password);
       toast({
-        title: 'Login Successful',
-        description: "Welcome back to Alistore!",
+        title: 'Inicio de Sesión Exitoso',
+        description: "¡Bienvenido de nuevo a Alistore!",
       });
       router.push('/');
     } catch (error: any) {
       toast({
-        title: 'Login Failed',
+        title: 'Error al Iniciar Sesión',
         description: error.message,
         variant: 'destructive',
       });
@@ -42,20 +42,20 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="mx-auto max-w-sm w-full">
         <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardTitle className="text-2xl">Iniciar Sesión</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Ingresa tu correo electrónico para iniciar sesión en tu cuenta
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin}>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Correo Electrónico</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="tu@ejemplo.com"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -64,7 +64,7 @@ export default function LoginPage() {
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Contraseña</Label>
                 </div>
                 <Input 
                   id="password" 
@@ -76,14 +76,14 @@ export default function LoginPage() {
                 />
               </div>
               <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? 'Logging in...' : 'Login'}
+                {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
               </Button>
             </div>
           </form>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{' '}
+            ¿No tienes una cuenta?{' '}
             <Link href="/signup" className="underline text-primary">
-              Sign up
+              Regístrate
             </Link>
           </div>
         </CardContent>

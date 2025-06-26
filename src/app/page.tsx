@@ -38,11 +38,10 @@ export default function Home() {
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section className="text-center py-12 md:py-20 animate-fade-in-down">
           <h1 className="text-4xl md:text-6xl font-bold font-headline tracking-tight text-primary-foreground">
-            Discover Your Next Obsession
+            Descubre Tu Próxima Obsesión
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Alistore is your premier destination for curated, high-quality
-            collectibles from around the world.
+            Alistore es tu destino principal para coleccionables de alta calidad, seleccionados de todo el mundo.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <VisualSearchDialog />
@@ -52,7 +51,7 @@ export default function Home() {
 
         <section id="featured" className="py-12">
           <h2 className="text-3xl font-bold text-center mb-8 font-headline">
-            Featured Items
+            Artículos Destacados
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredItems.map(product => (
@@ -64,13 +63,13 @@ export default function Home() {
         <section id="all-products" className="py-12">
           <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
             <h2 className="text-3xl font-bold font-headline">
-              All Collectibles
+              Todos los Coleccionables
             </h2>
             <div className="relative w-full md:w-1/3">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
               <Input
                 type="text"
-                placeholder="Search collectibles..."
+                placeholder="Buscar coleccionables..."
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -86,7 +85,7 @@ export default function Home() {
 
         <section id="new-arrivals" className="py-12">
           <h2 className="text-3xl font-bold text-center mb-8 font-headline">
-            New Arrivals
+            Novedades
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {newArrivals.map(product => (

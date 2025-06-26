@@ -41,8 +41,8 @@ export default function VisualSearchDialog() {
   const handleSearch = async () => {
     if (!file || !preview) {
       toast({
-        title: "No image selected",
-        description: "Please select an image file to search.",
+        title: "No se ha seleccionado ninguna imagen",
+        description: "Por favor, selecciona un archivo de imagen para buscar.",
         variant: "destructive",
       });
       return;
@@ -57,8 +57,8 @@ export default function VisualSearchDialog() {
     } catch (error) {
       console.error("Visual search failed:", error);
       toast({
-        title: "Search Failed",
-        description: "Could not find similar items. Please try again.",
+        title: "Búsqueda Fallida",
+        description: "No se pudieron encontrar artículos similares. Por favor, inténtalo de nuevo.",
         variant: "destructive",
       });
     } finally {
@@ -86,14 +86,14 @@ export default function VisualSearchDialog() {
       <DialogTrigger asChild>
         <Button variant="outline">
           <Camera className="mr-2 h-4 w-4" />
-          Visual Search
+          Búsqueda Visual
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[625px]">
         <DialogHeader>
-          <DialogTitle>Visual Search</DialogTitle>
+          <DialogTitle>Búsqueda Visual</DialogTitle>
           <DialogDescription>
-            Upload a photo of a collectible to find similar items in our store.
+            Sube una foto de un coleccionable para encontrar artículos similares en nuestra tienda.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
@@ -104,7 +104,7 @@ export default function VisualSearchDialog() {
               ) : (
                 <div className="text-center text-muted-foreground">
                   <ImageIcon className="mx-auto h-12 w-12" />
-                  <p>Image preview will appear here</p>
+                  <p>La vista previa de la imagen aparecerá aquí</p>
                 </div>
               )}
             </div>
@@ -112,7 +112,7 @@ export default function VisualSearchDialog() {
           </div>
           <Button onClick={handleSearch} disabled={loading || !file}>
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {loading ? "Searching..." : "Find Similar Items"}
+            {loading ? "Buscando..." : "Encontrar Artículos Similares"}
           </Button>
         </div>
         {loading && (
@@ -128,7 +128,7 @@ export default function VisualSearchDialog() {
         )}
         {results && (
           <div>
-            <h3 className="text-lg font-semibold mb-4">Similar Items Found</h3>
+            <h3 className="text-lg font-semibold mb-4">Artículos Similares Encontrados</h3>
             {results.collectibles.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {results.collectibles.map((item, index) => (
@@ -140,7 +140,7 @@ export default function VisualSearchDialog() {
                 ))}
                 </div>
             ) : (
-                <p>No similar items found.</p>
+                <p>No se encontraron artículos similares.</p>
             )}
          </div>
         )}

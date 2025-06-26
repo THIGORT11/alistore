@@ -40,7 +40,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           variant="ghost"
           className="absolute top-2 right-2 bg-background/50 hover:bg-background/80 rounded-full"
           onClick={handleWishlistToggle}
-          aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+          aria-label={isWishlisted ? "Quitar de la lista de deseos" : "Añadir a la lista de deseos"}
         >
           <Heart className={cn("text-primary", isWishlisted && "fill-current")} />
         </Button>

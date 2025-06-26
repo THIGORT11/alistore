@@ -15,7 +15,7 @@ const VisualSearchInputSchema = z.object({
   photoDataUri: z
     .string()
     .describe(
-      "A photo of a collectible, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
+      "Una foto de un coleccionable, como un URI de datos que debe incluir un tipo MIME y usar codificación Base64. Formato esperado: 'data:<mimetype>;base64,<encoded_data>'."
     ),
 });
 export type VisualSearchInput = z.infer<typeof VisualSearchInputSchema>;
@@ -23,11 +23,11 @@ export type VisualSearchInput = z.infer<typeof VisualSearchInputSchema>;
 const VisualSearchOutputSchema = z.object({
   collectibles: z.array(
     z.object({
-      name: z.string().describe('The name of the collectible.'),
-      description: z.string().describe('A short description of the collectible.'),
-      imageUrl: z.string().describe('URL of the collectible image.'),
+      name: z.string().describe('El nombre del coleccionable.'),
+      description: z.string().describe('Una breve descripción del coleccionable.'),
+      imageUrl: z.string().describe('URL de la imagen del coleccionable.'),
     })
-  ).describe('A list of similar collectibles found in the store.'),
+  ).describe('Una lista de coleccionables similares encontrados en la tienda.'),
 });
 export type VisualSearchOutput = z.infer<typeof VisualSearchOutputSchema>;
 
@@ -39,14 +39,14 @@ const visualSearchPrompt = ai.definePrompt({
   name: 'visualSearchPrompt',
   input: {schema: VisualSearchInputSchema},
   output: {schema: VisualSearchOutputSchema},
-  prompt: `You are an AI assistant that helps users find similar collectibles based on an image they upload.
+  prompt: `Eres un asistente de IA que ayuda a los usuarios a encontrar coleccionables similares basándose en una imagen que suben.
 
-  Analyze the image provided and identify key features and characteristics of the collectible.
-  Then, search for similar collectibles in the store and return a list of the most relevant results.
+  Analiza la imagen proporcionada e identifica las características clave del coleccionable.
+  Luego, busca coleccionables similares en la tienda y devuelve una lista de los resultados más relevantes.
 
-  The image is provided as a data URI. Use the {{media url=photoDataUri}} Handlebars helper to process the image.
+  La imagen se proporciona como un URI de datos. Usa el ayudante de Handlebars {{media url=photoDataUri}} para procesar la imagen.
 
-  Return the results as a JSON array of collectibles, including their name, description, and image URL.
+  Devuelve los resultados como un array JSON de coleccionables, incluyendo su nombre, descripción y URL de la imagen.
   `,
 });
 

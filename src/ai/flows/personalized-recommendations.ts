@@ -20,14 +20,14 @@ const PersonalizedRecommendationsInputSchema = z.object({
   browsingHistory: z
     .string()
     .describe(
-      'A comma separated list of product ids representing the user browsing history.'
+      'Una lista de IDs de producto separados por comas que representa el historial de navegación del usuario.'
     ),
   interests: z
     .string()
-    .describe('A comma separated list of interests of the user'),
+    .describe('Una lista de intereses del usuario separados por comas'),
   numberOfRecommendations: z
     .number()
-    .describe('The number of collectibles to recommend.')
+    .describe('El número de coleccionables a recomendar.')
     .default(3),
 });
 export type PersonalizedRecommendationsInput = z.infer<
@@ -37,7 +37,7 @@ export type PersonalizedRecommendationsInput = z.infer<
 const PersonalizedRecommendationsOutputSchema = z.object({
   recommendations: z
     .array(z.string())
-    .describe('A list of recommended collectible product IDs.'),
+    .describe('Una lista de IDs de productos coleccionables recomendados.'),
 });
 export type PersonalizedRecommendationsOutput = z.infer<
   typeof PersonalizedRecommendationsOutputSchema
@@ -53,17 +53,17 @@ const personalizedRecommendationsPrompt = ai.definePrompt({
   name: 'personalizedRecommendationsPrompt',
   input: {schema: PersonalizedRecommendationsInputSchema},
   output: {schema: PersonalizedRecommendationsOutputSchema},
-  prompt: `You are an expert collectible recommendation system.
+  prompt: `Eres un sistema experto en recomendación de coleccionables.
 
-    Based on the user's browsing history and interests, you will provide a list of collectible product IDs that the user might be interested in.
+    Basado en el historial de navegación e intereses del usuario, proporcionarás una lista de IDs de productos coleccionables que podrían interesarle.
 
-    User Browsing History: {{{browsingHistory}}}
-    User Interests: {{{interests}}}
+    Historial de Navegación del Usuario: {{{browsingHistory}}}
+    Intereses del Usuario: {{{interests}}}
 
-    Return ONLY {{numberOfRecommendations}} product IDs.
+    Devuelve SÓLO {{numberOfRecommendations}} IDs de producto.
 
-    The response must be a JSON array of product IDs.
-    Ensure that the product IDs you return are comma seperated.`,
+    La respuesta debe ser un array JSON de IDs de producto.
+    Asegúrate de que los IDs de producto que devuelves estén separados por comas.`,
 });
 
 const personalizedRecommendationsFlow = ai.defineFlow(

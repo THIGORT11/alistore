@@ -36,8 +36,8 @@ export default function PersonalizedRecommendationsDialog() {
   const handleGetRecommendations = async () => {
     if (!interests) {
       toast({
-        title: "No interests provided",
-        description: "Please enter some interests to get recommendations.",
+        title: "No se proporcionaron intereses",
+        description: "Por favor, ingresa algunos intereses para obtener recomendaciones.",
         variant: "destructive",
       });
       return;
@@ -70,8 +70,8 @@ export default function PersonalizedRecommendationsDialog() {
     } catch (error) {
       console.error("Failed to get recommendations:", error);
       toast({
-        title: "Recommendation Failed",
-        description: "Could not get recommendations. Please try again.",
+        title: "Fallaron las Recomendaciones",
+        description: "No se pudieron obtener las recomendaciones. Por favor, inténtalo de nuevo.",
         variant: "destructive",
       });
     } finally {
@@ -98,34 +98,34 @@ export default function PersonalizedRecommendationsDialog() {
       <DialogTrigger asChild>
         <Button>
           <WandSparkles className="mr-2 h-4 w-4" />
-          Get Recommendations
+          Obtener Recomendaciones
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Personalized Recommendations</DialogTitle>
+          <DialogTitle>Recomendaciones Personalizadas</DialogTitle>
           <DialogDescription>
-            Tell us your interests to find collectibles you&apos;ll love.
-            We&apos;ll also consider your recent browsing history.
+            Dinos tus intereses para encontrar coleccionables que te encantarán.
+            También consideraremos tu historial de navegación reciente.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="interests" className="text-right">
-              Interests
+              Intereses
             </Label>
             <Input
               id="interests"
               value={interests}
               onChange={(e) => setInterests(e.target.value)}
-              placeholder="e.g., vintage cameras, sci-fi"
+              placeholder="ej., cámaras vintage, ciencia ficción"
               className="col-span-3"
             />
           </div>
         </div>
         <Button onClick={handleGetRecommendations} disabled={loading}>
           {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {loading ? "Thinking..." : "Get My Recommendations"}
+          {loading ? "Pensando..." : "Obtener Mis Recomendaciones"}
         </Button>
 
         {loading && (
@@ -141,7 +141,7 @@ export default function PersonalizedRecommendationsDialog() {
         
         {results && (
           <div>
-            <h3 className="text-lg font-semibold my-4">Here are your recommendations:</h3>
+            <h3 className="text-lg font-semibold my-4">Aquí están tus recomendaciones:</h3>
             {results.length > 0 ? (
               <div className="grid grid-cols-3 gap-4">
                 {results.map((item) => (
@@ -159,7 +159,7 @@ export default function PersonalizedRecommendationsDialog() {
                 ))}
               </div>
             ) : (
-                <p>No recommendations found based on your interests.</p>
+                <p>No se encontraron recomendaciones basadas en tus intereses.</p>
             )}
           </div>
         )}

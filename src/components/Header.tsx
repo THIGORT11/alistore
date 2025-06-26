@@ -40,7 +40,7 @@ export default function Header() {
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-4">
             <Link href="/wishlist">
-              <Button variant="ghost" size="icon" aria-label="Wishlist">
+              <Button variant="ghost" size="icon" aria-label="Lista de Deseos">
                 <div className="relative">
                   <Heart />
                   {wishlist.length > 0 && (
@@ -67,7 +67,7 @@ export default function Header() {
                 <DropdownMenuContent className="w-56" align="end" forceMount>
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-medium leading-none">My Account</p>
+                      <p className="text-sm font-medium leading-none">Mi Cuenta</p>
                       <p className="text-xs leading-none text-muted-foreground">
                         {user.email}
                       </p>
@@ -76,21 +76,21 @@ export default function Header() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => router.push('/wishlist')}>
                     <Heart className="mr-2 h-4 w-4" />
-                    <span>Wishlist</span>
+                    <span>Lista de Deseos</span>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
+                    <span>Cerrar Sesión</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
               <div className="flex items-center space-x-2">
                 <Button variant="ghost" onClick={() => router.push('/login')}>
-                  Log In
+                  Iniciar Sesión
                 </Button>
-                <Button onClick={() => router.push('/signup')}>Sign Up</Button>
+                <Button onClick={() => router.push('/signup')}>Registrarse</Button>
               </div>
             )}
           </nav>

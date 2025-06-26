@@ -22,7 +22,7 @@ export default function WishlistPage() {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <p>Loading...</p>
+        <p>Cargando...</p>
       </div>
     );
   }
@@ -33,28 +33,28 @@ export default function WishlistPage() {
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center mb-8">
           <Heart className="w-8 h-8 mr-4 text-primary" />
-          <h1 className="text-4xl font-bold font-headline">My Wishlist</h1>
+          <h1 className="text-4xl font-bold font-headline">Mi Lista de Deseos</h1>
         </div>
         
         {!user ? (
           <div className="text-center py-20">
-            <h2 className="text-2xl font-semibold mb-4">Please log in to see your wishlist.</h2>
-            <p className="text-muted-foreground mb-6">Create an account or log in to save your favorite items.</p>
+            <h2 className="text-2xl font-semibold mb-4">Por favor, inicia sesión para ver tu lista de deseos.</h2>
+            <p className="text-muted-foreground mb-6">Crea una cuenta o inicia sesión para guardar tus artículos favoritos.</p>
             <div className="flex justify-center gap-4">
               <Button asChild>
-                <Link href="/login">Log In</Link>
+                <Link href="/login">Iniciar Sesión</Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link href="/signup">Sign Up</Link>
+                <Link href="/signup">Registrarse</Link>
               </Button>
             </div>
           </div>
         ) : wishlistedProducts.length === 0 ? (
           <div className="text-center py-20">
-            <h2 className="text-2xl font-semibold mb-4">Your wishlist is empty.</h2>
-            <p className="text-muted-foreground mb-6">Browse our collections to find something you love.</p>
+            <h2 className="text-2xl font-semibold mb-4">Tu lista de deseos está vacía.</h2>
+            <p className="text-muted-foreground mb-6">Explora nuestras colecciones para encontrar algo que te encante.</p>
             <Button asChild>
-              <Link href="/">Start Shopping</Link>
+              <Link href="/">Comenzar a Comprar</Link>
             </Button>
           </div>
         ) : (

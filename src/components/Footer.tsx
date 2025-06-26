@@ -10,7 +10,7 @@ export default function Footer() {
           <span className="font-bold text-lg">Alistore</span>
         </div>
         <p className="text-sm text-muted-foreground mt-4 sm:mt-0">
-          © {new Date().getFullYear()} Alistore, Inc. All rights reserved.
+          © {new Date().getFullYear()} Alistore, Inc. Todos los derechos reservados.
         </p>
         <div className="flex space-x-4 mt-4 sm:mt-0">
           <Link href="#" className="text-muted-foreground hover:text-primary">

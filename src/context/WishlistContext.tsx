@@ -40,7 +40,7 @@ export const WishlistProvider = ({ children }: { children: React.ReactNode }) =>
       if (prev.includes(productId)) {
         return prev;
       }
-      toast({ title: "Added to Wishlist", description: "The item has been added to your wishlist." });
+      toast({ title: "Añadido a la Lista de Deseos", description: "El artículo ha sido añadido a tu lista de deseos." });
       return [...prev, productId];
     });
   }, [toast]);
@@ -50,7 +50,7 @@ export const WishlistProvider = ({ children }: { children: React.ReactNode }) =>
       if (!prev.includes(productId)) {
         return prev;
       }
-      toast({ title: "Removed from Wishlist", description: "The item has been removed from your wishlist." });
+      toast({ title: "Eliminado de la Lista de Deseos", description: "El artículo ha sido eliminado de tu lista de deseos." });
       return prev.filter((id) => id !== productId);
     });
   }, [toast]);
