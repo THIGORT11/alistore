@@ -1,4 +1,4 @@
-import { Archive } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between">
         <div className="flex items-center space-x-2">
-          <Archive className="h-6 w-6 text-primary" />
+          <Image src="https://i.imgur.com/gfr4WPF.png" alt="Alistore Logo" width={24} height={24} className="h-6 w-6" />
           <span className="font-bold text-lg">Alistore</span>
         </div>
         <p className="text-sm text-muted-foreground mt-4 sm:mt-0">

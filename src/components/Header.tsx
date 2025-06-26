@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Heart, LogOut, User as UserIcon, Archive } from "lucide-react";
+import { Heart, LogOut, User as UserIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
@@ -32,14 +33,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
+      <div className="container flex h-24 max-w-screen-2xl items-center justify-between">
         {/* Empty div for spacing */}
         <div className="flex-1" />
 
         <div className="flex flex-1 justify-center">
-           <Link href="/" className="flex items-center space-x-3">
-              <Archive className="h-8 w-8 text-primary" />
-              <span className="text-3xl font-bold font-headline">Alistore</span>
+           <Link href="/" className="flex items-center space-x-4">
+              <Image src="https://i.imgur.com/gfr4WPF.png" alt="Alistore Logo" width={48} height={48} className="h-12 w-12"/>
+              <span className="text-5xl font-bold font-headline">Alistore</span>
            </Link>
         </div>
 
