@@ -13,24 +13,30 @@ import PersonalizedRecommendationsDialog from '@/components/PersonalizedRecommen
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Todos');
 
   const featuredItems = useMemo(
     () => products.filter(p => p.tags.includes('popular')).slice(0, 4),
     []
   );
+  
   const newArrivals = useMemo(
     () => products.filter(p => p.tags.includes('new-arrival')).slice(0, 8),
     []
   );
 
+  const categories = useMemo(() => {
+    const allCategories = products.map(p => p.category);
+    return ['Todos', ...Array.from(new Set(allCategories))];
+  }, []);
+
   const filteredProducts = useMemo(() => {
-    if (!searchTerm) {
-      return products;
-    }
-    return products.filter(product =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }, [searchTerm]);
+    return products.filter(product => {
+      const matchesCategory = selectedCategory === 'Todos' || product.category === selectedCategory;
+      const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [searchTerm, selectedCategory]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -76,6 +82,19 @@ export default function Home() {
               />
             </div>
           </div>
+
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {categories.map(category => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredProducts.map(product => (
               <ProductCard key={product.id} product={product} />
