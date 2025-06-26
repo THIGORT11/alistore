@@ -85,14 +85,7 @@ export default function Header() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-            ) : (
-              <div className="flex items-center space-x-2">
-                <Button variant="ghost" onClick={() => router.push('/login')}>
-                  Iniciar Sesión
-                </Button>
-                <Button onClick={() => router.push('/signup')}>Registrarse</Button>
-              </div>
-            )}
+            ) : null}
           </nav>
         </div>
       </div>

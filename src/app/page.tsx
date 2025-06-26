@@ -7,23 +7,11 @@ import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, WandSparkles } from 'lucide-react';
-import VisualSearchDialog from '@/components/VisualSearchDialog';
-import PersonalizedRecommendationsDialog from '@/components/PersonalizedRecommendationsDialog';
+import { Search } from 'lucide-react';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
-
-  const featuredItems = useMemo(
-    () => products.filter(p => p.tags.includes('popular')).slice(0, 4),
-    []
-  );
-  
-  const newArrivals = useMemo(
-    () => products.filter(p => p.tags.includes('new-arrival')).slice(0, 8),
-    []
-  );
 
   const categories = useMemo(() => {
     const allCategories = products.map(p => p.category);
@@ -42,30 +30,6 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <section className="text-center py-12 md:py-20 animate-fade-in-down">
-          <h1 className="text-4xl md:text-6xl font-bold font-headline tracking-tight text-primary-foreground">
-            Descubre Tu Próxima Obsesión
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Alistore es tu destino principal para coleccionables de alta calidad, seleccionados de todo el mundo.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <VisualSearchDialog />
-            <PersonalizedRecommendationsDialog />
-          </div>
-        </section>
-
-        <section id="featured" className="py-12">
-          <h2 className="text-3xl font-bold text-center mb-8 font-headline">
-            Artículos Destacados
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredItems.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </section>
-
         <section id="all-products" className="py-12">
           <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
             <h2 className="text-3xl font-bold font-headline">
@@ -97,17 +61,6 @@ export default function Home() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </section>
-
-        <section id="new-arrivals" className="py-12">
-          <h2 className="text-3xl font-bold text-center mb-8 font-headline">
-            Novedades
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {newArrivals.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
