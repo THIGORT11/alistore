@@ -5,8 +5,8 @@ import { AuthProvider } from '@/context/AuthContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 
 export const metadata: Metadata = {
-  title: 'Alistore',
-  description: 'Los mejores coleccionables, seleccionados para ti.',
+  title: 'babystore',
+  description: 'Los mejores productos para tu bebé, seleccionados para ti.',
 };
 
 export default function RootLayout({

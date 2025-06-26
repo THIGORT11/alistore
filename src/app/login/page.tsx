@@ -25,7 +25,7 @@ export default function LoginPage() {
       await login(email, password);
       toast({
         title: 'Inicio de Sesión Exitoso',
-        description: "¡Bienvenido de nuevo a Alistore!",
+        description: "¡Bienvenido de nuevo a babystore!",
       });
       router.push('/');
     } catch (error: any) {

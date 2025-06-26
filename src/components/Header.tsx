@@ -33,14 +33,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-32 max-w-screen-2xl items-center justify-between">
+      <div className="container flex h-40 max-w-screen-2xl items-center justify-between">
         {/* Empty div for spacing */}
         <div className="flex-1" />
 
         <div className="flex flex-1 justify-center">
            <Link href="/" className="flex items-center space-x-6">
-              <Image src="https://i.imgur.com/gfr4WPF.png" alt="Alistore Logo" width={64} height={64} className="h-16 w-16"/>
-              <span className="text-7xl font-bold font-headline">Alistore</span>
+              <Image src="https://i.imgur.com/k4p4gKO.png" alt="babystore Logo" width={80} height={80} className="h-20 w-20"/>
+              <span className="text-8xl font-bold font-headline">babystore</span>
            </Link>
         </div>
 

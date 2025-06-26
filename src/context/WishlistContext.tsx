@@ -18,7 +18,7 @@ export const WishlistProvider = ({ children }: { children: React.ReactNode }) =>
 
   useEffect(() => {
     try {
-      const storedWishlist = localStorage.getItem("alistore-wishlist");
+      const storedWishlist = localStorage.getItem("babystore-wishlist");
       if (storedWishlist) {
         setWishlist(JSON.parse(storedWishlist));
       }
@@ -29,7 +29,7 @@ export const WishlistProvider = ({ children }: { children: React.ReactNode }) =>
 
   useEffect(() => {
     try {
-      localStorage.setItem("alistore-wishlist", JSON.stringify(wishlist));
+      localStorage.setItem("babystore-wishlist", JSON.stringify(wishlist));
     } catch (error) {
       console.error("Could not save wishlist to localStorage", error);
     }
