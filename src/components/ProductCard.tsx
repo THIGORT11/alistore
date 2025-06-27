@@ -4,8 +4,9 @@ import Image from 'next/image';
 import type { Product } from '@/data/products';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Heart } from 'lucide-react';
+import { Heart, ShoppingCart } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
+import { useCart } from '@/context/CartContext';
 import { cn } from '@/lib/utils';
 
 interface ProductCardProps {
@@ -14,6 +15,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
+  const { addToCart } = useCart();
   const isWishlisted = isInWishlist(product.id);
 
   const handleWishlistToggle = () => {
@@ -57,10 +59,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           </p>
         )}
       </CardContent>
-      <CardFooter className="p-4 pt-0">
+      <CardFooter className="p-4 pt-0 flex items-center justify-between">
         <p className="text-xl font-semibold text-primary">
           ${product.price.toFixed(2)}
         </p>
+        <Button onClick={() => addToCart(product)}>
+          <ShoppingCart className="mr-2 h-4 w-4" />
+          Añadir al carrito
+        </Button>
       </CardFooter>
     </Card>
   );

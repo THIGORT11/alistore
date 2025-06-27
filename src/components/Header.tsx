@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Heart, LogOut, User as UserIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import CartSheet from "./CartSheet";
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -32,7 +33,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full border-b border-border/40 bg-background">
+    <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background">
       <div className="container flex h-40 max-w-screen-2xl items-center justify-between">
         {/* Empty div for spacing */}
         <div className="flex-1" />
@@ -45,7 +46,7 @@ export default function Header() {
         </div>
 
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-4">
+          <nav className="flex items-center space-x-2">
             <Link href="/wishlist">
               <Button variant="ghost" size="icon" aria-label="Lista de Deseos">
                 <div className="relative">
@@ -58,6 +59,8 @@ export default function Header() {
                 </div>
               </Button>
             </Link>
+
+            <CartSheet />
 
             {user ? (
               <DropdownMenu>

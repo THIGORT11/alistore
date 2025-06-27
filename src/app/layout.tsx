@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/context/AuthContext';
 import { WishlistProvider } from '@/context/WishlistContext';
+import { CartProvider } from '@/context/CartContext';
 
 export const metadata: Metadata = {
   title: 'babystore',
@@ -27,8 +28,10 @@ export default function RootLayout({
       <body className="font-body antialiased bg-background">
         <AuthProvider>
           <WishlistProvider>
-            {children}
-            <Toaster />
+            <CartProvider>
+              {children}
+              <Toaster />
+            </CartProvider>
           </WishlistProvider>
         </AuthProvider>
       </body>
