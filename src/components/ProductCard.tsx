@@ -49,21 +49,23 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Heart className={cn("text-primary", isWishlisted && "fill-current")} />
         </Button>
       </CardHeader>
-      <CardContent className="flex-grow p-4">
-        <CardTitle className="text-lg font-medium tracking-tight">
-          {product.name}
-        </CardTitle>
-        {product.description && (
-          <p className="mt-2 text-sm text-muted-foreground">
-            {product.description}
-          </p>
-        )}
-      </CardContent>
-      <CardFooter className="p-4 pt-0 flex items-center justify-between">
-        <p className="text-xl font-semibold text-primary">
+      <CardContent className="flex-grow p-4 flex flex-col justify-between">
+        <div>
+          <CardTitle className="text-lg font-medium tracking-tight">
+            {product.name}
+          </CardTitle>
+          {product.description && (
+            <p className="mt-2 text-sm text-muted-foreground">
+              {product.description}
+            </p>
+          )}
+        </div>
+        <p className="text-xl font-semibold text-primary pt-4">
           ${product.price.toFixed(2)}
         </p>
-        <Button onClick={() => addToCart(product)}>
+      </CardContent>
+      <CardFooter className="p-4 pt-0">
+        <Button onClick={() => addToCart(product)} className="w-full">
           <ShoppingCart className="mr-2 h-4 w-4" />
           Añadir al carrito
         </Button>
