@@ -15,10 +15,18 @@ export default function Home() {
 
   const categories = ['Todos', 'Muñecos', 'Figuras', 'Cajas', 'Otros', 'Libros', 'Packs', 'Accesorios', 'Cottom Doll'];
 
+  const normalizeString = (str: string) =>
+    str
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+
   const filteredProducts = useMemo(() => {
+    const normalizedSearchTerm = normalizeString(searchTerm);
+    
     return products.filter(product => {
       const matchesCategory = selectedCategory === 'Todos' || product.category === selectedCategory;
-      const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSearch = normalizeString(product.name).includes(normalizedSearchTerm);
       return matchesCategory && matchesSearch;
     });
   }, [searchTerm, selectedCategory]);
