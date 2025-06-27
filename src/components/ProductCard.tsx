@@ -27,14 +27,16 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="flex flex-col overflow-hidden h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
       <CardHeader className="p-0 relative">
-        <Image
-          src={product.images[0]}
-          alt={product.name}
-          width={600}
-          height={400}
-          className="object-cover w-full aspect-[3/2]"
-          data-ai-hint={product.aiHint}
-        />
+        <div className="w-full aspect-[3/2] bg-card flex items-center justify-center">
+            <Image
+                src={product.images[0]}
+                alt={product.name}
+                width={600}
+                height={400}
+                className="object-contain w-full h-full"
+                data-ai-hint={product.aiHint}
+            />
+        </div>
         <Button
           size="icon"
           variant="ghost"
@@ -49,9 +51,14 @@ export default function ProductCard({ product }: ProductCardProps) {
         <CardTitle className="text-lg font-medium tracking-tight">
           {product.name}
         </CardTitle>
+        {product.description && (
+          <p className="mt-2 text-sm text-muted-foreground">
+            {product.description}
+          </p>
+        )}
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <p className="text-xl font-semibold text-primary-foreground">
+        <p className="text-xl font-semibold text-primary">
           ${product.price.toFixed(2)}
         </p>
       </CardFooter>
