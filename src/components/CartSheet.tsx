@@ -14,6 +14,7 @@ import {
   SheetFooter,
 } from "@/components/ui/sheet";
 import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react";
+import CheckoutDialog from "./CheckoutDialog";
 
 export default function CartSheet() {
   const { cart, removeFromCart, updateQuantity, cartCount, cartTotal } = useCart();
@@ -99,9 +100,7 @@ export default function CartSheet() {
                         <span>Total:</span>
                         <span>${cartTotal.toFixed(2)}</span>
                     </div>
-                    <Button className="w-full">
-                        Proceder al Pago
-                    </Button>
+                    <CheckoutDialog />
                 </div>
             </SheetFooter>
           </>
