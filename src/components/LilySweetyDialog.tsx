@@ -103,8 +103,8 @@ export default function LilySweetyDialog({ product, children }: LilySweetyDialog
           <div className="mt-4 p-3 bg-muted/50 rounded-lg">
             <p className="font-semibold text-sm">Si marcas la casilla cottom doll y accesorios obtendrás esto:</p>
             <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
-                <li>1 Taba squissy</li>
-                <li>1 biberon y camara</li>
+                <li>1 Taba squishy</li>
+                <li>1 biberón y cámara</li>
                 <li>1 peine cottom doll</li>
                 <li>1 certificado cottom doll</li>
             </ul>
