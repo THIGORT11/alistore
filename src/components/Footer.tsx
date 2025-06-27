@@ -9,7 +9,7 @@ export default function Footer() {
           <Image src="https://i.imgur.com/ZKz2ztR.png" alt="babystore Logo" width={24} height={24} className="h-6 w-6" />
           <span className="font-bold text-lg">babystore</span>
         </div>
-        <p className="text-sm text-muted-foreground mt-4 sm:mt-0">
+        <p className="text-sm text-muted-foreground mt-4 sm:mt-0 flex-1 text-center">
           © {new Date().getFullYear()} babystore, Inc. Todos los derechos reservados.
         </p>
         <div className="flex space-x-4 mt-4 sm:mt-0">
