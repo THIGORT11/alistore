@@ -33,7 +33,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background">
+    <header className="w-full border-b border-border/40 bg-background">
       <div className="container flex h-40 max-w-screen-2xl items-center justify-between">
         {/* Empty div for spacing */}
         <div className="flex-1" />
