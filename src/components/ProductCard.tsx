@@ -8,6 +8,7 @@ import { Heart, ShoppingCart } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
 import { cn } from '@/lib/utils';
+import LilySweetyDialog from './LilySweetyDialog';
 
 interface ProductCardProps {
   product: Product;
@@ -65,10 +66,19 @@ export default function ProductCard({ product }: ProductCardProps) {
         </p>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Button onClick={() => addToCart(product)} className="w-full">
-          <ShoppingCart className="mr-2 h-4 w-4" />
-          Añadir al carrito
-        </Button>
+        {product.id === '25' ? (
+          <LilySweetyDialog product={product}>
+            <Button className="w-full">
+              <ShoppingCart className="mr-2 h-4 w-4" />
+              Añadir al carrito
+            </Button>
+          </LilySweetyDialog>
+        ) : (
+          <Button onClick={() => addToCart(product)} className="w-full">
+            <ShoppingCart className="mr-2 h-4 w-4" />
+            Añadir al carrito
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );
