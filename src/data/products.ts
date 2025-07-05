@@ -141,6 +141,7 @@ export const products: Product[] = [
     category: 'Otros',
     tags: ['otros', 'juegos'],
     aiHint: 'toys game',
+    stock: 0,
   },
   {
     id: '14',
