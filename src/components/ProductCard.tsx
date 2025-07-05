@@ -18,6 +18,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
   const isWishlisted = isInWishlist(product.id);
+  const isOutOfStock = product.stock === 0;
 
   const handleWishlistToggle = () => {
     if (isWishlisted) {
@@ -66,7 +67,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         </p>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        {product.id === '25' ? (
+        {isOutOfStock ? (
+            <Button disabled className="w-full">
+                Agotado
+            </Button>
+        ) : product.id === '25' ? (
           <LilySweetyDialog product={product}>
             <Button className="w-full">
               <ShoppingCart className="mr-2 h-4 w-4" />

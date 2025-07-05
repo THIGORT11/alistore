@@ -7,6 +7,7 @@ export interface Product {
   category: string;
   tags: string[];
   aiHint: string;
+  stock?: number;
 }
 
 export const products: Product[] = [
@@ -69,6 +70,7 @@ export const products: Product[] = [
     category: 'Figuras',
     tags: ['figura', 'stitch', 'dormir'],
     aiHint: 'sleeping stitch',
+    stock: 0,
   },
   {
     id: '7',
