@@ -232,16 +232,6 @@ export const products: Product[] = [
     aiHint: 'baby born accessories',
   },
   {
-    id: '23',
-    name: 'Canastilla unicornio',
-    description: 'Canastilla con temática de unicornio.',
-    price: 10,
-    images: ['https://i.imgur.com/33hHEdC.jpeg'],
-    category: 'Accesorios',
-    tags: ['accesorios', 'canastilla', 'unicornio'],
-    aiHint: 'unicorn basket',
-  },
-  {
     id: '24',
     name: '2 pañales dumbo',
     description: 'Pack de dos pañales con diseño de Dumbo.',
