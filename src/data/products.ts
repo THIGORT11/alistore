@@ -1,3 +1,4 @@
+
 export interface Product {
   id: string;
   name: string;
@@ -251,6 +252,7 @@ export const products: Product[] = [
     category: 'Cottom Doll',
     tags: ['cottom doll', 'lily', 'sweety'],
     aiHint: 'cottom doll',
+    stock: 0,
   },
   {
     id: '26',
