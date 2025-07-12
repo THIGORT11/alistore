@@ -152,6 +152,7 @@ export const products: Product[] = [
     category: 'Otros',
     tags: ['otros', 'comida'],
     aiHint: 'toy food',
+    stock: 0,
   },
   {
     id: '15',
