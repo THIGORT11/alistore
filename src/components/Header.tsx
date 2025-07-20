@@ -34,19 +34,20 @@ export default function Header() {
 
   return (
     <header className="w-full border-b border-border/40 bg-background">
-      <div className="container flex h-40 max-w-screen-2xl items-center justify-between">
-        {/* Empty div for spacing */}
-        <div className="flex-1" />
+      <div className="container flex h-24 sm:h-32 md:h-40 max-w-screen-2xl items-center justify-between">
+        <div className="flex-1 md:flex-none">
+          {/* Placeholder for potential left-side content or burger menu */}
+        </div>
 
         <div className="flex flex-1 justify-center">
-           <Link href="/" className="flex items-center space-x-6">
-              <Image src="https://i.imgur.com/ZKz2ztR.png" alt="babystore Logo" width={80} height={80} className="h-20 w-20"/>
-              <span className="text-8xl font-bold font-headline">babystore</span>
+           <Link href="/" className="flex items-center space-x-2 sm:space-x-4 md:space-x-6">
+              <Image src="https://i.imgur.com/ZKz2ztR.png" alt="babystore Logo" width={80} height={80} className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20"/>
+              <span className="text-4xl sm:text-6xl md:text-8xl font-bold font-headline">babystore</span>
            </Link>
         </div>
 
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-2">
+        <div className="flex flex-1 items-center justify-end space-x-1 sm:space-x-2 md:space-x-4">
+          <nav className="flex items-center space-x-0 sm:space-x-2">
             <Link href="/wishlist">
               <Button variant="ghost" size="icon" aria-label="Lista de Deseos">
                 <div className="relative">

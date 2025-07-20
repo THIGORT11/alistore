@@ -31,7 +31,6 @@ export const products: Product[] = [
     category: 'Muñecos',
     tags: ['nuevo', 'muñeco', 'colegio'],
     aiHint: 'school doll',
-    stock: 0,
   },
   {
     id: '3',
@@ -252,7 +251,6 @@ export const products: Product[] = [
     category: 'Cottom Doll',
     tags: ['cottom doll', 'lily', 'sweety'],
     aiHint: 'cottom doll',
-    stock: 0,
   },
   {
     id: '26',
