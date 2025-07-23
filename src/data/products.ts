@@ -31,6 +31,7 @@ export const products: Product[] = [
     category: 'Muñecos',
     tags: ['nuevo', 'muñeco', 'colegio'],
     aiHint: 'school doll',
+    stock: 10,
   },
   {
     id: '3',
@@ -44,13 +45,13 @@ export const products: Product[] = [
   },
   {
     id: '4',
-    name: 'Lagrimitas hora de comer',
-    description: 'El bebé lagrimitas tiene hambre. Dale de comer con su biberón y cuídalo. ¡Si le aprietas la barriguita, llora lágrimas de verdad!',
-    price: 34,
-    images: ['https://i.imgur.com/orr2NtV.jpeg'],
+    name: 'Sara hora del baño',
+    description: 'Sara está lista para un baño relajante. Incluye accesorios de baño para que la diversión nunca termine.',
+    price: 69,
+    images: ['https://i.imgur.com/8eqj85o.jpeg'],
     category: 'Muñecos',
-    tags: ['nuevo', 'muñeco', 'bebe'],
-    aiHint: 'crying doll eating',
+    tags: ['nuevo', 'muñeco', 'baño'],
+    aiHint: 'doll bath time',
   },
   {
     id: '5',
@@ -71,6 +72,7 @@ export const products: Product[] = [
     category: 'Figuras',
     tags: ['figura', 'stitch', 'dormir'],
     aiHint: 'sleeping stitch',
+    stock: 10,
   },
   {
     id: '7',
@@ -141,6 +143,7 @@ export const products: Product[] = [
     category: 'Otros',
     tags: ['otros', 'juegos'],
     aiHint: 'toys game',
+    stock: 10,
   },
   {
     id: '14',
@@ -151,6 +154,7 @@ export const products: Product[] = [
     category: 'Otros',
     tags: ['otros', 'comida'],
     aiHint: 'toy food',
+    stock: 10,
   },
   {
     id: '15',
@@ -251,6 +255,7 @@ export const products: Product[] = [
     category: 'Cottom Doll',
     tags: ['cottom doll', 'lily', 'sweety'],
     aiHint: 'cottom doll',
+    stock: 10,
   },
   {
     id: '26',
