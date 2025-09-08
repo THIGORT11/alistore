@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
-import { useWishlist } from "@/context/WishlistContext";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -14,13 +13,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Heart, LogOut, User as UserIcon } from "lucide-react";
+import { LogOut, User as UserIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import CartSheet from "./CartSheet";
 
 export default function Header() {
   const { user, logout } = useAuth();
-  const { wishlist } = useWishlist();
   const router = useRouter();
 
   const handleLogout = async () => {
@@ -41,25 +39,12 @@ export default function Header() {
 
         <div className="flex flex-1 justify-center">
            <Link href="/" className="flex items-center space-x-2">
-              <Image src="https://i.imgur.com/ZKz2ztR.png" alt="babystore Logo" width={60} height={60} className="h-12 w-12 sm:h-14 sm:w-14"/>
+              <Image src="https://i.imgur.com/ZKz2ztR.png" alt="babystore Logo" width={80} height={80} className="h-16 w-16 sm:h-20 sm:w-20"/>
            </Link>
         </div>
 
         <div className="flex flex-1 items-center justify-end space-x-1 sm:space-x-2">
           <nav className="flex items-center space-x-0 sm:space-x-1">
-            <Link href="/wishlist">
-              <Button variant="ghost" size="icon" aria-label="Lista de Deseos">
-                <div className="relative">
-                  <Heart />
-                  {wishlist.length > 0 && (
-                    <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs text-primary-foreground">
-                      {wishlist.length}
-                    </span>
-                  )}
-                </div>
-              </Button>
-            </Link>
-
             <CartSheet />
 
             {user ? (
@@ -83,11 +68,6 @@ export default function Header() {
                       </p>
                     </div>
                   </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => router.push('/wishlist')}>
-                    <Heart className="mr-2 h-4 w-4" />
-                    <span>Lista de Deseos</span>
-                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
