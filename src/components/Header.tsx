@@ -32,14 +32,14 @@ export default function Header() {
 
   return (
     <header className="w-full border-b border-border/40 bg-background">
-      <div className="container flex h-20 sm:h-24 md:h-24 max-w-screen-2xl items-center justify-between">
+      <div className="container flex h-24 max-w-screen-2xl items-center justify-between">
         <div className="flex-1 md:flex-none">
           {/* Placeholder for potential left-side content or burger menu */}
         </div>
 
         <div className="flex flex-1 justify-center">
            <Link href="/" className="flex items-center space-x-2">
-              <Image src="https://i.imgur.com/ZKz2ztR.png" alt="babystore Logo" width={80} height={80} className="h-16 w-16 sm:h-20 sm:w-20"/>
+              <Image src="https://i.imgur.com/ZKz2ztR.png" alt="babystore Logo" width={120} height={120} className="h-24 w-24 sm:h-28 sm:w-28"/>
            </Link>
         </div>
 
