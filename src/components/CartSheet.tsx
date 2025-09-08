@@ -33,7 +33,7 @@ export default function CartSheet() {
           </div>
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex flex-col w-full sm:max-w-sm">
+      <SheetContent className="flex flex-col w-full sm:max-w-md">
         <SheetHeader>
           <SheetTitle>Carrito de Compras ({cartCount})</SheetTitle>
         </SheetHeader>
@@ -44,62 +44,62 @@ export default function CartSheet() {
         ) : (
           <>
             <ScrollArea className="flex-1 -mx-6">
-              <div className="px-6">
+              <div className="px-6 divide-y divide-border">
                 {cart.map((item) => (
-                  <div key={item.id} className="flex flex-col sm:flex-row items-center gap-4 py-4 border-b">
-                    <div className="flex items-center gap-4 w-full">
-                      <Image
-                        src={item.images[0]}
-                        alt={item.name}
-                        width={64}
-                        height={64}
-                        className="rounded-md object-contain aspect-square"
-                        data-ai-hint={item.aiHint}
-                      />
-                      <div className="flex-1">
-                        <p className="font-medium text-sm sm:text-base">{item.name}</p>
-                        <p className="text-sm text-muted-foreground">${item.price.toFixed(2)}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between w-full sm:w-auto mt-2 sm:mt-0">
-                      <div className="flex items-center gap-2">
+                  <div key={item.id} className="flex items-center gap-4 py-4">
+                    <Image
+                      src={item.images[0]}
+                      alt={item.name}
+                      width={64}
+                      height={64}
+                      className="rounded-md object-contain aspect-square border"
+                      data-ai-hint={item.aiHint}
+                    />
+                    <div className="flex-1 space-y-2">
+                      <div className="flex justify-between items-start">
+                        <p className="font-medium text-sm leading-tight">{item.name}</p>
                         <Button
-                          variant="outline"
-                          size="icon"
-                          className="h-8 w-8"
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        >
-                          <Minus className="h-4 w-4" />
-                        </Button>
-                        <Input
-                          type="number"
-                          value={item.quantity}
-                          className="w-12 h-8 text-center"
-                          readOnly
-                        />
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          className="h-8 w-8"
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        >
-                          <Plus className="h-4 w-4" />
+                            variant="ghost"
+                            size="icon"
+                            className="h-6 w-6 shrink-0"
+                            onClick={() => removeFromCart(item.id)}
+                            >
+                            <Trash2 className="h-4 w-4 text-destructive" />
                         </Button>
                       </div>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="sm:ml-4"
-                        onClick={() => removeFromCart(item.id)}
-                      >
-                        <Trash2 className="h-4 w-4 text-destructive" />
-                      </Button>
+                      <div className="flex items-center justify-between">
+                         <div className="flex items-center gap-2">
+                            <Button
+                            variant="outline"
+                            size="icon"
+                            className="h-7 w-7"
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            >
+                            <Minus className="h-3.5 w-3.5" />
+                            </Button>
+                            <Input
+                            type="number"
+                            value={item.quantity}
+                            className="w-12 h-7 text-center"
+                            readOnly
+                            />
+                            <Button
+                            variant="outline"
+                            size="icon"
+                            className="h-7 w-7"
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            >
+                            <Plus className="h-3.5 w-3.5" />
+                            </Button>
+                        </div>
+                        <p className="text-sm font-semibold">${item.price.toFixed(2)}</p>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
             </ScrollArea>
-            <SheetFooter className="mt-auto">
+            <SheetFooter className="mt-auto pt-4 border-t">
                 <div className="w-full space-y-4">
                     <div className="flex justify-between font-bold text-lg">
                         <span>Total:</span>

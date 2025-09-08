@@ -8,6 +8,8 @@ import ProductCard from '@/components/ProductCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
+import VisualSearchDialog from '@/components/VisualSearchDialog';
+import PersonalizedRecommendationsDialog from '@/components/PersonalizedRecommendationsDialog';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -35,12 +37,23 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section className="text-center py-8">
+          <h1 className="text-4xl sm:text-5xl font-bold font-headline mb-4">Bienvenido a babystore</h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            Los mejores productos para tu bebé, seleccionados para ti. Encuentra todo lo que necesitas para tu pequeño.
+          </p>
+          <div className="flex justify-center gap-4">
+            <PersonalizedRecommendationsDialog />
+            <VisualSearchDialog />
+          </div>
+        </section>
+
         <section id="all-products" className="py-12">
           <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-            <h2 className="text-3xl font-bold font-headline">
+            <h2 className="text-3xl font-bold font-headline text-center md:text-left">
               Todos los Coleccionables
             </h2>
-            <div className="relative w-full md:w-1/3">
+            <div className="relative w-full max-w-sm md:w-1/3">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
               <Input
                 type="text"
@@ -58,6 +71,7 @@ export default function Home() {
                 key={category}
                 variant={selectedCategory === category ? 'default' : 'outline'}
                 onClick={() => setSelectedCategory(category)}
+                className="text-xs sm:text-sm"
               >
                 {category}
               </Button>
