@@ -8,6 +8,9 @@ import { CartProvider } from '@/context/CartContext';
 export const metadata: Metadata = {
   title: 'babystore',
   description: 'Los mejores productos para tu bebé, seleccionados para ti.',
+  icons: {
+    icon: 'https://i.imgur.com/q2QoJXU.png',
+  },
 };
 
 export default function RootLayout({
