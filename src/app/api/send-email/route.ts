@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     // 📧 Email to the store owner
     await transporter.sendMail({
       from: `"Notificación de babystore" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
+      to: 'aliciababystore25@gmail.com',
       subject: `Nuevo pedido de ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
