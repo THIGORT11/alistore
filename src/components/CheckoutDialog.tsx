@@ -6,7 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/hooks/use-toast';
-import { processOrder } from '@/ai/flows/process-order';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -49,13 +48,26 @@ export default function CheckoutDialog() {
   const { isSubmitting } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const orderDetails = cart.map(item => 
+      `- ${item.name} (x${item.quantity}): $${(item.price * item.quantity).toFixed(2)}`
+    ).join('\n') + `\n\nTotal: $${cartTotal.toFixed(2)}`;
+
     try {
-      await processOrder({
-        customerName: values.name,
-        customerEmail: values.email,
-        cart,
-        cartTotal,
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          orderDetails,
+        }),
       });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error('Hubo un problema al enviar la confirmación del pedido.');
+      }
 
       toast({
         title: '¡Pedido Confirmado!',
