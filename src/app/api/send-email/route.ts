@@ -1,49 +1,60 @@
 import nodemailer from 'nodemailer';
 import { NextRequest, NextResponse } from 'next/server';
+import { generateEmailHtml, generateAdminEmailHtml } from '@/lib/email-template';
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, orderDetails } = await req.json();
+    const { name, email, cart, total, orderDetails } = await req.json();
+
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+      console.error('Missing GMAIL_USER or GMAIL_PASS environment variables');
+      return NextResponse.json({ success: false, error: 'Server configuration error' }, { status: 500 });
+    }
 
     // Configuration for the transporter (using Gmail)
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true, // true for 465, false for other ports
       auth: {
-        user: process.env.GMAIL_USER, // e.g., aliciababystore25@gmail.com
-        pass: process.env.GMAIL_PASS, // your app password
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
       },
     });
 
+    // Verify connection configuration
+    try {
+      await transporter.verify();
+      console.log('Transporter verified successfully');
+    } catch (verifyError) {
+      console.error('Transporter verification failed:', verifyError);
+      return NextResponse.json({ success: false, error: 'Failed to connect to email server' }, { status: 500 });
+    }
+
+    // Generate HTML content
+    // Fallback to orderDetails string if cart is not available (though it should be)
+    const customerHtml = cart
+      ? generateEmailHtml(name, cart, total)
+      : `<pre>${orderDetails}</pre>`;
+
+    const adminHtml = cart
+      ? generateAdminEmailHtml(name, email, cart, total)
+      : `<pre>${orderDetails}</pre>`;
+
     // 📦 Email to the customer
     await transporter.sendMail({
-      from: `"babystore" <${process.env.GMAIL_USER}>`,
+      from: `"BabyStore" <${process.env.GMAIL_USER}>`,
       to: email,
-      subject: 'Confirmación de tu pedido - babystore',
-      html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-            <h2 style="color: #4F46E5;">¡Gracias por tu pedido, ${name}!</h2>
-            <p>Estos son los detalles de tu pedido:</p>
-            <pre style="background-color: #f5f5f5; padding: 15px; border-radius: 5px;">${orderDetails}</pre>
-            <p>Te contactaremos cuando esté listo para ser enviado. 💌</p>
-            <p>Gracias por confiar en babystore.</p>
-        </div>
-      `,
+      subject: 'Confirmación de tu pedido - BabyStore',
+      html: customerHtml,
     });
 
     // 📧 Email to the store owner
     await transporter.sendMail({
-      from: `"Notificación de babystore" <${process.env.GMAIL_USER}>`,
+      from: `"Notificación de BabyStore" <${process.env.GMAIL_USER}>`,
       to: 'aliciababystore25@gmail.com',
       subject: `Nuevo pedido de ${name}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-            <h2>Nuevo pedido recibido</h2>
-            <p><strong>Cliente:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <h3>Detalles del pedido:</h3>
-            <pre style="background-color: #f5f5f5; padding: 15px; border-radius: 5px;">${orderDetails}</pre>
-        </div>
-      `,
+      html: adminHtml,
     });
 
     return NextResponse.json({ success: true }, { status: 200 });

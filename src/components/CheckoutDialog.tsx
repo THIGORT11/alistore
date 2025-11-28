@@ -48,7 +48,7 @@ export default function CheckoutDialog() {
   const { isSubmitting } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const orderDetails = cart.map(item => 
+    const orderDetails = cart.map(item =>
       `- ${item.name} (x${item.quantity}): $${(item.price * item.quantity).toFixed(2)}`
     ).join('\n') + `\n\nTotal: $${cartTotal.toFixed(2)}`;
 
@@ -59,7 +59,8 @@ export default function CheckoutDialog() {
         body: JSON.stringify({
           name: values.name,
           email: values.email,
-          orderDetails,
+          cart,
+          total: cartTotal,
         }),
       });
 
