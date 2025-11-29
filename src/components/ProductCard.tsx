@@ -32,14 +32,14 @@ export default function ProductCard({ product }: ProductCardProps) {
     <Card className="flex flex-col overflow-hidden h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
       <CardHeader className="p-0 relative">
         <div className="w-full aspect-[3/2] bg-card flex items-center justify-center">
-            <Image
-                src={product.images[0]}
-                alt={product.name}
-                width={600}
-                height={400}
-                className="object-contain w-full h-full"
-                data-ai-hint={product.aiHint}
-            />
+          <Image
+            src={product.images[0]}
+            alt={product.name}
+            width={600}
+            height={400}
+            className="object-contain w-full h-full"
+            data-ai-hint={product.aiHint}
+          />
         </div>
         <Button
           size="icon"
@@ -62,15 +62,22 @@ export default function ProductCard({ product }: ProductCardProps) {
             </p>
           )}
         </div>
-        <p className="text-xl font-semibold text-primary pt-4">
-          ${product.price.toFixed(2)}
-        </p>
+        <div className="pt-4 flex items-baseline">
+          {product.originalPrice && (
+            <span className="text-sm text-muted-foreground line-through mr-2">
+              ${product.originalPrice.toFixed(2)}
+            </span>
+          )}
+          <span className="text-xl font-semibold text-primary">
+            ${product.price.toFixed(2)}
+          </span>
+        </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
         {isOutOfStock ? (
-            <Button disabled className="w-full">
-                Agotado
-            </Button>
+          <Button disabled className="w-full">
+            Agotado
+          </Button>
         ) : product.id === '25' ? (
           <LilySweetyDialog product={product}>
             <Button className="w-full">
