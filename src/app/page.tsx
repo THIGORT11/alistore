@@ -13,7 +13,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
 
-  const categories = ['Todos', 'Muñecos', 'Figuras', 'Cajas', 'Otros', 'Libros', 'Packs', 'Accesorios', 'Cottom Doll'];
+  const categories = ['Todos', 'Muñecos', 'Figuras', 'Cajas', 'Otros', 'Libros', 'Packs', 'Accesorios', 'Cottom Doll', 'Bolsas sorpresa', 'Canastillas'];
 
   const normalizeString = (str: string) =>
     str
@@ -35,14 +35,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-primary text-primary-foreground p-6 rounded-lg mb-8 text-center relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-black/10 z-0"></div>
-          <div className="relative z-10">
-            <h1 className="text-4xl font-bold mb-2 font-headline">¡BLACK FRIDAY!</h1>
-            <p className="text-xl">25% de descuento en todos los productos</p>
-            <p className="text-sm mt-2 opacity-90">*Precios ya rebajados</p>
-          </div>
-        </div>
+
         <section id="all-products" className="py-12">
           <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
             <h2 className="text-3xl font-bold font-headline text-center md:text-left">

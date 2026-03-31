@@ -18,7 +18,7 @@ export const products: Product[] = [
     name: 'Antoñico vamos de paseo',
     description: 'El muñeco Antoñico está listo para un divertido paseo. Incluye ropita y accesorios para disfrutar al aire libre.',
     price: 25.50,
-    originalPrice: 34,
+
     images: ['https://i.imgur.com/HJz8lL4.jpeg'],
     category: 'Muñecos',
     tags: ['nuevo', 'muñeco', 'paseo'],
@@ -29,7 +29,7 @@ export const products: Product[] = [
     name: 'Adrián vamos al cole',
     description: 'Adrián está preparado para su primer día de cole. Con su mochila y uniforme, está listo para aprender y jugar.',
     price: 45.00,
-    originalPrice: 60,
+
     images: ['https://i.imgur.com/DTGaVmi.jpeg'],
     category: 'Muñecos',
     tags: ['nuevo', 'muñeco', 'colegio'],
@@ -41,7 +41,7 @@ export const products: Product[] = [
     name: 'Ani día de peluquería',
     description: 'Ani va a la peluquería para ponerse guapa. Peina su largo pelo y utiliza los accesorios para crear peinados increíbles.',
     price: 38.25,
-    originalPrice: 51,
+
     images: ['https://i.imgur.com/iLujnxM.jpeg'],
     category: 'Muñecos',
     tags: ['nuevo', 'muñeco', 'pelo'],
@@ -52,7 +52,7 @@ export const products: Product[] = [
     name: 'Sara hora del baño',
     description: 'Sara está lista para un baño relajante. Incluye accesorios de baño para que la diversión nunca termine.',
     price: 51.75,
-    originalPrice: 69,
+
     images: ['https://i.imgur.com/8eqj85o.jpeg'],
     category: 'Muñecos',
     tags: ['nuevo', 'muñeco', 'baño'],
@@ -63,7 +63,7 @@ export const products: Product[] = [
     name: 'Stitch playero',
     description: 'Figura de Stitch listo para un día de playa.',
     price: 9.75,
-    originalPrice: 13,
+
     images: ['https://i.imgur.com/lhTaj17.jpeg'],
     category: 'Figuras',
     tags: ['figura', 'stitch', 'playa'],
@@ -74,7 +74,7 @@ export const products: Product[] = [
     name: 'Stitch dormilón',
     description: 'Adorable figura de Stitch durmiendo.',
     price: 7.50,
-    originalPrice: 10,
+
     images: ['https://i.imgur.com/rLHw6up.jpeg'],
     category: 'Figuras',
     tags: ['figura', 'stitch', 'dormir'],
@@ -86,7 +86,7 @@ export const products: Product[] = [
     name: 'Stitch',
     description: 'Figura clásica de Stitch.',
     price: 3.75,
-    originalPrice: 5,
+
     images: ['https://i.imgur.com/KTDpY9I.jpeg'],
     category: 'Figuras',
     tags: ['figura', 'stitch'],
@@ -97,7 +97,7 @@ export const products: Product[] = [
     name: 'Muñeco de nieve',
     description: 'Figura de un simpático muñeco de nieve.',
     price: 3.75,
-    originalPrice: 5,
+
     images: ['https://i.imgur.com/McuOcrW.jpeg'],
     category: 'Figuras',
     tags: ['figura', 'nieve', 'navidad'],
@@ -108,7 +108,7 @@ export const products: Product[] = [
     name: 'Minnie mouse',
     description: 'Figura clásica de Minnie Mouse.',
     price: 3.75,
-    originalPrice: 5,
+
     images: ['https://i.imgur.com/huE2yWw.jpeg'],
     category: 'Figuras',
     tags: ['figura', 'minnie', 'disney'],
@@ -119,7 +119,7 @@ export const products: Product[] = [
     name: 'Caja premium',
     description: 'Muñeco + accesorio + ropa + peluche',
     price: 30.00,
-    originalPrice: 40,
+
     images: ['https://i.imgur.com/62eqNYo.png'],
     category: 'Cajas',
     tags: ['caja', 'premium', 'sorpresa'],
@@ -130,7 +130,7 @@ export const products: Product[] = [
     name: 'Caja estándar',
     description: 'mini muñeco + accesorio',
     price: 15.00,
-    originalPrice: 20,
+
     images: ['https://i.imgur.com/jiE4ABv.png'],
     category: 'Cajas',
     tags: ['caja', 'estandar', 'sorpresa'],
@@ -141,7 +141,7 @@ export const products: Product[] = [
     name: 'Aseo',
     description: 'Set de aseo para muñecos.',
     price: 1.50,
-    originalPrice: 2,
+
     images: ['https://i.imgur.com/BEn1fBp.jpeg'],
     category: 'Otros',
     tags: ['otros', 'aseo'],
@@ -152,7 +152,7 @@ export const products: Product[] = [
     name: 'Juegos',
     description: 'Juegos variados para muñecos.',
     price: 1.50,
-    originalPrice: 2,
+
     images: ['https://i.imgur.com/1TLMnNk.jpeg'],
     category: 'Otros',
     tags: ['otros', 'juegos'],
@@ -164,7 +164,7 @@ export const products: Product[] = [
     name: 'Comida',
     description: 'Comida de juguete para muñecos.',
     price: 1.50,
-    originalPrice: 2,
+
     images: ['https://i.imgur.com/DuYllQV.jpeg'],
     category: 'Otros',
     tags: ['otros', 'comida'],
@@ -176,7 +176,7 @@ export const products: Product[] = [
     name: 'Ropa',
     description: 'Ropa variada para muñecos.',
     price: 1.50,
-    originalPrice: 2,
+
     images: ['https://i.imgur.com/hL0df70.jpeg'],
     category: 'Otros',
     tags: ['otros', 'ropa'],
@@ -187,7 +187,7 @@ export const products: Product[] = [
     name: 'El cuaderno de mi bebe reborn',
     description: 'Un cuaderno para documentar la vida de tu bebe reborn.',
     price: 7.50,
-    originalPrice: 10,
+
     images: ['https://i.imgur.com/s4Yrywa.jpeg'],
     category: 'Libros',
     tags: ['libro', 'cuaderno', 'bebe'],
@@ -198,7 +198,7 @@ export const products: Product[] = [
     name: 'pack de biberón de zumo + biberón de leche',
     description: 'Un pack con dos biberones para tus muñecos.',
     price: 3.00,
-    originalPrice: 4,
+
     images: ['https://i.imgur.com/iYyL6Ey.jpeg'],
     category: 'Packs',
     tags: ['pack', 'biberon', 'leche', 'zumo'],
@@ -209,7 +209,7 @@ export const products: Product[] = [
     name: 'Antoñico nenuco + libro donald',
     description: 'Pack de muñeco Nenuco con un libro de Donald.',
     price: 4.50,
-    originalPrice: 6,
+
     images: ['https://i.imgur.com/4AgmxwR.jpeg'],
     category: 'Packs',
     tags: ['pack', 'nenuco', 'libro'],
@@ -220,7 +220,7 @@ export const products: Product[] = [
     name: 'Pack sweety',
     description: 'Un pack dulce con varios accesorios.',
     price: 11.25,
-    originalPrice: 15,
+
     images: ['https://i.imgur.com/I75feVR.jpeg'],
     category: 'Packs',
     tags: ['pack', 'sweety'],
@@ -231,7 +231,7 @@ export const products: Product[] = [
     name: 'Bruno nenuco + libro de mickey',
     description: 'Pack de muñeco Nenuco con un libro de Mickey.',
     price: 4.50,
-    originalPrice: 6,
+
     images: ['https://i.imgur.com/oH9gyCR.jpeg'],
     category: 'Packs',
     tags: ['pack', 'nenuco', 'libro', 'mickey'],
@@ -242,7 +242,7 @@ export const products: Product[] = [
     name: 'Abril nenuco + libro dumbo',
     description: 'Pack de muñeco Nenuco con un libro de Dumbo.',
     price: 4.50,
-    originalPrice: 6,
+
     images: ['https://i.imgur.com/sZjzt9G.jpeg'],
     category: 'Packs',
     tags: ['pack', 'nenuco', 'libro', 'dumbo'],
@@ -253,7 +253,7 @@ export const products: Product[] = [
     name: 'Accesorios baby born',
     description: 'Set de accesorios para muñecos Baby Born.',
     price: 9.00,
-    originalPrice: 12,
+
     images: ['https://i.imgur.com/QUADwhR.jpeg'],
     category: 'Accesorios',
     tags: ['accesorios', 'baby born'],
@@ -264,7 +264,7 @@ export const products: Product[] = [
     name: '2 pañales dumbo',
     description: 'Pack de dos pañales con diseño de Dumbo.',
     price: 2.25,
-    originalPrice: 3,
+
     images: ['https://i.imgur.com/THW8YWq.jpeg'],
     category: 'Accesorios',
     tags: ['accesorios', 'pañales', 'dumbo'],
@@ -275,7 +275,7 @@ export const products: Product[] = [
     name: 'Lily sweety',
     description: 'Muñeca Cottom Doll modelo Lily Sweety.',
     price: 4.88,
-    originalPrice: 6.50,
+
     images: ['https://i.imgur.com/plX4pLQ.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'lily', 'sweety'],
@@ -287,7 +287,7 @@ export const products: Product[] = [
     name: 'Mochila kuromy',
     description: 'Mochila de Kuromy para Cottom Doll.',
     price: 1.13,
-    originalPrice: 1.50,
+
     images: ['https://i.imgur.com/wAtOO2D.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'mochila', 'kuromy'],
@@ -298,7 +298,7 @@ export const products: Product[] = [
     name: 'Zapatos blancos',
     description: 'Zapatos blancos para Cottom Doll.',
     price: 1.13,
-    originalPrice: 1.50,
+
     images: ['https://i.imgur.com/jEDx6F2.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'zapatos', 'blancos'],
@@ -309,7 +309,7 @@ export const products: Product[] = [
     name: 'Pasadores conejo',
     description: 'Pasadores de conejo para el pelo de Cottom Doll.',
     price: 0.75,
-    originalPrice: 1,
+
     images: ['https://i.imgur.com/IORCWRn.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'accesorios', 'pelo'],
@@ -320,7 +320,7 @@ export const products: Product[] = [
     name: 'Mochila unicornio',
     description: 'Mochila de unicornio para Cottom Doll.',
     price: 1.13,
-    originalPrice: 1.50,
+
     images: ['https://i.imgur.com/3qC8zwH.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'mochila', 'unicornio'],
@@ -331,7 +331,7 @@ export const products: Product[] = [
     name: 'Zapatos lilas',
     description: 'Zapatos lilas para Cottom Doll.',
     price: 1.13,
-    originalPrice: 1.50,
+
     images: ['https://i.imgur.com/Su990xO.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'zapatos', 'lilas'],
@@ -342,7 +342,7 @@ export const products: Product[] = [
     name: 'Uniforme colegio',
     description: 'Uniforme de colegio para Cottom Doll.',
     price: 1.65,
-    originalPrice: 2.20,
+
     images: ['https://i.imgur.com/xfPNjAo.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'ropa', 'uniforme'],
@@ -353,7 +353,7 @@ export const products: Product[] = [
     name: 'Conjunto conejo de sudadera y mono',
     description: 'Conjunto de ropa para Cottom Doll.',
     price: 1.65,
-    originalPrice: 2.20,
+
     images: ['https://i.imgur.com/Xb0gzvU.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'ropa', 'conejo'],
@@ -364,7 +364,7 @@ export const products: Product[] = [
     name: 'Vestido patos',
     description: 'Vestido con estampado de patos para Cottom Doll.',
     price: 1.65,
-    originalPrice: 2.20,
+
     images: ['https://i.imgur.com/iRyAOQE.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'ropa', 'vestido'],
@@ -375,7 +375,7 @@ export const products: Product[] = [
     name: 'Vestido lila conejo',
     description: 'Vestido lila con estampado de conejo para Cottom Doll.',
     price: 1.65,
-    originalPrice: 2.20,
+
     images: ['https://i.imgur.com/qKCKST7.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'ropa', 'vestido'],
@@ -386,7 +386,7 @@ export const products: Product[] = [
     name: 'Disfraz gatito',
     description: 'Disfraz de gatito para Cottom Doll.',
     price: 1.65,
-    originalPrice: 2.20,
+
     images: ['https://i.imgur.com/LAMOcZ1.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'ropa', 'disfraz'],
@@ -397,7 +397,7 @@ export const products: Product[] = [
     name: 'Conjunto conejo bodi y antifaz',
     description: 'Conjunto de pijama de conejo para Cottom Doll.',
     price: 1.65,
-    originalPrice: 2.20,
+
     images: ['https://i.imgur.com/hnZeN3t.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'ropa', 'pijama'],
@@ -408,7 +408,7 @@ export const products: Product[] = [
     name: 'Braguita blanca',
     description: 'Braguita blanca para Cottom Doll.',
     price: 1.65,
-    originalPrice: 2.20,
+
     images: ['https://i.imgur.com/q9IstY2.jpeg'],
     category: 'Cottom Doll',
     tags: ['cottom doll', 'ropa', 'interior'],
@@ -419,7 +419,7 @@ export const products: Product[] = [
     name: 'Pack gatito pusheen',
     description: 'Pack de gatito Pusheen.',
     price: 4.50,
-    originalPrice: 6,
+
     images: ['https://i.imgur.com/gfBfVgN.jpeg'],
     category: 'Packs',
     tags: ['pack', 'pusheen', 'gatito'],
@@ -430,7 +430,7 @@ export const products: Product[] = [
     name: 'Refresco con 30 toallitas',
     description: 'Refresco que contiene 30 toallitas.',
     price: 1.50,
-    originalPrice: 2,
+
     images: ['https://i.imgur.com/mlifyhD.jpeg'],
     category: 'Accesorios',
     tags: ['accesorios', 'toallitas', 'refresco'],
@@ -441,10 +441,100 @@ export const products: Product[] = [
     name: 'Lata con 30 toallitas',
     description: 'Lata que contiene 30 toallitas.',
     price: 1.50,
-    originalPrice: 2,
+
     images: ['https://i.imgur.com/IzIphh5.jpeg'],
     category: 'Accesorios',
     tags: ['accesorios', 'toallitas', 'lata'],
     aiHint: 'wipes can',
+  },
+  {
+    id: '41',
+    name: 'Caja de papelería',
+    description: 'caja de papelería variada.',
+    price: 2.00,
+    images: ['https://i.imgur.com/IEzULxZ.jpeg'],
+    category: 'Otros',
+    tags: ['nuevo', 'papeleria', 'caja', 'pack'],
+    aiHint: 'stationery box',
+  },
+  {
+    id: '42',
+    name: 'Bolsa sorpresa de Gabby',
+    description: 'bolsa sorpresa de la casa de muñecas de Gabby.',
+    price: 10.00,
+    images: ['https://i.imgur.com/uTDF0sZ.jpeg'],
+    category: 'Bolsas sorpresa',
+    tags: ['nuevo', 'bolsa', 'sorpresa', 'gabby'],
+    aiHint: 'gabby surprise bag',
+  },
+  {
+    id: '43',
+    name: 'Bolsa sorpresa de Dorables',
+    description: 'bolsa sorpresa de Disney Dorables.',
+    price: 10.00,
+    images: ['https://i.imgur.com/geZsYtm.jpeg'],
+    category: 'Bolsas sorpresa',
+    tags: ['nuevo', 'bolsa', 'sorpresa', 'dorables'],
+    aiHint: 'dorables surprise bag',
+  },
+  {
+    id: '44',
+    name: 'Bolsa sorpresa de Hello Kitty',
+    description: 'bolsa sorpresa de Hello Kitty.',
+    price: 10.00,
+    images: ['https://i.imgur.com/E37N5q5.jpeg'],
+    category: 'Bolsas sorpresa',
+    tags: ['nuevo', 'bolsa', 'sorpresa', 'hello kitty'],
+    aiHint: 'hello kitty surprise bag',
+  },
+  {
+    id: '45',
+    name: 'Bolsa sorpesa de kuromi',
+    description: 'bolsa sorpresa de Kuromi.',
+    price: 10.00,
+    images: ['https://i.imgur.com/iaYLvRi.jpeg'],
+    category: 'Bolsas sorpresa',
+    tags: ['nuevo', 'bolsa', 'sorpresa', 'kuromi'],
+    aiHint: 'kuromi surprise bag',
+  },
+  {
+    id: '46',
+    name: 'Canastilla bienvenida bebe (niña)',
+    description: 'canastilla de bienvenida para bebé niña.',
+    price: 17.00,
+    images: ['https://i.imgur.com/MOfGZKX.jpeg'],
+    category: 'Canastillas',
+    tags: ['nuevo', 'canastilla', 'bebe', 'niña'],
+    aiHint: 'baby girl basket',
+  },
+  {
+    id: '47',
+    name: 'Canastilla bievenida bebe (niño)',
+    description: 'canastilla de bienvenida para bebé niño.',
+    price: 17.00,
+    images: ['https://i.imgur.com/B0EOFcZ.jpeg'],
+    category: 'Canastillas',
+    tags: ['nuevo', 'canastilla', 'bebe', 'niño'],
+    aiHint: 'baby boy basket',
+  },
+  {
+    id: '48',
+    name: 'Canastilla outfits reborn (niña)',
+    description: 'canastilla outfits reborn para niña.',
+    price: 17.00,
+    images: ['https://i.imgur.com/Jb0C3E1.jpeg'],
+    category: 'Canastillas',
+    tags: ['nuevo', 'canastilla', 'reborn', 'niña', 'outfits'],
+    aiHint: 'reborn girl outfit basket',
+  },
+  {
+    id: '49',
+    name: 'Canastilla outfits reborn (niño)',
+    description: 'canastilla outfits reborn para niño.',
+    price: 17.00,
+    images: ['https://i.imgur.com/h4HeLXL.jpeg'],
+    category: 'Canastillas',
+    tags: ['nuevo', 'canastilla', 'reborn', 'niño', 'outfits'],
+    aiHint: 'reborn boy outfit basket',
   }
 ];

@@ -31,6 +31,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="flex flex-col overflow-hidden h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
       <CardHeader className="p-0 relative">
+        {product.tags?.includes('nuevo') && (
+          <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md shadow-sm z-10 pointer-events-none">
+            ¡NUEVO!
+          </div>
+        )}
         <div className="w-full aspect-[3/2] bg-card flex items-center justify-center">
           <Image
             src={product.images[0]}
