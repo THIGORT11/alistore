@@ -32,7 +32,7 @@ export const products: Product[] = [
 
     images: ['https://i.imgur.com/DTGaVmi.jpeg'],
     category: 'Muñecos',
-    tags: ['nuevo', 'muñeco', 'colegio'],
+    tags: ['muñeco', 'colegio'],
     aiHint: 'school doll',
     stock: 10,
   },
@@ -44,7 +44,7 @@ export const products: Product[] = [
 
     images: ['https://i.imgur.com/iLujnxM.jpeg'],
     category: 'Muñecos',
-    tags: ['nuevo', 'muñeco', 'pelo'],
+    tags: ['muñeco', 'pelo'],
     aiHint: 'hairdresser doll',
   },
   {
@@ -55,7 +55,7 @@ export const products: Product[] = [
 
     images: ['https://i.imgur.com/8eqj85o.jpeg'],
     category: 'Muñecos',
-    tags: ['nuevo', 'muñeco', 'baño'],
+    tags: ['muñeco', 'baño'],
     aiHint: 'doll bath time',
   },
   {
