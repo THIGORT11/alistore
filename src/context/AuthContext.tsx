@@ -13,9 +13,9 @@ import { auth } from "@/lib/firebase";
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: typeof signInWithEmailAndPassword;
-  signup: typeof createUserWithEmailAndPassword;
-  logout: typeof signOut;
+  login: (email: string, password: string) => Promise<any>;
+  signup: (email: string, password: string) => Promise<any>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -35,8 +35,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const value = {
     user,
     loading,
-    login: (email, password) => signInWithEmailAndPassword(auth, email, password),
-    signup: (email, password) => createUserWithEmailAndPassword(auth, email, password),
+    login: (email: string, password: string) => signInWithEmailAndPassword(auth, email, password),
+    signup: (email: string, password: string) => createUserWithEmailAndPassword(auth, email, password),
     logout: () => signOut(auth),
   };
 

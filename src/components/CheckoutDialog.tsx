@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useCart } from '@/context/CartContext';
+import { useLoyalty } from '@/context/LoyaltyContext';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import {
@@ -34,8 +35,23 @@ const formSchema = z.object({
 
 export default function CheckoutDialog() {
   const [open, setOpen] = useState(false);
+  const [useDiscount, setUseDiscount] = useState(false);
   const { cart, cartTotal, clearCart } = useCart();
+  const { addPurchasePoints, points, redeemPoints, level, purchaseCount } = useLoyalty();
   const { toast } = useToast();
+
+  let tierDiscountPercent = 0;
+  if ((purchaseCount + 1) % 2 === 0) {
+    if (level === "Plata") tierDiscountPercent = 10;
+    else if (level === "Oro") tierDiscountPercent = 15;
+  }
+  const tierDiscountAmount = (cartTotal * tierDiscountPercent) / 100;
+  const totalAfterTierDiscount = cartTotal - tierDiscountAmount;
+
+  const maxPointsPossible = Math.min(500, points);
+  const discountPoints = Math.min(Math.floor(totalAfterTierDiscount * 100), maxPointsPossible);
+  const discountEuros = discountPoints / 100;
+  const finalTotal = useDiscount && discountPoints >= 100 ? Math.max(0, totalAfterTierDiscount - discountEuros) : totalAfterTierDiscount;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,9 +64,13 @@ export default function CheckoutDialog() {
   const { isSubmitting } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    if (useDiscount && discountPoints >= 100) {
+      redeemPoints(discountPoints);
+    }
+
     const orderDetails = cart.map(item =>
       `- ${item.name} (x${item.quantity}): $${(item.price * item.quantity).toFixed(2)}`
-    ).join('\n') + `\n\nTotal: $${cartTotal.toFixed(2)}`;
+    ).join('\n') + `\n\nSubtotal: $${cartTotal.toFixed(2)}${tierDiscountPercent > 0 ? `\nDescuento VIP ${level} (${tierDiscountPercent}%): -$${tierDiscountAmount.toFixed(2)}` : ''}${useDiscount && discountPoints >= 100 ? `\nDescuento Puntos: -$${discountEuros.toFixed(2)}` : ''}\nTotal: $${finalTotal.toFixed(2)}`;
 
     try {
       const response = await fetch('/api/send-email', {
@@ -60,7 +80,7 @@ export default function CheckoutDialog() {
           name: values.name,
           email: values.email,
           cart,
-          total: cartTotal,
+          total: finalTotal,
         }),
       });
 
@@ -74,6 +94,8 @@ export default function CheckoutDialog() {
         title: '¡Pedido Confirmado!',
         description: 'Hemos recibido tu pedido. Recibirás un correo de confirmación pronto.',
       });
+
+      addPurchasePoints(finalTotal);
 
       clearCart();
       form.reset();
@@ -128,10 +150,30 @@ export default function CheckoutDialog() {
                 </FormItem>
               )}
             />
+            {tierDiscountPercent > 0 && (
+              <div className="bg-amber-50 dark:bg-amber-500/10 p-3 rounded-md border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-200 text-sm flex justify-between items-center font-medium mt-4 mb-2">
+                <span>🎫 Descuento VIP {level} ({tierDiscountPercent}%)</span>
+                <span>-${tierDiscountAmount.toFixed(2)}</span>
+              </div>
+            )}
+            {points >= 100 && (
+              <div className="flex items-center space-x-2 bg-indigo-50 dark:bg-indigo-950/30 p-3 rounded-md border border-indigo-100 dark:border-indigo-900/50 mt-4">
+                <input 
+                  type="checkbox" 
+                  id="use-discount" 
+                  checked={useDiscount}
+                  onChange={(e) => setUseDiscount(e.target.checked)}
+                  className="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                />
+                <label htmlFor="use-discount" className="text-sm cursor-pointer select-none text-muted-foreground flex-1">
+                  Usar {discountPoints} puntos por un descuento de <strong>${discountEuros.toFixed(2)}</strong>
+                </label>
+              </div>
+            )}
             <DialogFooter>
-              <Button type="submit" disabled={isSubmitting} className="w-full">
+              <Button type="submit" disabled={isSubmitting} className="w-full mt-2">
                 {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {isSubmitting ? 'Procesando...' : 'Confirmar y Pagar'}
+                {isSubmitting ? 'Procesando...' : `Confirmar y Pagar ${finalTotal > 0 ? '$' + finalTotal.toFixed(2) : 'GRATIS'}`}
               </Button>
             </DialogFooter>
           </form>

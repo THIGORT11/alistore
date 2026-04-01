@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/context/AuthContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { CartProvider } from '@/context/CartContext';
+import { LoyaltyProvider } from '@/context/LoyaltyContext';
 
 export const metadata: Metadata = {
   title: 'babystore',
@@ -32,8 +33,10 @@ export default function RootLayout({
         <AuthProvider>
           <WishlistProvider>
             <CartProvider>
-              {children}
-              <Toaster />
+              <LoyaltyProvider>
+                {children}
+                <Toaster />
+              </LoyaltyProvider>
             </CartProvider>
           </WishlistProvider>
         </AuthProvider>
