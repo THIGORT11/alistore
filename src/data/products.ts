@@ -454,7 +454,7 @@ export const products: Product[] = [
     price: 2.00,
     images: ['https://i.imgur.com/IEzULxZ.jpeg'],
     category: 'Otros',
-    tags: ['nuevo', 'papeleria', 'caja', 'pack'],
+    tags: ['papeleria', 'caja', 'pack'],
     aiHint: 'stationery box',
   },
   {
@@ -464,7 +464,7 @@ export const products: Product[] = [
     price: 10.00,
     images: ['https://i.imgur.com/uTDF0sZ.jpeg'],
     category: 'Bolsas sorpresa',
-    tags: ['nuevo', 'bolsa', 'sorpresa', 'gabby'],
+    tags: ['bolsa', 'sorpresa', 'gabby'],
     aiHint: 'gabby surprise bag',
   },
   {
@@ -474,7 +474,7 @@ export const products: Product[] = [
     price: 10.00,
     images: ['https://i.imgur.com/geZsYtm.jpeg'],
     category: 'Bolsas sorpresa',
-    tags: ['nuevo', 'bolsa', 'sorpresa', 'dorables'],
+    tags: ['bolsa', 'sorpresa', 'dorables'],
     aiHint: 'dorables surprise bag',
   },
   {
@@ -484,7 +484,7 @@ export const products: Product[] = [
     price: 10.00,
     images: ['https://i.imgur.com/E37N5q5.jpeg'],
     category: 'Bolsas sorpresa',
-    tags: ['nuevo', 'bolsa', 'sorpresa', 'hello kitty'],
+    tags: ['bolsa', 'sorpresa', 'hello kitty'],
     aiHint: 'hello kitty surprise bag',
   },
   {
@@ -494,7 +494,7 @@ export const products: Product[] = [
     price: 10.00,
     images: ['https://i.imgur.com/iaYLvRi.jpeg'],
     category: 'Bolsas sorpresa',
-    tags: ['nuevo', 'bolsa', 'sorpresa', 'kuromi'],
+    tags: ['bolsa', 'sorpresa', 'kuromi'],
     aiHint: 'kuromi surprise bag',
   },
   {
@@ -504,7 +504,7 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/7Ti60SM.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'bebe', 'niña'],
+    tags: ['canastilla', 'bebe', 'niña'],
     aiHint: 'baby girl basket',
   },
   {
@@ -514,7 +514,7 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/8OcDfR3.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'bebe', 'niño'],
+    tags: ['canastilla', 'bebe', 'niño'],
     aiHint: 'baby boy basket',
   },
   {
@@ -524,7 +524,7 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/Jb0C3E1.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'reborn', 'niña', 'outfits'],
+    tags: ['canastilla', 'reborn', 'niña', 'outfits'],
     aiHint: 'reborn girl outfit basket',
   },
   {
@@ -534,7 +534,7 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/h4HeLXL.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'reborn', 'niño', 'outfits'],
+    tags: ['canastilla', 'reborn', 'niño', 'outfits'],
     aiHint: 'reborn boy outfit basket',
   },
   {
@@ -544,7 +544,7 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/ibtajZb.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'niña', 'sueños'],
+    tags: ['canastilla', 'niña', 'sueños'],
     aiHint: 'sweet dreams girl basket',
   },
   {
@@ -554,7 +554,7 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/40xnc2q.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'niño', 'sueños'],
+    tags: ['canastilla', 'niño', 'sueños'],
     aiHint: 'sweet dreams boy basket',
   },
   {
@@ -564,7 +564,7 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/jtkB49k.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'niña', 'comer'],
+    tags: ['canastilla', 'niña', 'comer'],
     aiHint: 'lunch time girl basket',
   },
   {
@@ -574,7 +574,7 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/eBPraPJ.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'niño', 'comer'],
+    tags: ['canastilla', 'niño', 'comer'],
     aiHint: 'lunch time boy basket',
   },
   {
@@ -584,7 +584,7 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/zSbSXK9.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'niña', 'baño'],
+    tags: ['canastilla', 'niña', 'baño'],
     aiHint: 'bath time girl basket',
   },
   {
@@ -594,7 +594,47 @@ export const products: Product[] = [
     price: 17.00,
     images: ['https://i.imgur.com/q7Aq6FP.jpeg'],
     category: 'Canastillas',
-    tags: ['nuevo', 'canastilla', 'niño', 'baño'],
+    tags: ['canastilla', 'niño', 'baño'],
     aiHint: 'bath time boy basket',
+  },
+  {
+    id: '56',
+    name: 'Caja sorpresa de maquillaje',
+    description: '3 objetos de maquillaje por caja.',
+    price: 5.00,
+    images: ['https://i.imgur.com/3GRi91G.jpeg'],
+    category: 'Bolsas sorpresa',
+    tags: ['nuevo', 'caja', 'sorpresa', 'maquillaje'],
+    aiHint: 'makeup surprise box',
+  },
+  {
+    id: '57',
+    name: 'Caja sorpresa de labiales',
+    description: '3 labiales por caja.',
+    price: 5.00,
+    images: ['https://i.imgur.com/tvLMWlw.jpeg'],
+    category: 'Bolsas sorpresa',
+    tags: ['nuevo', 'caja', 'sorpresa', 'labiales'],
+    aiHint: 'lipstick surprise box',
+  },
+  {
+    id: '58',
+    name: 'Figura sorpresa',
+    description: 'Figura coleccionable sorpresa.',
+    price: 12.00,
+    images: ['https://i.imgur.com/SmYnMhJ.jpeg'],
+    category: 'Bolsas sorpresa',
+    tags: ['nuevo', 'figura', 'sorpresa'],
+    aiHint: 'surprise collectible figure',
+  },
+  {
+    id: '59',
+    name: 'Bola sorpresa',
+    description: 'Bola con una sorpresa en su interior.',
+    price: 10.00,
+    images: ['https://i.imgur.com/tQNGPPV.jpeg'],
+    category: 'Bolsas sorpresa',
+    tags: ['nuevo', 'bola', 'sorpresa'],
+    aiHint: 'surprise ball',
   }
 ];
