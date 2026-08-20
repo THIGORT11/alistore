@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
@@ -13,11 +14,37 @@ import {
   SheetTrigger,
   SheetFooter,
 } from "@/components/ui/sheet";
-import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react";
+import { ShoppingCart, Trash2, Plus, Minus, Tag } from "lucide-react";
 import CheckoutDialog from "./CheckoutDialog";
 
 export default function CartSheet() {
-  const { cart, removeFromCart, updateQuantity, cartCount, cartTotal } = useCart();
+  const [promoCode, setPromoCode] = useState("");
+  const [promoMessage, setPromoMessage] = useState("");
+  const {
+    cart,
+    removeFromCart,
+    updateQuantity,
+    cartCount,
+    cartTotal,
+    promoApplied,
+    promoAlreadyUsed,
+    promoDiscount,
+    totalAfterPromo,
+    applyPromoCode,
+  } = useCart();
+
+  const handleApplyPromo = () => {
+    const result = applyPromoCode(promoCode);
+
+    if (result === "applied") {
+      setPromoMessage("Código aplicado: tienes un 50 % de descuento.");
+      setPromoCode("");
+    } else if (result === "used") {
+      setPromoMessage("Este código ya se utilizó y solo puede canjearse una vez.");
+    } else {
+      setPromoMessage("El código introducido no es válido.");
+    }
+  };
 
   return (
     <Sheet>
@@ -101,9 +128,62 @@ export default function CartSheet() {
             </ScrollArea>
             <SheetFooter className="mt-auto pt-4 border-t">
                 <div className="w-full space-y-4">
+                    <div className="space-y-2">
+                      <label htmlFor="promo-code" className="text-sm font-medium flex items-center gap-2">
+                        <Tag className="h-4 w-4" />
+                        Código de descuento
+                      </label>
+                      <div className="flex gap-2">
+                        <Input
+                          id="promo-code"
+                          value={promoCode}
+                          onChange={(event) => {
+                            setPromoCode(event.target.value);
+                            setPromoMessage("");
+                          }}
+                          onKeyDown={(event) => {
+                            if (event.key === "Enter") {
+                              event.preventDefault();
+                              handleApplyPromo();
+                            }
+                          }}
+                          placeholder="Introduce tu código"
+                          disabled={promoApplied || promoAlreadyUsed}
+                          aria-describedby="promo-message"
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          onClick={handleApplyPromo}
+                          disabled={!promoCode.trim() || promoApplied || promoAlreadyUsed}
+                        >
+                          Canjear
+                        </Button>
+                      </div>
+                      {(promoMessage || promoAlreadyUsed) && (
+                        <p
+                          id="promo-message"
+                          className={`text-xs ${promoApplied ? "text-green-600" : "text-muted-foreground"}`}
+                        >
+                          {promoMessage || "El código CUM BS ya se utilizó en este dispositivo."}
+                        </p>
+                      )}
+                    </div>
+                    {promoApplied && (
+                      <div className="space-y-2 rounded-md border border-green-200 bg-green-50 p-3 text-sm dark:border-green-900 dark:bg-green-950/30">
+                        <div className="flex justify-between text-muted-foreground">
+                          <span>Subtotal</span>
+                          <span>${cartTotal.toFixed(2)}</span>
+                        </div>
+                        <div className="flex justify-between font-medium text-green-700 dark:text-green-400">
+                          <span>Código CUM BS (50 %)</span>
+                          <span>-${promoDiscount.toFixed(2)}</span>
+                        </div>
+                      </div>
+                    )}
                     <div className="flex justify-between font-bold text-lg">
                         <span>Total:</span>
-                        <span>${cartTotal.toFixed(2)}</span>
+                        <span>${totalAfterPromo.toFixed(2)}</span>
                     </div>
                     <CheckoutDialog />
                 </div>

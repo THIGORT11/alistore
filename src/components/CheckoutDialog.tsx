@@ -36,7 +36,15 @@ const formSchema = z.object({
 export default function CheckoutDialog() {
   const [open, setOpen] = useState(false);
   const [useDiscount, setUseDiscount] = useState(false);
-  const { cart, cartTotal, clearCart } = useCart();
+  const {
+    cart,
+    cartTotal,
+    promoApplied,
+    promoDiscount,
+    totalAfterPromo,
+    redeemPromoCode,
+    clearCart,
+  } = useCart();
   const { addPurchasePoints, points, redeemPoints, level, purchaseCount } = useLoyalty();
   const { toast } = useToast();
 
@@ -45,8 +53,8 @@ export default function CheckoutDialog() {
     if (level === "Plata") tierDiscountPercent = 10;
     else if (level === "Oro") tierDiscountPercent = 15;
   }
-  const tierDiscountAmount = (cartTotal * tierDiscountPercent) / 100;
-  const totalAfterTierDiscount = cartTotal - tierDiscountAmount;
+  const tierDiscountAmount = (totalAfterPromo * tierDiscountPercent) / 100;
+  const totalAfterTierDiscount = totalAfterPromo - tierDiscountAmount;
 
   const maxPointsPossible = Math.min(500, points);
   const discountPoints = Math.min(Math.floor(totalAfterTierDiscount * 100), maxPointsPossible);
@@ -70,7 +78,7 @@ export default function CheckoutDialog() {
 
     const orderDetails = cart.map(item =>
       `- ${item.name} (x${item.quantity}): $${(item.price * item.quantity).toFixed(2)}`
-    ).join('\n') + `\n\nSubtotal: $${cartTotal.toFixed(2)}${tierDiscountPercent > 0 ? `\nDescuento VIP ${level} (${tierDiscountPercent}%): -$${tierDiscountAmount.toFixed(2)}` : ''}${useDiscount && discountPoints >= 100 ? `\nDescuento Puntos: -$${discountEuros.toFixed(2)}` : ''}\nTotal: $${finalTotal.toFixed(2)}`;
+    ).join('\n') + `\n\nSubtotal: $${cartTotal.toFixed(2)}${promoApplied ? `\nCódigo CUM BS (50%): -$${promoDiscount.toFixed(2)}` : ''}${tierDiscountPercent > 0 ? `\nDescuento VIP ${level} (${tierDiscountPercent}%): -$${tierDiscountAmount.toFixed(2)}` : ''}${useDiscount && discountPoints >= 100 ? `\nDescuento Puntos: -$${discountEuros.toFixed(2)}` : ''}\nTotal: $${finalTotal.toFixed(2)}`;
 
     try {
       const response = await fetch('/api/send-email', {
@@ -97,6 +105,7 @@ export default function CheckoutDialog() {
 
       addPurchasePoints(finalTotal);
 
+      redeemPromoCode();
       clearCart();
       form.reset();
       setOpen(false);
@@ -154,6 +163,12 @@ export default function CheckoutDialog() {
               <div className="bg-amber-50 dark:bg-amber-500/10 p-3 rounded-md border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-200 text-sm flex justify-between items-center font-medium mt-4 mb-2">
                 <span>🎫 Descuento VIP {level} ({tierDiscountPercent}%)</span>
                 <span>-${tierDiscountAmount.toFixed(2)}</span>
+              </div>
+            )}
+            {promoApplied && (
+              <div className="bg-green-50 dark:bg-green-500/10 p-3 rounded-md border border-green-200 dark:border-green-500/30 text-green-800 dark:text-green-200 text-sm flex justify-between items-center font-medium mt-4 mb-2">
+                <span>🏷️ Código CUM BS (50 %)</span>
+                <span>-${promoDiscount.toFixed(2)}</span>
               </div>
             )}
             {points >= 100 && (

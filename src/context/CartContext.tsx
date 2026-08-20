@@ -16,12 +16,22 @@ interface CartContextType {
   clearCart: () => void;
   cartCount: number;
   cartTotal: number;
+  promoApplied: boolean;
+  promoAlreadyUsed: boolean;
+  promoDiscount: number;
+  totalAfterPromo: number;
+  applyPromoCode: (code: string) => "applied" | "invalid" | "used";
+  redeemPromoCode: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
+const PROMO_CODE = "CUM BS";
+const PROMO_USED_KEY = "babystore-promo-cum-bs-used";
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [promoApplied, setPromoApplied] = useState(false);
+  const [promoAlreadyUsed, setPromoAlreadyUsed] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -30,6 +40,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       if (storedCart) {
         setCart(JSON.parse(storedCart));
       }
+      setPromoAlreadyUsed(localStorage.getItem(PROMO_USED_KEY) === "true");
     } catch (error) {
       console.error("Could not load cart from localStorage", error);
     }
@@ -87,10 +98,35 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const clearCart = useCallback(() => {
     setCart([]);
+    setPromoApplied(false);
   }, []);
+
+  const applyPromoCode = useCallback((code: string) => {
+    if (promoAlreadyUsed) return "used";
+
+    const normalizedCode = code.trim().replace(/\s+/g, " ").toUpperCase();
+    if (normalizedCode !== PROMO_CODE) return "invalid";
+
+    setPromoApplied(true);
+    return "applied";
+  }, [promoAlreadyUsed]);
+
+  const redeemPromoCode = useCallback(() => {
+    if (!promoApplied) return;
+
+    try {
+      localStorage.setItem(PROMO_USED_KEY, "true");
+    } catch (error) {
+      console.error("Could not save promo redemption to localStorage", error);
+    }
+    setPromoAlreadyUsed(true);
+    setPromoApplied(false);
+  }, [promoApplied]);
 
   const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
   const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const promoDiscount = promoApplied ? cartTotal * 0.5 : 0;
+  const totalAfterPromo = cartTotal - promoDiscount;
 
   const value = {
     cart,
@@ -100,6 +136,12 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     clearCart,
     cartCount,
     cartTotal,
+    promoApplied,
+    promoAlreadyUsed,
+    promoDiscount,
+    totalAfterPromo,
+    applyPromoCode,
+    redeemPromoCode,
   };
 
   return (
