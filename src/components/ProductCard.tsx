@@ -1,14 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import type { Product } from '@/data/products';
+import type { Product } from '@/content/catalog';
+import { storeConfig } from '@/content/store';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
 import { cn } from '@/lib/utils';
-import LilySweetyDialog from './LilySweetyDialog';
+import ProductCustomizationDialog from './ProductCustomizationDialog';
 
 interface ProductCardProps {
   product: Product;
@@ -18,7 +19,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
   const isWishlisted = isInWishlist(product.id);
-  const isOutOfStock = product.stock === 0;
+  const isOutOfStock = product.availability === 'out_of_stock';
 
   const handleWishlistToggle = () => {
     if (isWishlisted) {
@@ -31,9 +32,9 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="flex flex-col overflow-hidden h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
       <CardHeader className="p-0 relative">
-        {product.tags?.includes('nuevo') && (
+        {(product.featured || product.tags?.includes('nuevo')) && (
           <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md shadow-sm z-10 pointer-events-none">
-            ¡NUEVO!
+            {product.featured ? storeConfig.catalog.featuredBadgeLabel : storeConfig.catalog.newBadgeLabel}
           </div>
         )}
         <div className="w-full aspect-[3/2] bg-card flex items-center justify-center">
@@ -70,11 +71,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="pt-4 flex items-baseline">
           {product.originalPrice && (
             <span className="text-sm text-muted-foreground line-through mr-2">
-              ${product.originalPrice.toFixed(2)}
+              {storeConfig.currency.symbol}{product.originalPrice.toFixed(2)}
             </span>
           )}
           <span className="text-xl font-semibold text-primary">
-            ${product.price.toFixed(2)}
+            {storeConfig.currency.symbol}{product.price.toFixed(2)}
           </span>
         </div>
       </CardContent>
@@ -83,13 +84,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Button disabled className="w-full">
             Agotado
           </Button>
-        ) : product.id === '25' ? (
-          <LilySweetyDialog product={product}>
+        ) : product.customization ? (
+          <ProductCustomizationDialog product={product}>
             <Button className="w-full">
               <ShoppingCart className="mr-2 h-4 w-4" />
               Añadir al carrito
             </Button>
-          </LilySweetyDialog>
+          </ProductCustomizationDialog>
         ) : (
           <Button onClick={() => addToCart(product)} className="w-full">
             <ShoppingCart className="mr-2 h-4 w-4" />

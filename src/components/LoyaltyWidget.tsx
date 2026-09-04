@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { loyaltyLevels, storeConfig } from "@/content/store";
 
 export default function LoyaltyWidget() {
   const { points, level, nextLevelPoints } = useLoyalty();
@@ -33,18 +34,19 @@ export default function LoyaltyWidget() {
 
   let levelColor = "text-amber-500";
   let levelBg = "bg-amber-500/10";
-  let progressPercent = 0;
+  const currentLevelIndex = loyaltyLevels.findIndex((candidate) => candidate.id === level);
+  const currentLevel = loyaltyLevels[currentLevelIndex];
+  const nextLevel = loyaltyLevels[currentLevelIndex + 1];
+  const progressPercent = nextLevel
+    ? ((points - currentLevel.minimumPoints) / (nextLevel.minimumPoints - currentLevel.minimumPoints)) * 100
+    : 100;
 
-  if (level === "Bronce") {
-    progressPercent = (points / 250) * 100;
-  } else if (level === "Plata") {
+  if (currentLevelIndex === 1) {
     levelColor = "text-slate-300";
     levelBg = "bg-slate-300/10";
-    progressPercent = ((points - 250) / 500) * 100;
-  } else if (level === "Oro") {
+  } else if (currentLevelIndex >= loyaltyLevels.length - 1) {
     levelColor = "text-yellow-400";
     levelBg = "bg-yellow-400/10";
-    progressPercent = 100;
   }
 
   return (
@@ -61,7 +63,11 @@ export default function LoyaltyWidget() {
         {showTooltip && (
           <div className="absolute top-full right-0 mt-3 w-56 bg-indigo-600 text-white p-3 rounded-lg shadow-2xl animate-bounce z-50 text-sm border border-indigo-500">
             <div className="absolute -top-2 right-4 w-4 h-4 bg-indigo-600 border-l border-t border-indigo-500 transform rotate-45"></div>
-            <p className="relative z-10 text-center">¡Descubre el nuevo <strong>Club BabyStore</strong> y gana descuentos gratis!</p>
+            <p className="relative z-10 text-center">
+              {storeConfig.loyalty.tooltip.prefix}
+              <strong>{storeConfig.loyalty.tooltip.highlightedText}</strong>
+              {storeConfig.loyalty.tooltip.suffix}
+            </p>
           </div>
         )}
       </div>
@@ -74,7 +80,7 @@ export default function LoyaltyWidget() {
           <div className="relative z-10">
             <h3 className="text-white/80 font-medium flex items-center gap-2 mb-1">
               <Star className="w-4 h-4 text-amber-400" />
-              Club BabyStore
+              {storeConfig.loyalty.name}
             </h3>
             <div className="flex items-end gap-2 mb-4">
               <span className="text-4xl font-black text-white tracking-tighter">{points}</span>
@@ -89,7 +95,7 @@ export default function LoyaltyWidget() {
         </div>
 
         <div className="p-5">
-          {level !== "Oro" ? (
+          {nextLevel ? (
             <div className="mb-4">
               <div className="flex justify-between text-xs text-muted-foreground mb-2">
                 <span>Progreso hacia el siguiente nivel</span>
@@ -106,7 +112,7 @@ export default function LoyaltyWidget() {
             <div className="mb-4 flex items-center gap-3 p-3 bg-yellow-400/10 rounded-lg border border-yellow-400/20">
               <Sparkles className="w-5 h-5 text-yellow-400 shrink-0" />
               <p className="text-xs text-yellow-200/90 leading-tight">
-                ¡Has alcanzado el nivel máximo! Disfruta de beneficios VIP exclusivos.
+                {storeConfig.loyalty.copy.maximumLevelMessage}
               </p>
             </div>
           )}
@@ -119,8 +125,8 @@ export default function LoyaltyWidget() {
                 <TrendingUp className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="text-sm font-medium">Gana puntos comprando</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Recibirás 5 puntos por cada 1€ gastado en la tienda.</p>
+                <p className="text-sm font-medium">{storeConfig.loyalty.copy.earnTitle}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{storeConfig.loyalty.copy.earnDescription}</p>
               </div>
             </div>
             
@@ -129,8 +135,8 @@ export default function LoyaltyWidget() {
                 <Sparkles className="w-4 h-4 text-pink-400" />
               </div>
               <div>
-                <p className="text-sm font-medium">Canjea por descuentos</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Puedes descontar de tu pedido usando puntos (100 = 1€ max 5€).</p>
+                <p className="text-sm font-medium">{storeConfig.loyalty.copy.redeemTitle}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{storeConfig.loyalty.copy.redeemDescription}</p>
               </div>
             </div>
 
@@ -139,8 +145,8 @@ export default function LoyaltyWidget() {
                 <Crown className="w-4 h-4 text-amber-500" />
               </div>
               <div>
-                <p className="text-sm font-medium">Descuento VIP (cada 2 compras)</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Si eres Plata ahorras 10% y si eres Oro un 15% extra automáticamente.</p>
+                <p className="text-sm font-medium">{storeConfig.loyalty.copy.vipTitle}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{storeConfig.loyalty.copy.vipDescription}</p>
               </div>
             </div>
           </div>

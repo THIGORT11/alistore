@@ -1,5 +1,6 @@
 
-import { CartItem } from '@/context/CartContext';
+import type { CartItem } from '@/context/CartContext';
+import { storeConfig } from '@/content/store';
 
 export const generateEmailHtml = (name: string, cart: CartItem[], total: number) => {
     const itemsHtml = cart.map(item => `
@@ -14,7 +15,7 @@ export const generateEmailHtml = (name: string, cart: CartItem[], total: number)
         </div>
       </td>
       <td style="padding: 12px 0; border-bottom: 1px solid #eee; text-align: right;">
-        <p style="margin: 0; font-weight: 600; color: #333;">$${(item.price * item.quantity).toFixed(2)}</p>
+        <p style="margin: 0; font-weight: 600; color: #333;">${storeConfig.currency.symbol}${(item.price * item.quantity).toFixed(2)}</p>
       </td>
     </tr>
   `).join('');
@@ -32,7 +33,7 @@ export const generateEmailHtml = (name: string, cart: CartItem[], total: number)
         
         <!-- Header -->
         <div style="background-color: #4F46E5; padding: 40px 0; text-align: center;">
-          <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">BabyStore</h1>
+          <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">${storeConfig.brand.displayName}</h1>
         </div>
 
         <!-- Content -->
@@ -52,7 +53,7 @@ export const generateEmailHtml = (name: string, cart: CartItem[], total: number)
                   <p style="margin: 0; font-size: 16px; color: #666;">Total</p>
                 </td>
                 <td style="padding-top: 16px; text-align: right;">
-                  <p style="margin: 0; font-size: 24px; font-weight: 700; color: #4F46E5;">$${total.toFixed(2)}</p>
+                  <p style="margin: 0; font-size: 24px; font-weight: 700; color: #4F46E5;">${storeConfig.currency.symbol}${total.toFixed(2)}</p>
                 </td>
               </tr>
             </table>
@@ -70,7 +71,7 @@ export const generateEmailHtml = (name: string, cart: CartItem[], total: number)
         <!-- Footer -->
         <div style="background-color: #F3F4F6; padding: 24px; text-align: center;">
           <p style="margin: 0; color: #6B7280; font-size: 14px;">
-            © ${new Date().getFullYear()} BabyStore. Todos los derechos reservados.
+            © ${new Date().getFullYear()} ${storeConfig.brand.displayName}. Todos los derechos reservados.
           </p>
           <p style="margin: 8px 0 0; color: #6B7280; font-size: 14px;">
             Síguenos en nuestras redes sociales para más novedades.
@@ -95,7 +96,7 @@ export const generateAdminEmailHtml = (name: string, email: string, cart: CartIt
         </div>
       </td>
       <td style="padding: 12px 0; border-bottom: 1px solid #eee; text-align: right;">
-        <p style="margin: 0; font-weight: 600; color: #333;">$${(item.price * item.quantity).toFixed(2)}</p>
+        <p style="margin: 0; font-weight: 600; color: #333;">${storeConfig.currency.symbol}${(item.price * item.quantity).toFixed(2)}</p>
       </td>
     </tr>
   `).join('');
@@ -136,7 +137,7 @@ export const generateAdminEmailHtml = (name: string, email: string, cart: CartIt
                   <p style="margin: 0; font-size: 16px; color: #666;">Total del Pedido</p>
                 </td>
                 <td style="padding-top: 16px; text-align: right;">
-                  <p style="margin: 0; font-size: 24px; font-weight: 700; color: #111827;">$${total.toFixed(2)}</p>
+                  <p style="margin: 0; font-size: 24px; font-weight: 700; color: #111827;">${storeConfig.currency.symbol}${total.toFixed(2)}</p>
                 </td>
               </tr>
             </table>
@@ -152,7 +153,7 @@ export const generateAdminEmailHtml = (name: string, email: string, cart: CartIt
         <!-- Footer -->
         <div style="background-color: #F3F4F6; padding: 24px; text-align: center;">
           <p style="margin: 0; color: #6B7280; font-size: 14px;">
-            Notificación automática del sistema de BabyStore.
+            Notificación automática del sistema de ${storeConfig.brand.displayName}.
           </p>
         </div>
       </div>

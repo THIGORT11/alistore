@@ -5,12 +5,13 @@ import { AuthProvider } from '@/context/AuthContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { CartProvider } from '@/context/CartContext';
 import { LoyaltyProvider } from '@/context/LoyaltyContext';
+import { storeConfig } from '@/content/store';
 
 export const metadata: Metadata = {
-  title: 'babystore',
-  description: 'Los mejores productos para tu bebé, seleccionados para ti.',
+  title: storeConfig.metadata.title,
+  description: storeConfig.metadata.description,
   icons: {
-    icon: 'https://i.imgur.com/q2QoJXU.png',
+    icon: storeConfig.brand.faviconUrl,
   },
 };
 

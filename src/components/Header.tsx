@@ -17,6 +17,7 @@ import { LogOut, User as UserIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import CartSheet from "./CartSheet";
 import LoyaltyWidget from "./LoyaltyWidget";
+import { storeConfig } from "@/content/store";
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -40,7 +41,7 @@ export default function Header() {
 
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center mt-6 pointer-events-auto">
            <Link href="/" className="flex items-center space-x-2 relative z-50">
-              <Image src="https://i.imgur.com/ZKz2ztR.png" alt="BabyStore Logo" width={120} height={120} className="h-28 w-28 sm:h-32 sm:w-32 object-contain" priority />
+              <Image src={storeConfig.brand.logoUrl} alt={`${storeConfig.brand.displayName} Logo`} width={120} height={120} className="h-28 w-28 sm:h-32 sm:w-32 object-contain" priority />
            </Link>
         </div>
 

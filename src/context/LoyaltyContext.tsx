@@ -2,8 +2,9 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { loyaltyLevels, storeConfig } from "@/content/store";
 
-type LoyaltyLevel = "Bronce" | "Plata" | "Oro";
+type LoyaltyLevel = string;
 
 interface LoyaltyContextType {
   points: number;
@@ -47,12 +48,12 @@ export const LoyaltyProvider = ({ children }: { children: React.ReactNode }) => 
 
   const addPurchasePoints = useCallback((amountEuros: number) => {
     setPurchaseCount((prev) => prev + 1);
-    const earned = Math.floor(amountEuros) * 5;
+    const earned = Math.floor(amountEuros) * storeConfig.loyalty.pointsPerEuro;
     if (earned > 0) {
       setPoints((prev) => prev + earned);
       toast({
         title: "¡Puntos conseguidos!",
-        description: `Sumaste ${earned} puntos al Club BabyStore por tu compra.`,
+        description: `Sumaste ${earned} puntos al ${storeConfig.loyalty.name} por tu compra.`,
       });
     }
   }, [toast]);
@@ -65,16 +66,12 @@ export const LoyaltyProvider = ({ children }: { children: React.ReactNode }) => 
     return false;
   }, [points]);
 
-  let level: LoyaltyLevel = "Bronce";
-  let nextLevelPoints = 250;
-
-  if (points >= 750) {
-    level = "Oro";
-    nextLevelPoints = 0; // max level
-  } else if (points >= 250) {
-    level = "Plata";
-    nextLevelPoints = 750;
-  }
+  const currentLevelIndex = loyaltyLevels.reduce(
+    (selectedIndex, candidate, index) => points >= candidate.minimumPoints ? index : selectedIndex,
+    0,
+  );
+  const level: LoyaltyLevel = loyaltyLevels[currentLevelIndex].id;
+  const nextLevelPoints = loyaltyLevels[currentLevelIndex + 1]?.minimumPoints ?? 0;
 
   const value = {
     points,

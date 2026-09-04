@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useWishlist } from '@/context/WishlistContext';
 import { useAuth } from '@/context/AuthContext';
-import { products } from '@/data/products';
+import { products } from '@/content/catalog';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';

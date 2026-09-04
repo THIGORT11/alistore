@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 import { NextRequest, NextResponse } from 'next/server';
 import { generateEmailHtml, generateAdminEmailHtml } from '@/lib/email-template';
+import { storeConfig } from '@/content/store';
 
 export async function POST(req: NextRequest) {
   try {
@@ -43,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     // 📦 Email to the customer
     await transporter.sendMail({
-      from: `"BabyStore" <${process.env.GMAIL_USER}>`,
+      from: `"${storeConfig.brand.displayName}" <${process.env.GMAIL_USER}>`,
       to: email,
       subject: 'Confirmación de tu pedido - BabyStore',
       html: customerHtml,
@@ -51,8 +52,8 @@ export async function POST(req: NextRequest) {
 
     // 📧 Email to the store owner
     await transporter.sendMail({
-      from: `"Notificación de BabyStore" <${process.env.GMAIL_USER}>`,
-      to: 'aliciababystore25@gmail.com',
+      from: `"Notificación de ${storeConfig.brand.displayName}" <${process.env.GMAIL_USER}>`,
+      to: storeConfig.orders.adminEmail,
       subject: `Nuevo pedido de ${name}`,
       html: adminHtml,
     });

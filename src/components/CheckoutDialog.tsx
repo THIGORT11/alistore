@@ -27,6 +27,8 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Loader2 } from 'lucide-react';
+import { storeConfig } from '@/content/store';
+import { calculatePromotionAmount, getApplicableOrderDiscounts } from '@/lib/promotions';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'El nombre debe tener al menos 2 caracteres.' }),
@@ -39,27 +41,35 @@ export default function CheckoutDialog() {
   const {
     cart,
     cartTotal,
-    promoApplied,
-    promoDiscount,
-    totalAfterPromo,
-    redeemPromoCode,
+    appliedCoupon,
+    couponDiscount,
+    totalAfterCoupon,
+    redeemAppliedCoupon,
     clearCart,
   } = useCart();
   const { addPurchasePoints, points, redeemPoints, level, purchaseCount } = useLoyalty();
   const { toast } = useToast();
 
-  let tierDiscountPercent = 0;
-  if ((purchaseCount + 1) % 2 === 0) {
-    if (level === "Plata") tierDiscountPercent = 10;
-    else if (level === "Oro") tierDiscountPercent = 15;
-  }
-  const tierDiscountAmount = (totalAfterPromo * tierDiscountPercent) / 100;
-  const totalAfterTierDiscount = totalAfterPromo - tierDiscountAmount;
+  const automaticDiscounts = getApplicableOrderDiscounts(totalAfterCoupon, level, purchaseCount + 1);
+  const automaticDiscountLines = automaticDiscounts.reduce<
+    Array<{ discount: (typeof automaticDiscounts)[number]; amount: number }>
+  >((lines, discount) => {
+    const previouslyDiscounted = lines.reduce((total, line) => total + line.amount, 0);
+    const amount = calculatePromotionAmount(totalAfterCoupon - previouslyDiscounted, discount);
+    return [...lines, { discount, amount }];
+  }, []);
+  const automaticDiscountAmount = automaticDiscountLines.reduce((total, line) => total + line.amount, 0);
+  const totalAfterAutomaticDiscount = totalAfterCoupon - automaticDiscountAmount;
 
-  const maxPointsPossible = Math.min(500, points);
-  const discountPoints = Math.min(Math.floor(totalAfterTierDiscount * 100), maxPointsPossible);
-  const discountEuros = discountPoints / 100;
-  const finalTotal = useDiscount && discountPoints >= 100 ? Math.max(0, totalAfterTierDiscount - discountEuros) : totalAfterTierDiscount;
+  const maxPointsPossible = Math.min(storeConfig.loyalty.maximumRedeemPoints, points);
+  const discountPoints = Math.min(
+    Math.floor(totalAfterAutomaticDiscount * storeConfig.loyalty.pointsPerCurrencyUnit),
+    maxPointsPossible,
+  );
+  const discountEuros = discountPoints / storeConfig.loyalty.pointsPerCurrencyUnit;
+  const finalTotal = useDiscount && discountPoints >= storeConfig.loyalty.minimumRedeemPoints
+    ? Math.max(0, totalAfterAutomaticDiscount - discountEuros)
+    : totalAfterAutomaticDiscount;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -77,8 +87,8 @@ export default function CheckoutDialog() {
     }
 
     const orderDetails = cart.map(item =>
-      `- ${item.name} (x${item.quantity}): $${(item.price * item.quantity).toFixed(2)}`
-    ).join('\n') + `\n\nSubtotal: $${cartTotal.toFixed(2)}${promoApplied ? `\nCódigo CUM BS (50%): -$${promoDiscount.toFixed(2)}` : ''}${tierDiscountPercent > 0 ? `\nDescuento VIP ${level} (${tierDiscountPercent}%): -$${tierDiscountAmount.toFixed(2)}` : ''}${useDiscount && discountPoints >= 100 ? `\nDescuento Puntos: -$${discountEuros.toFixed(2)}` : ''}\nTotal: $${finalTotal.toFixed(2)}`;
+      `- ${item.name} (x${item.quantity}): ${storeConfig.currency.symbol}${(item.price * item.quantity).toFixed(2)}`
+    ).join('\n') + `\n\nSubtotal: ${storeConfig.currency.symbol}${cartTotal.toFixed(2)}${appliedCoupon ? `\n${appliedCoupon.name}: -${storeConfig.currency.symbol}${couponDiscount.toFixed(2)}` : ''}${automaticDiscountLines.map(({ discount, amount }) => `\n${discount.displayLabel}: -${storeConfig.currency.symbol}${amount.toFixed(2)}`).join('')}${useDiscount && discountPoints >= storeConfig.loyalty.minimumRedeemPoints ? `\nDescuento Puntos: -${storeConfig.currency.symbol}${discountEuros.toFixed(2)}` : ''}\nTotal: ${storeConfig.currency.symbol}${finalTotal.toFixed(2)}`;
 
     try {
       const response = await fetch('/api/send-email', {
@@ -105,7 +115,7 @@ export default function CheckoutDialog() {
 
       addPurchasePoints(finalTotal);
 
-      redeemPromoCode();
+      redeemAppliedCoupon();
       clearCart();
       form.reset();
       setOpen(false);
@@ -159,19 +169,27 @@ export default function CheckoutDialog() {
                 </FormItem>
               )}
             />
-            {tierDiscountPercent > 0 && (
-              <div className="bg-amber-50 dark:bg-amber-500/10 p-3 rounded-md border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-200 text-sm flex justify-between items-center font-medium mt-4 mb-2">
-                <span>🎫 Descuento VIP {level} ({tierDiscountPercent}%)</span>
-                <span>-${tierDiscountAmount.toFixed(2)}</span>
+            {automaticDiscountLines.map(({ discount, amount }) => (
+              <div key={discount.id} className="bg-amber-50 dark:bg-amber-500/10 p-3 rounded-md border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-200 text-sm flex justify-between items-center font-medium mt-4 mb-2">
+                <span>
+                  🎫 {discount.displayLabel} ({discount.discountType === 'percentage'
+                    ? `${discount.discountValue}%`
+                    : `${storeConfig.currency.symbol}${discount.discountValue.toFixed(2)}`})
+                </span>
+                <span>-{storeConfig.currency.symbol}{amount.toFixed(2)}</span>
               </div>
-            )}
-            {promoApplied && (
+            ))}
+            {appliedCoupon && (
               <div className="bg-green-50 dark:bg-green-500/10 p-3 rounded-md border border-green-200 dark:border-green-500/30 text-green-800 dark:text-green-200 text-sm flex justify-between items-center font-medium mt-4 mb-2">
-                <span>🏷️ Código CUM BS (50 %)</span>
-                <span>-${promoDiscount.toFixed(2)}</span>
+                <span>
+                  🏷️ {appliedCoupon.name} ({appliedCoupon.discountType === 'percentage'
+                    ? `${appliedCoupon.discountValue} %`
+                    : `${storeConfig.currency.symbol}${appliedCoupon.discountValue.toFixed(2)}`})
+                </span>
+                <span>-{storeConfig.currency.symbol}{couponDiscount.toFixed(2)}</span>
               </div>
             )}
-            {points >= 100 && (
+            {points >= storeConfig.loyalty.minimumRedeemPoints && (
               <div className="flex items-center space-x-2 bg-indigo-50 dark:bg-indigo-950/30 p-3 rounded-md border border-indigo-100 dark:border-indigo-900/50 mt-4">
                 <input 
                   type="checkbox" 
@@ -181,14 +199,14 @@ export default function CheckoutDialog() {
                   className="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
                 />
                 <label htmlFor="use-discount" className="text-sm cursor-pointer select-none text-muted-foreground flex-1">
-                  Usar {discountPoints} puntos por un descuento de <strong>${discountEuros.toFixed(2)}</strong>
+                  Usar {discountPoints} puntos por un descuento de <strong>{storeConfig.currency.symbol}{discountEuros.toFixed(2)}</strong>
                 </label>
               </div>
             )}
             <DialogFooter>
               <Button type="submit" disabled={isSubmitting} className="w-full mt-2">
                 {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {isSubmitting ? 'Procesando...' : `Confirmar y Pagar ${finalTotal > 0 ? '$' + finalTotal.toFixed(2) : 'GRATIS'}`}
+                {isSubmitting ? 'Procesando...' : `Confirmar y Pagar ${finalTotal > 0 ? storeConfig.currency.symbol + finalTotal.toFixed(2) : 'GRATIS'}`}
               </Button>
             </DialogFooter>
           </form>

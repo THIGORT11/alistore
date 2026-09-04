@@ -1,0 +1,1257 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "id": "munecos",
+      "name": "Muñecos",
+      "active": true,
+      "sortOrder": 10
+    },
+    {
+      "id": "figuras",
+      "name": "Figuras",
+      "active": true,
+      "sortOrder": 20
+    },
+    {
+      "id": "cajas",
+      "name": "Cajas",
+      "active": true,
+      "sortOrder": 30
+    },
+    {
+      "id": "otros",
+      "name": "Otros",
+      "active": true,
+      "sortOrder": 40
+    },
+    {
+      "id": "libros",
+      "name": "Libros",
+      "active": true,
+      "sortOrder": 50
+    },
+    {
+      "id": "packs",
+      "name": "Packs",
+      "active": true,
+      "sortOrder": 60
+    },
+    {
+      "id": "accesorios",
+      "name": "Accesorios",
+      "active": true,
+      "sortOrder": 70
+    },
+    {
+      "id": "cottom-doll",
+      "name": "Cottom Doll",
+      "active": true,
+      "sortOrder": 80
+    },
+    {
+      "id": "bolsas-sorpresa",
+      "name": "Bolsas sorpresa",
+      "active": true,
+      "sortOrder": 90
+    },
+    {
+      "id": "canastillas",
+      "name": "Canastillas",
+      "active": true,
+      "sortOrder": 100
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Antoñico vamos de paseo",
+      "description": "El muñeco Antoñico está listo para un divertido paseo. Incluye ropita y accesorios para disfrutar al aire libre.",
+      "price": 25.5,
+      "images": [
+        "https://i.imgur.com/HJz8lL4.jpeg"
+      ],
+      "categoryId": "munecos",
+      "tags": [
+        "muñeco",
+        "paseo"
+      ],
+      "aiHint": "strolling doll",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 10
+    },
+    {
+      "id": "2",
+      "name": "Adrián vamos al cole",
+      "description": "Adrián está preparado para su primer día de cole. Con su mochila y uniforme, está listo para aprender y jugar.",
+      "price": 45,
+      "images": [
+        "https://i.imgur.com/DTGaVmi.jpeg"
+      ],
+      "categoryId": "munecos",
+      "tags": [
+        "muñeco",
+        "colegio"
+      ],
+      "aiHint": "school doll",
+      "availability": "available",
+      "stock": 10,
+      "featured": false,
+      "active": true,
+      "sortOrder": 20
+    },
+    {
+      "id": "3",
+      "name": "Ani día de peluquería",
+      "description": "Ani va a la peluquería para ponerse guapa. Peina su largo pelo y utiliza los accesorios para crear peinados increíbles.",
+      "price": 38.25,
+      "images": [
+        "https://i.imgur.com/iLujnxM.jpeg"
+      ],
+      "categoryId": "munecos",
+      "tags": [
+        "muñeco",
+        "pelo"
+      ],
+      "aiHint": "hairdresser doll",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 30
+    },
+    {
+      "id": "4",
+      "name": "Sara hora del baño",
+      "description": "Sara está lista para un baño relajante. Incluye accesorios de baño para que la diversión nunca termine.",
+      "price": 51.75,
+      "images": [
+        "https://i.imgur.com/8eqj85o.jpeg"
+      ],
+      "categoryId": "munecos",
+      "tags": [
+        "muñeco",
+        "baño"
+      ],
+      "aiHint": "doll bath time",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 40
+    },
+    {
+      "id": "5",
+      "name": "Stitch playero",
+      "description": "Figura de Stitch listo para un día de playa.",
+      "price": 9.75,
+      "images": [
+        "https://i.imgur.com/lhTaj17.jpeg"
+      ],
+      "categoryId": "figuras",
+      "tags": [
+        "figura",
+        "stitch",
+        "playa"
+      ],
+      "aiHint": "beach stitch",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 50
+    },
+    {
+      "id": "6",
+      "name": "Stitch dormilón",
+      "description": "Adorable figura de Stitch durmiendo.",
+      "price": 7.5,
+      "images": [
+        "https://i.imgur.com/rLHw6up.jpeg"
+      ],
+      "categoryId": "figuras",
+      "tags": [
+        "figura",
+        "stitch",
+        "dormir"
+      ],
+      "aiHint": "sleeping stitch",
+      "availability": "available",
+      "stock": 10,
+      "featured": false,
+      "active": true,
+      "sortOrder": 60
+    },
+    {
+      "id": "7",
+      "name": "Stitch",
+      "description": "Figura clásica de Stitch.",
+      "price": 3.75,
+      "images": [
+        "https://i.imgur.com/KTDpY9I.jpeg"
+      ],
+      "categoryId": "figuras",
+      "tags": [
+        "figura",
+        "stitch"
+      ],
+      "aiHint": "stitch figure",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 70
+    },
+    {
+      "id": "8",
+      "name": "Muñeco de nieve",
+      "description": "Figura de un simpático muñeco de nieve.",
+      "price": 3.75,
+      "images": [
+        "https://i.imgur.com/McuOcrW.jpeg"
+      ],
+      "categoryId": "figuras",
+      "tags": [
+        "figura",
+        "nieve",
+        "navidad"
+      ],
+      "aiHint": "snowman figure",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 80
+    },
+    {
+      "id": "9",
+      "name": "Minnie mouse",
+      "description": "Figura clásica de Minnie Mouse.",
+      "price": 3.75,
+      "images": [
+        "https://i.imgur.com/huE2yWw.jpeg"
+      ],
+      "categoryId": "figuras",
+      "tags": [
+        "figura",
+        "minnie",
+        "disney"
+      ],
+      "aiHint": "minnie mouse",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 90
+    },
+    {
+      "id": "10",
+      "name": "Caja premium",
+      "description": "Muñeco + accesorio + ropa + peluche",
+      "price": 30,
+      "images": [
+        "https://i.imgur.com/62eqNYo.png"
+      ],
+      "categoryId": "cajas",
+      "tags": [
+        "caja",
+        "premium",
+        "sorpresa"
+      ],
+      "aiHint": "premium box",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 100
+    },
+    {
+      "id": "11",
+      "name": "Caja estándar",
+      "description": "mini muñeco + accesorio",
+      "price": 15,
+      "images": [
+        "https://i.imgur.com/jiE4ABv.png"
+      ],
+      "categoryId": "cajas",
+      "tags": [
+        "caja",
+        "estandar",
+        "sorpresa"
+      ],
+      "aiHint": "standard box",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 110
+    },
+    {
+      "id": "12",
+      "name": "Aseo",
+      "description": "Set de aseo para muñecos.",
+      "price": 1.5,
+      "images": [
+        "https://i.imgur.com/BEn1fBp.jpeg"
+      ],
+      "categoryId": "otros",
+      "tags": [
+        "otros",
+        "aseo"
+      ],
+      "aiHint": "cleaning supplies",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 120
+    },
+    {
+      "id": "13",
+      "name": "Juegos",
+      "description": "Juegos variados para muñecos.",
+      "price": 1.5,
+      "images": [
+        "https://i.imgur.com/1TLMnNk.jpeg"
+      ],
+      "categoryId": "otros",
+      "tags": [
+        "otros",
+        "juegos"
+      ],
+      "aiHint": "toys game",
+      "availability": "available",
+      "stock": 10,
+      "featured": false,
+      "active": true,
+      "sortOrder": 130
+    },
+    {
+      "id": "14",
+      "name": "Comida",
+      "description": "Comida de juguete para muñecos.",
+      "price": 1.5,
+      "images": [
+        "https://i.imgur.com/DuYllQV.jpeg"
+      ],
+      "categoryId": "otros",
+      "tags": [
+        "otros",
+        "comida"
+      ],
+      "aiHint": "toy food",
+      "availability": "available",
+      "stock": 10,
+      "featured": false,
+      "active": true,
+      "sortOrder": 140
+    },
+    {
+      "id": "15",
+      "name": "Ropa",
+      "description": "Ropa variada para muñecos.",
+      "price": 1.5,
+      "images": [
+        "https://i.imgur.com/hL0df70.jpeg"
+      ],
+      "categoryId": "otros",
+      "tags": [
+        "otros",
+        "ropa"
+      ],
+      "aiHint": "doll clothes",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 150
+    },
+    {
+      "id": "16",
+      "name": "El cuaderno de mi bebe reborn",
+      "description": "Un cuaderno para documentar la vida de tu bebe reborn.",
+      "price": 7.5,
+      "images": [
+        "https://i.imgur.com/s4Yrywa.jpeg"
+      ],
+      "categoryId": "libros",
+      "tags": [
+        "libro",
+        "cuaderno",
+        "bebe"
+      ],
+      "aiHint": "reborn baby book",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 160
+    },
+    {
+      "id": "17",
+      "name": "pack de biberón de zumo + biberón de leche",
+      "description": "Un pack con dos biberones para tus muñecos.",
+      "price": 3,
+      "images": [
+        "https://i.imgur.com/iYyL6Ey.jpeg"
+      ],
+      "categoryId": "packs",
+      "tags": [
+        "pack",
+        "biberon",
+        "leche",
+        "zumo"
+      ],
+      "aiHint": "bottle pack",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 170
+    },
+    {
+      "id": "18",
+      "name": "Antoñico nenuco + libro donald",
+      "description": "Pack de muñeco Nenuco con un libro de Donald.",
+      "price": 4.5,
+      "images": [
+        "https://i.imgur.com/4AgmxwR.jpeg"
+      ],
+      "categoryId": "packs",
+      "tags": [
+        "pack",
+        "nenuco",
+        "libro"
+      ],
+      "aiHint": "doll book pack",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 180
+    },
+    {
+      "id": "19",
+      "name": "Pack sweety",
+      "description": "Un pack dulce con varios accesorios.",
+      "price": 11.25,
+      "images": [
+        "https://i.imgur.com/I75feVR.jpeg"
+      ],
+      "categoryId": "packs",
+      "tags": [
+        "pack",
+        "sweety"
+      ],
+      "aiHint": "sweety pack",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 190
+    },
+    {
+      "id": "20",
+      "name": "Bruno nenuco + libro de mickey",
+      "description": "Pack de muñeco Nenuco con un libro de Mickey.",
+      "price": 4.5,
+      "images": [
+        "https://i.imgur.com/oH9gyCR.jpeg"
+      ],
+      "categoryId": "packs",
+      "tags": [
+        "pack",
+        "nenuco",
+        "libro",
+        "mickey"
+      ],
+      "aiHint": "doll book pack",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 200
+    },
+    {
+      "id": "21",
+      "name": "Abril nenuco + libro dumbo",
+      "description": "Pack de muñeco Nenuco con un libro de Dumbo.",
+      "price": 4.5,
+      "images": [
+        "https://i.imgur.com/sZjzt9G.jpeg"
+      ],
+      "categoryId": "packs",
+      "tags": [
+        "pack",
+        "nenuco",
+        "libro",
+        "dumbo"
+      ],
+      "aiHint": "doll book pack",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 210
+    },
+    {
+      "id": "22",
+      "name": "Accesorios baby born",
+      "description": "Set de accesorios para muñecos Baby Born.",
+      "price": 9,
+      "images": [
+        "https://i.imgur.com/QUADwhR.jpeg"
+      ],
+      "categoryId": "accesorios",
+      "tags": [
+        "accesorios",
+        "baby born"
+      ],
+      "aiHint": "baby born accessories",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 220
+    },
+    {
+      "id": "24",
+      "name": "2 pañales dumbo",
+      "description": "Pack de dos pañales con diseño de Dumbo.",
+      "price": 2.25,
+      "images": [
+        "https://i.imgur.com/THW8YWq.jpeg"
+      ],
+      "categoryId": "accesorios",
+      "tags": [
+        "accesorios",
+        "pañales",
+        "dumbo"
+      ],
+      "aiHint": "dumbo diapers",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 230
+    },
+    {
+      "id": "25",
+      "name": "Lily sweety",
+      "description": "Muñeca Cottom Doll modelo Lily Sweety.",
+      "price": 4.88,
+      "images": [
+        "https://i.imgur.com/plX4pLQ.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "lily",
+        "sweety"
+      ],
+      "aiHint": "cottom doll",
+      "availability": "available",
+      "stock": 10,
+      "featured": false,
+      "active": true,
+      "sortOrder": 240,
+      "customization": {
+        "dialogDescription": "Añade extras a tu muñeca para hacerla aún más especial.",
+        "options": [
+          {
+            "id": "hairstyle",
+            "label": "Cottom doll peinado (+2$)",
+            "priceDelta": 2,
+            "nameSuffix": "con peinado",
+            "cartSuffix": "-h"
+          },
+          {
+            "id": "accessories",
+            "label": "Cottom doll y accesorios (+5$)",
+            "priceDelta": 5,
+            "nameSuffix": "con accesorios",
+            "cartSuffix": "-a"
+          }
+        ],
+        "information": {
+          "heading": "Si marcas la casilla cottom doll y accesorios obtendrás esto:",
+          "items": [
+            "1 Taba squishy",
+            "1 biberón y cámara",
+            "1 peine cottom doll",
+            "1 certificado cottom doll"
+          ],
+          "footer": "¡Y cinco accesorios sorpresa!"
+        }
+      }
+    },
+    {
+      "id": "26",
+      "name": "Mochila kuromy",
+      "description": "Mochila de Kuromy para Cottom Doll.",
+      "price": 1.13,
+      "images": [
+        "https://i.imgur.com/wAtOO2D.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "mochila",
+        "kuromy"
+      ],
+      "aiHint": "kuromy backpack",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 250
+    },
+    {
+      "id": "27",
+      "name": "Zapatos blancos",
+      "description": "Zapatos blancos para Cottom Doll.",
+      "price": 1.13,
+      "images": [
+        "https://i.imgur.com/jEDx6F2.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "zapatos",
+        "blancos"
+      ],
+      "aiHint": "white shoes",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 260
+    },
+    {
+      "id": "28",
+      "name": "Pasadores conejo",
+      "description": "Pasadores de conejo para el pelo de Cottom Doll.",
+      "price": 0.75,
+      "images": [
+        "https://i.imgur.com/IORCWRn.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "accesorios",
+        "pelo"
+      ],
+      "aiHint": "rabbit clips",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 270
+    },
+    {
+      "id": "29",
+      "name": "Mochila unicornio",
+      "description": "Mochila de unicornio para Cottom Doll.",
+      "price": 1.13,
+      "images": [
+        "https://i.imgur.com/3qC8zwH.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "mochila",
+        "unicornio"
+      ],
+      "aiHint": "unicorn backpack",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 280
+    },
+    {
+      "id": "30",
+      "name": "Zapatos lilas",
+      "description": "Zapatos lilas para Cottom Doll.",
+      "price": 1.13,
+      "images": [
+        "https://i.imgur.com/Su990xO.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "zapatos",
+        "lilas"
+      ],
+      "aiHint": "purple shoes",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 290
+    },
+    {
+      "id": "31",
+      "name": "Uniforme colegio",
+      "description": "Uniforme de colegio para Cottom Doll.",
+      "price": 1.65,
+      "images": [
+        "https://i.imgur.com/xfPNjAo.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "ropa",
+        "uniforme"
+      ],
+      "aiHint": "school uniform",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 300
+    },
+    {
+      "id": "32",
+      "name": "Conjunto conejo de sudadera y mono",
+      "description": "Conjunto de ropa para Cottom Doll.",
+      "price": 1.65,
+      "images": [
+        "https://i.imgur.com/Xb0gzvU.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "ropa",
+        "conejo"
+      ],
+      "aiHint": "rabbit outfit",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 310
+    },
+    {
+      "id": "33",
+      "name": "Vestido patos",
+      "description": "Vestido con estampado de patos para Cottom Doll.",
+      "price": 1.65,
+      "images": [
+        "https://i.imgur.com/iRyAOQE.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "ropa",
+        "vestido"
+      ],
+      "aiHint": "duck dress",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 320
+    },
+    {
+      "id": "34",
+      "name": "Vestido lila conejo",
+      "description": "Vestido lila con estampado de conejo para Cottom Doll.",
+      "price": 1.65,
+      "images": [
+        "https://i.imgur.com/qKCKST7.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "ropa",
+        "vestido"
+      ],
+      "aiHint": "rabbit dress",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 330
+    },
+    {
+      "id": "35",
+      "name": "Disfraz gatito",
+      "description": "Disfraz de gatito para Cottom Doll.",
+      "price": 1.65,
+      "images": [
+        "https://i.imgur.com/LAMOcZ1.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "ropa",
+        "disfraz"
+      ],
+      "aiHint": "cat costume",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 340
+    },
+    {
+      "id": "36",
+      "name": "Conjunto conejo bodi y antifaz",
+      "description": "Conjunto de pijama de conejo para Cottom Doll.",
+      "price": 1.65,
+      "images": [
+        "https://i.imgur.com/hnZeN3t.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "ropa",
+        "pijama"
+      ],
+      "aiHint": "rabbit pajamas",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 350
+    },
+    {
+      "id": "37",
+      "name": "Braguita blanca",
+      "description": "Braguita blanca para Cottom Doll.",
+      "price": 1.65,
+      "images": [
+        "https://i.imgur.com/q9IstY2.jpeg"
+      ],
+      "categoryId": "cottom-doll",
+      "tags": [
+        "cottom doll",
+        "ropa",
+        "interior"
+      ],
+      "aiHint": "white panties",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 360
+    },
+    {
+      "id": "38",
+      "name": "Pack gatito pusheen",
+      "description": "Pack de gatito Pusheen.",
+      "price": 4.5,
+      "images": [
+        "https://i.imgur.com/gfBfVgN.jpeg"
+      ],
+      "categoryId": "packs",
+      "tags": [
+        "pack",
+        "pusheen",
+        "gatito"
+      ],
+      "aiHint": "pusheen cat pack",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 370
+    },
+    {
+      "id": "39",
+      "name": "Refresco con 30 toallitas",
+      "description": "Refresco que contiene 30 toallitas.",
+      "price": 1.5,
+      "images": [
+        "https://i.imgur.com/mlifyhD.jpeg"
+      ],
+      "categoryId": "accesorios",
+      "tags": [
+        "accesorios",
+        "toallitas",
+        "refresco"
+      ],
+      "aiHint": "wipes soda",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 380
+    },
+    {
+      "id": "40",
+      "name": "Lata con 30 toallitas",
+      "description": "Lata que contiene 30 toallitas.",
+      "price": 1.5,
+      "images": [
+        "https://i.imgur.com/IzIphh5.jpeg"
+      ],
+      "categoryId": "accesorios",
+      "tags": [
+        "accesorios",
+        "toallitas",
+        "lata"
+      ],
+      "aiHint": "wipes can",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 390
+    },
+    {
+      "id": "41",
+      "name": "Caja de papelería",
+      "description": "caja de papelería variada.",
+      "price": 2,
+      "images": [
+        "https://i.imgur.com/IEzULxZ.jpeg"
+      ],
+      "categoryId": "otros",
+      "tags": [
+        "papeleria",
+        "caja",
+        "pack"
+      ],
+      "aiHint": "stationery box",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 400
+    },
+    {
+      "id": "42",
+      "name": "Bolsa sorpresa de Gabby",
+      "description": "bolsa sorpresa de la casa de muñecas de Gabby.",
+      "price": 10,
+      "images": [
+        "https://i.imgur.com/uTDF0sZ.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "bolsa",
+        "sorpresa",
+        "gabby"
+      ],
+      "aiHint": "gabby surprise bag",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 410
+    },
+    {
+      "id": "43",
+      "name": "Bolsa sorpresa de Dorables",
+      "description": "bolsa sorpresa de Disney Dorables.",
+      "price": 10,
+      "images": [
+        "https://i.imgur.com/geZsYtm.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "bolsa",
+        "sorpresa",
+        "dorables"
+      ],
+      "aiHint": "dorables surprise bag",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 420
+    },
+    {
+      "id": "44",
+      "name": "Bolsa sorpresa de Hello Kitty",
+      "description": "bolsa sorpresa de Hello Kitty.",
+      "price": 10,
+      "images": [
+        "https://i.imgur.com/E37N5q5.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "bolsa",
+        "sorpresa",
+        "hello kitty"
+      ],
+      "aiHint": "hello kitty surprise bag",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 430
+    },
+    {
+      "id": "45",
+      "name": "Bolsa sorpesa de kuromi",
+      "description": "bolsa sorpresa de Kuromi.",
+      "price": 10,
+      "images": [
+        "https://i.imgur.com/iaYLvRi.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "bolsa",
+        "sorpresa",
+        "kuromi"
+      ],
+      "aiHint": "kuromi surprise bag",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 440
+    },
+    {
+      "id": "46",
+      "name": "Canastilla bienvenida bebe (niña)",
+      "description": "canastilla de bienvenida para bebé niña.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/7Ti60SM.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "bebe",
+        "niña"
+      ],
+      "aiHint": "baby girl basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 450
+    },
+    {
+      "id": "47",
+      "name": "Canastilla bievenida bebe (niño)",
+      "description": "canastilla de bienvenida para bebé niño.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/8OcDfR3.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "bebe",
+        "niño"
+      ],
+      "aiHint": "baby boy basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 460
+    },
+    {
+      "id": "48",
+      "name": "Canastilla outfits reborn (niña)",
+      "description": "canastilla outfits reborn para niña.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/Jb0C3E1.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "reborn",
+        "niña",
+        "outfits"
+      ],
+      "aiHint": "reborn girl outfit basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 470
+    },
+    {
+      "id": "49",
+      "name": "Canastilla outfits reborn (niño)",
+      "description": "canastilla outfits reborn para niño.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/h4HeLXL.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "reborn",
+        "niño",
+        "outfits"
+      ],
+      "aiHint": "reborn boy outfit basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 480
+    },
+    {
+      "id": "50",
+      "name": "Canastilla dulces sueños (niña)",
+      "description": "canastilla dulces sueños para niña.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/ibtajZb.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "niña",
+        "sueños"
+      ],
+      "aiHint": "sweet dreams girl basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 490
+    },
+    {
+      "id": "51",
+      "name": "Canastilla dulces sueños (niño)",
+      "description": "canastilla dulces sueños para niño.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/40xnc2q.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "niño",
+        "sueños"
+      ],
+      "aiHint": "sweet dreams boy basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 500
+    },
+    {
+      "id": "52",
+      "name": "Canastilla hora de comer (niña)",
+      "description": "canastilla hora de comer para niña.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/jtkB49k.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "niña",
+        "comer"
+      ],
+      "aiHint": "lunch time girl basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 510
+    },
+    {
+      "id": "53",
+      "name": "Canastilla hora de comer (niño)",
+      "description": "canastilla hora de comer para niño.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/eBPraPJ.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "niño",
+        "comer"
+      ],
+      "aiHint": "lunch time boy basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 520
+    },
+    {
+      "id": "54",
+      "name": "Canastilla hora del baño (niña)",
+      "description": "canastilla hora del baño para niña.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/zSbSXK9.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "niña",
+        "baño"
+      ],
+      "aiHint": "bath time girl basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 530
+    },
+    {
+      "id": "55",
+      "name": "Canastilla hora del baño (niño)",
+      "description": "canastilla hora del baño para niño.",
+      "price": 17,
+      "images": [
+        "https://i.imgur.com/q7Aq6FP.jpeg"
+      ],
+      "categoryId": "canastillas",
+      "tags": [
+        "canastilla",
+        "niño",
+        "baño"
+      ],
+      "aiHint": "bath time boy basket",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 540
+    },
+    {
+      "id": "56",
+      "name": "Caja sorpresa de maquillaje",
+      "description": "3 objetos de maquillaje por caja.",
+      "price": 5,
+      "images": [
+        "https://i.imgur.com/3GRi91G.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "nuevo",
+        "caja",
+        "sorpresa",
+        "maquillaje"
+      ],
+      "aiHint": "makeup surprise box",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 550
+    },
+    {
+      "id": "57",
+      "name": "Caja sorpresa de labiales",
+      "description": "3 labiales por caja.",
+      "price": 5,
+      "images": [
+        "https://i.imgur.com/tvLMWlw.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "nuevo",
+        "caja",
+        "sorpresa",
+        "labiales"
+      ],
+      "aiHint": "lipstick surprise box",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 560
+    },
+    {
+      "id": "58",
+      "name": "Figura sorpresa",
+      "description": "Figura coleccionable sorpresa.",
+      "price": 12,
+      "images": [
+        "https://i.imgur.com/SmYnMhJ.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "nuevo",
+        "figura",
+        "sorpresa"
+      ],
+      "aiHint": "surprise collectible figure",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 570
+    },
+    {
+      "id": "59",
+      "name": "Bola sorpresa",
+      "description": "Bola con una sorpresa en su interior.",
+      "price": 10,
+      "images": [
+        "https://i.imgur.com/tQNGPPV.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "nuevo",
+        "bola",
+        "sorpresa"
+      ],
+      "aiHint": "surprise ball",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 580
+    }
+  ]
+}

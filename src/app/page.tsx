@@ -1,18 +1,18 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { products } from '@/data/products';
+import { categories, products } from '@/content/catalog';
+import { storeConfig } from '@/content/store';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
+import CommercialBanners from '@/components/CommercialBanners';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
-
-  const categories = ['Todos', 'Muñecos', 'Figuras', 'Cajas', 'Otros', 'Libros', 'Packs', 'Accesorios', 'Cottom Doll', 'Bolsas sorpresa', 'Canastillas'];
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const normalizeString = (str: string) =>
     str
@@ -24,7 +24,7 @@ export default function Home() {
     const normalizedSearchTerm = normalizeString(searchTerm);
 
     return products.filter(product => {
-      const matchesCategory = selectedCategory === 'Todos' || product.category === selectedCategory;
+      const matchesCategory = selectedCategory === 'all' || product.categoryId === selectedCategory;
       const matchesSearch = normalizeString(product.name).includes(normalizedSearchTerm);
       return matchesCategory && matchesSearch;
     });
@@ -34,16 +34,17 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <CommercialBanners placement="catalog-top" />
         <section id="all-products" className="py-12">
           <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
             <h2 className="text-3xl font-bold font-headline text-center md:text-left">
-              Todos los Coleccionables
+              {storeConfig.catalog.heading}
             </h2>
             <div className="relative w-full max-w-sm md:w-1/3">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
               <Input
                 type="text"
-                placeholder="Buscar coleccionables..."
+                placeholder={storeConfig.catalog.searchPlaceholder}
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -52,14 +53,21 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-2 mb-8">
+            <Button
+              variant={selectedCategory === 'all' ? 'default' : 'outline'}
+              onClick={() => setSelectedCategory('all')}
+              className="text-xs sm:text-sm"
+            >
+              {storeConfig.catalog.allCategoriesLabel}
+            </Button>
             {categories.map(category => (
               <Button
-                key={category}
-                variant={selectedCategory === category ? 'default' : 'outline'}
-                onClick={() => setSelectedCategory(category)}
+                key={category.id}
+                variant={selectedCategory === category.id ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory(category.id)}
                 className="text-xs sm:text-sm"
               >
-                {category}
+                {category.name}
               </Button>
             ))}
           </div>

@@ -1,8 +1,16 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
-import type { Product } from "@/data/products";
+import type { Product } from "@/content/catalog";
+import { promotionConfig, type Coupon } from "@/content/promotions";
 import { useToast } from "@/hooks/use-toast";
+import {
+  calculatePromotionAmount,
+  findCoupon,
+  isCouponUsedOnDevice,
+  isPromotionActive,
+  recordCouponUse,
+} from "@/lib/promotions";
 
 export interface CartItem extends Product {
   quantity: number;
@@ -16,22 +24,20 @@ interface CartContextType {
   clearCart: () => void;
   cartCount: number;
   cartTotal: number;
-  promoApplied: boolean;
-  promoAlreadyUsed: boolean;
-  promoDiscount: number;
-  totalAfterPromo: number;
-  applyPromoCode: (code: string) => "applied" | "invalid" | "used";
-  redeemPromoCode: () => void;
+  appliedCoupon: Coupon | null;
+  couponDiscount: number;
+  totalAfterCoupon: number;
+  hasRedeemableCoupons: boolean;
+  applyCouponCode: (code: string) => "applied" | "invalid" | "used";
+  redeemAppliedCoupon: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
-const PROMO_CODE = "CUM BS";
-const PROMO_USED_KEY = "babystore-promo-cum-bs-used";
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [promoApplied, setPromoApplied] = useState(false);
-  const [promoAlreadyUsed, setPromoAlreadyUsed] = useState(false);
+  const [appliedCoupon, setAppliedCoupon] = useState<Coupon | null>(null);
+  const [usedCouponIds, setUsedCouponIds] = useState<Set<string>>(new Set());
   const { toast } = useToast();
 
   useEffect(() => {
@@ -40,7 +46,11 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       if (storedCart) {
         setCart(JSON.parse(storedCart));
       }
-      setPromoAlreadyUsed(localStorage.getItem(PROMO_USED_KEY) === "true");
+      setUsedCouponIds(new Set(
+        promotionConfig.coupons
+          .filter((coupon) => isCouponUsedOnDevice(coupon))
+          .map((coupon) => coupon.id),
+      ));
     } catch (error) {
       console.error("Could not load cart from localStorage", error);
     }
@@ -96,37 +106,43 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     });
   }, [toast]);
 
-  const clearCart = useCallback(() => {
-    setCart([]);
-    setPromoApplied(false);
-  }, []);
-
-  const applyPromoCode = useCallback((code: string) => {
-    if (promoAlreadyUsed) return "used";
-
-    const normalizedCode = code.trim().replace(/\s+/g, " ").toUpperCase();
-    if (normalizedCode !== PROMO_CODE) return "invalid";
-
-    setPromoApplied(true);
-    return "applied";
-  }, [promoAlreadyUsed]);
-
-  const redeemPromoCode = useCallback(() => {
-    if (!promoApplied) return;
-
-    try {
-      localStorage.setItem(PROMO_USED_KEY, "true");
-    } catch (error) {
-      console.error("Could not save promo redemption to localStorage", error);
-    }
-    setPromoAlreadyUsed(true);
-    setPromoApplied(false);
-  }, [promoApplied]);
-
   const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
   const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  const promoDiscount = promoApplied ? cartTotal * 0.5 : 0;
-  const totalAfterPromo = cartTotal - promoDiscount;
+
+  const clearCart = useCallback(() => {
+    setCart([]);
+    setAppliedCoupon(null);
+  }, []);
+
+  const applyCouponCode = useCallback((code: string) => {
+    const coupon = findCoupon(code);
+    if (!coupon) return "invalid";
+    if (usedCouponIds.has(coupon.id) || isCouponUsedOnDevice(coupon)) return "used";
+    if (coupon.minimumSubtotal !== undefined && cartTotal < coupon.minimumSubtotal) return "invalid";
+
+    setAppliedCoupon(coupon);
+    return "applied";
+  }, [cartTotal, usedCouponIds]);
+
+  const redeemAppliedCoupon = useCallback(() => {
+    if (!appliedCoupon) return;
+
+    try {
+      recordCouponUse(appliedCoupon);
+    } catch (error) {
+      console.error("Could not save coupon redemption to localStorage", error);
+    }
+    if (isCouponUsedOnDevice(appliedCoupon)) {
+      setUsedCouponIds((current) => new Set([...current, appliedCoupon.id]));
+    }
+    setAppliedCoupon(null);
+  }, [appliedCoupon]);
+
+  const couponDiscount = appliedCoupon ? calculatePromotionAmount(cartTotal, appliedCoupon) : 0;
+  const totalAfterCoupon = cartTotal - couponDiscount;
+  const hasRedeemableCoupons = promotionConfig.coupons.some(
+    (coupon) => isPromotionActive(coupon) && !usedCouponIds.has(coupon.id),
+  );
 
   const value = {
     cart,
@@ -136,12 +152,12 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     clearCart,
     cartCount,
     cartTotal,
-    promoApplied,
-    promoAlreadyUsed,
-    promoDiscount,
-    totalAfterPromo,
-    applyPromoCode,
-    redeemPromoCode,
+    appliedCoupon,
+    couponDiscount,
+    totalAfterCoupon,
+    hasRedeemableCoupons,
+    applyCouponCode,
+    redeemAppliedCoupon,
   };
 
   return (

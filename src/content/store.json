@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "brand": {
+    "name": "babystore",
+    "displayName": "BabyStore",
+    "logoUrl": "https://i.imgur.com/ZKz2ztR.png",
+    "faviconUrl": "https://i.imgur.com/q2QoJXU.png"
+  },
+  "metadata": {
+    "title": "babystore",
+    "description": "Los mejores productos para tu bebé, seleccionados para ti."
+  },
+  "catalog": {
+    "heading": "Todos los Coleccionables",
+    "searchPlaceholder": "Buscar coleccionables...",
+    "allCategoriesLabel": "Todos",
+    "newBadgeLabel": "¡NUEVO!",
+    "featuredBadgeLabel": "Destacado"
+  },
+  "footer": {
+    "companyName": "babystore",
+    "copyrightSuffix": "Inc. Todos los derechos reservados.",
+    "socialLinks": [
+      { "id": "twitter", "label": "Twitter", "href": "#", "sortOrder": 10 },
+      { "id": "instagram", "label": "Instagram", "href": "#", "sortOrder": 20 },
+      { "id": "facebook", "label": "Facebook", "href": "#", "sortOrder": 30 }
+    ]
+  },
+  "orders": {
+    "adminEmail": "aliciababystore25@gmail.com"
+  },
+  "currency": {
+    "code": "EUR",
+    "symbol": "$"
+  },
+  "loyalty": {
+    "name": "Club BabyStore",
+    "tooltip": {
+      "prefix": "¡Descubre el nuevo ",
+      "highlightedText": "Club BabyStore",
+      "suffix": " y gana descuentos gratis!"
+    },
+    "pointsPerEuro": 5,
+    "pointsPerCurrencyUnit": 100,
+    "minimumRedeemPoints": 100,
+    "maximumRedeemPoints": 500,
+    "levels": [
+      { "id": "Bronce", "minimumPoints": 0, "sortOrder": 10 },
+      { "id": "Plata", "minimumPoints": 250, "sortOrder": 20 },
+      { "id": "Oro", "minimumPoints": 750, "sortOrder": 30 }
+    ],
+    "copy": {
+      "earnTitle": "Gana puntos comprando",
+      "earnDescription": "Recibirás 5 puntos por cada 1€ gastado en la tienda.",
+      "redeemTitle": "Canjea por descuentos",
+      "redeemDescription": "Puedes descontar de tu pedido usando puntos (100 = 1€ max 5€).",
+      "vipTitle": "Descuento VIP (cada 2 compras)",
+      "vipDescription": "Si eres Plata ahorras 10% y si eres Oro un 15% extra automáticamente.",
+      "maximumLevelMessage": "¡Has alcanzado el nivel máximo! Disfruta de beneficios VIP exclusivos."
+    }
+  }
+}

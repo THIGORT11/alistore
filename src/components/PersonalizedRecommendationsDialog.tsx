@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { getPersonalizedRecommendations } from "@/ai/flows/personalized-recommendations";
-import { products } from "@/data/products";
+import { products } from "@/content/catalog";
 import Image from "next/image";
 import { WandSparkles, Loader2 } from "lucide-react";
 import { Skeleton } from "./ui/skeleton";

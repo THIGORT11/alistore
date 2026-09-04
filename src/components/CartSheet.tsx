@@ -16,6 +16,9 @@ import {
 } from "@/components/ui/sheet";
 import { ShoppingCart, Trash2, Plus, Minus, Tag } from "lucide-react";
 import CheckoutDialog from "./CheckoutDialog";
+import { storeConfig } from "@/content/store";
+import { promotionConfig } from "@/content/promotions";
+import { findCoupon } from "@/lib/promotions";
 
 export default function CartSheet() {
   const [promoCode, setPromoCode] = useState("");
@@ -26,18 +29,22 @@ export default function CartSheet() {
     updateQuantity,
     cartCount,
     cartTotal,
-    promoApplied,
-    promoAlreadyUsed,
-    promoDiscount,
-    totalAfterPromo,
-    applyPromoCode,
+    appliedCoupon,
+    couponDiscount,
+    totalAfterCoupon,
+    hasRedeemableCoupons,
+    applyCouponCode,
   } = useCart();
 
   const handleApplyPromo = () => {
-    const result = applyPromoCode(promoCode);
+    const matchingCoupon = findCoupon(promoCode);
+    const result = applyCouponCode(promoCode);
 
-    if (result === "applied") {
-      setPromoMessage("Código aplicado: tienes un 50 % de descuento.");
+    if (result === "applied" && matchingCoupon) {
+      const discountDescription = matchingCoupon.discountType === "percentage"
+        ? `${matchingCoupon.discountValue} %`
+        : `${storeConfig.currency.symbol}${matchingCoupon.discountValue.toFixed(2)}`;
+      setPromoMessage(`Código aplicado: tienes un ${discountDescription} de descuento.`);
       setPromoCode("");
     } else if (result === "used") {
       setPromoMessage("Este código ya se utilizó y solo puede canjearse una vez.");
@@ -119,7 +126,7 @@ export default function CartSheet() {
                             <Plus className="h-3.5 w-3.5" />
                             </Button>
                         </div>
-                        <p className="text-sm font-semibold">${item.price.toFixed(2)}</p>
+                        <p className="text-sm font-semibold">{storeConfig.currency.symbol}{item.price.toFixed(2)}</p>
                       </div>
                     </div>
                   </div>
@@ -148,42 +155,48 @@ export default function CartSheet() {
                             }
                           }}
                           placeholder="Introduce tu código"
-                          disabled={promoApplied || promoAlreadyUsed}
+                          disabled={Boolean(appliedCoupon) || !hasRedeemableCoupons}
                           aria-describedby="promo-message"
                         />
                         <Button
                           type="button"
                           variant="outline"
                           onClick={handleApplyPromo}
-                          disabled={!promoCode.trim() || promoApplied || promoAlreadyUsed}
+                          disabled={!promoCode.trim() || Boolean(appliedCoupon) || !hasRedeemableCoupons}
                         >
                           Canjear
                         </Button>
                       </div>
-                      {(promoMessage || promoAlreadyUsed) && (
+                      {(promoMessage || !hasRedeemableCoupons) && (
                         <p
                           id="promo-message"
-                          className={`text-xs ${promoApplied ? "text-green-600" : "text-muted-foreground"}`}
+                          className={`text-xs ${appliedCoupon ? "text-green-600" : "text-muted-foreground"}`}
                         >
-                          {promoMessage || "El código CUM BS ya se utilizó en este dispositivo."}
+                          {promoMessage || (promotionConfig.coupons.length === 1
+                            ? `El código ${promotionConfig.coupons[0].code} ya se utilizó en este dispositivo.`
+                            : "No quedan cupones disponibles para este dispositivo.")}
                         </p>
                       )}
                     </div>
-                    {promoApplied && (
+                    {appliedCoupon && (
                       <div className="space-y-2 rounded-md border border-green-200 bg-green-50 p-3 text-sm dark:border-green-900 dark:bg-green-950/30">
                         <div className="flex justify-between text-muted-foreground">
                           <span>Subtotal</span>
-                          <span>${cartTotal.toFixed(2)}</span>
+                          <span>{storeConfig.currency.symbol}{cartTotal.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between font-medium text-green-700 dark:text-green-400">
-                          <span>Código CUM BS (50 %)</span>
-                          <span>-${promoDiscount.toFixed(2)}</span>
+                          <span>
+                            {appliedCoupon.name} ({appliedCoupon.discountType === "percentage"
+                              ? `${appliedCoupon.discountValue} %`
+                              : `${storeConfig.currency.symbol}${appliedCoupon.discountValue.toFixed(2)}`})
+                          </span>
+                          <span>-{storeConfig.currency.symbol}{couponDiscount.toFixed(2)}</span>
                         </div>
                       </div>
                     )}
                     <div className="flex justify-between font-bold text-lg">
                         <span>Total:</span>
-                        <span>${totalAfterPromo.toFixed(2)}</span>
+                        <span>{storeConfig.currency.symbol}{totalAfterCoupon.toFixed(2)}</span>
                     </div>
                     <CheckoutDialog />
                 </div>
