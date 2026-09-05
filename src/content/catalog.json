@@ -68,7 +68,7 @@
       "name": "Antoñico vamos de paseo",
       "description": "El muñeco Antoñico está listo para un divertido paseo. Incluye ropita y accesorios para disfrutar al aire libre.",
       "price": 22.5,
-      "originalPrice": 25.5,
+      "originalPrice": 26,
       "images": [
         "https://i.imgur.com/HJz8lL4.jpeg"
       ],
@@ -79,7 +79,7 @@
       ],
       "aiHint": "strolling doll",
       "availability": "available",
-      "featured": false,
+      "featured": true,
       "active": true,
       "sortOrder": 10
     },
