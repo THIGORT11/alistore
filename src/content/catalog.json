@@ -1210,6 +1210,7 @@
       ],
       "aiHint": "lipstick surprise box",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 560
