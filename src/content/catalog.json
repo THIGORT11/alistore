@@ -157,6 +157,7 @@
       ],
       "aiHint": "beach stitch",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 50
@@ -457,6 +458,7 @@
       ],
       "aiHint": "doll book pack",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 200
@@ -497,6 +499,7 @@
       ],
       "aiHint": "baby born accessories",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 220
@@ -517,6 +520,7 @@
       ],
       "aiHint": "dumbo diapers",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 230
@@ -807,6 +811,7 @@
       ],
       "aiHint": "white panties",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 360
@@ -827,6 +832,7 @@
       ],
       "aiHint": "pusheen cat pack",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 370
