@@ -79,7 +79,7 @@
       ],
       "aiHint": "strolling doll",
       "availability": "available",
-      "featured": true,
+      "featured": false,
       "active": true,
       "sortOrder": 10
     },
