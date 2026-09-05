@@ -591,6 +591,7 @@
       ],
       "aiHint": "kuromy backpack",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 250
