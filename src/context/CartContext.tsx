@@ -1,9 +1,15 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
-import type { Product } from "@/content/catalog";
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from "react";
+import { products, type Product } from "@/content/catalog";
 import { promotionConfig, type Coupon } from "@/content/promotions";
 import { useToast } from "@/hooks/use-toast";
+import {
+  canAddProduct,
+  getCartQuantityForProduct,
+  getInventoryProductId,
+  isProductOutOfStock,
+} from "@/lib/product-stock";
 import {
   calculatePromotionAmount,
   findCoupon,
@@ -13,14 +19,17 @@ import {
 } from "@/lib/promotions";
 
 export interface CartItem extends Product {
+  inventoryProductId?: string;
   quantity: number;
 }
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: Product) => void;
+  addToCart: (product: Product, inventoryProductId?: string) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
+  canAddToCart: (product: Product) => boolean;
+  canIncrementItem: (productId: string) => boolean;
   clearCart: () => void;
   cartCount: number;
   cartTotal: number;
@@ -34,8 +43,41 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+const productsById = new Map(products.map((product) => [product.id, product]));
+
+function resolveStoredInventoryProductId(item: CartItem) {
+  if (item.inventoryProductId) return item.inventoryProductId;
+  if (productsById.has(item.id)) return item.id;
+
+  return products
+    .filter((product) => product.customization && item.id.startsWith(product.id))
+    .sort((left, right) => right.id.length - left.id.length)[0]?.id ?? item.id;
+}
+
+function normalizeStoredCart(items: CartItem[]) {
+  const usedStock = new Map<string, number>();
+
+  return items.flatMap((item) => {
+    const inventoryProductId = resolveStoredInventoryProductId(item);
+    const currentProduct = productsById.get(inventoryProductId);
+    const availability = currentProduct?.availability ?? item.availability;
+    const stock = currentProduct ? currentProduct.stock : item.stock;
+    const alreadyUsed = usedStock.get(inventoryProductId) ?? 0;
+    const requestedQuantity = Number.isFinite(item.quantity) ? Math.max(0, Math.floor(item.quantity)) : 0;
+    const quantity = stock === undefined
+      ? requestedQuantity
+      : Math.min(requestedQuantity, Math.max(0, stock - alreadyUsed));
+
+    if (availability === "out_of_stock" || stock === 0 || quantity === 0) return [];
+    usedStock.set(inventoryProductId, alreadyUsed + quantity);
+
+    return [{ ...item, availability, stock, inventoryProductId, quantity }];
+  });
+}
+
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const cartRef = useRef<CartItem[]>([]);
   const [appliedCoupon, setAppliedCoupon] = useState<Coupon | null>(null);
   const [usedCouponIds, setUsedCouponIds] = useState<Set<string>>(new Set());
   const { toast } = useToast();
@@ -44,7 +86,12 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const storedCart = localStorage.getItem("babystore-cart");
       if (storedCart) {
-        setCart(JSON.parse(storedCart));
+        const parsedCart = JSON.parse(storedCart);
+        if (Array.isArray(parsedCart)) {
+          const normalizedCart = normalizeStoredCart(parsedCart);
+          cartRef.current = normalizedCart;
+          setCart(normalizedCart);
+        }
       }
       setUsedCouponIds(new Set(
         promotionConfig.coupons
@@ -64,52 +111,103 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [cart]);
 
-  const addToCart = useCallback((product: Product) => {
-    setCart((prev) => {
-      const existingItem = prev.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prev.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-      return [...prev, { ...product, quantity: 1 }];
-    });
+  const addToCart = useCallback((product: Product, inventoryProductId = product.id) => {
+    const previousCart = cartRef.current;
+    const inventoryProduct = productsById.get(inventoryProductId) ?? product;
+    const quantityInCart = getCartQuantityForProduct(previousCart, inventoryProductId);
+    if (!canAddProduct(inventoryProduct, quantityInCart)) {
+      toast({
+        title: isProductOutOfStock(inventoryProduct) ? "Producto agotado" : "Stock máximo alcanzado",
+        description: isProductOutOfStock(inventoryProduct)
+          ? `${inventoryProduct.name} no está disponible.`
+          : `Solo hay ${inventoryProduct.stock} unidades disponibles de ${inventoryProduct.name}.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const existingItem = previousCart.find((item) => item.id === product.id);
+    const nextCart = existingItem
+      ? previousCart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)
+      : [...previousCart, { ...product, inventoryProductId, quantity: 1 }];
+    cartRef.current = nextCart;
+    setCart(nextCart);
     toast({ title: "Añadido al carrito", description: `${product.name} ha sido añadido al carrito.` });
   }, [toast]);
 
   const removeFromCart = useCallback((productId: string) => {
-    setCart((prev) => {
-      const updatedCart = prev.filter((item) => item.id !== productId);
-      const removedItem = prev.find((item) => item.id === productId);
-      if (removedItem) {
-        toast({ title: "Eliminado del carrito", description: `${removedItem.name} ha sido eliminado del carrito.` });
-      }
-      return updatedCart;
-    });
+    const removedItem = cartRef.current.find((item) => item.id === productId);
+    if (!removedItem) return;
+    const nextCart = cartRef.current.filter((item) => item.id !== productId);
+    cartRef.current = nextCart;
+    setCart(nextCart);
+    toast({ title: "Eliminado del carrito", description: `${removedItem.name} ha sido eliminado del carrito.` });
   }, [toast]);
 
   const updateQuantity = useCallback((productId: string, quantity: number) => {
-    setCart((prev) => {
-      if (quantity <= 0) {
-        const updatedCart = prev.filter((item) => item.id !== productId);
-        const removedItem = prev.find((item) => item.id === productId);
-        if (removedItem) {
-          toast({ title: "Eliminado del carrito", description: `${removedItem.name} ha sido eliminado del carrito.` });
-        }
-        return updatedCart;
-      }
-      return prev.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      );
-    });
+    const previousCart = cartRef.current;
+    const targetItem = previousCart.find((item) => item.id === productId);
+    if (!targetItem) return;
+
+    if (quantity <= 0) {
+      const nextCart = previousCart.filter((item) => item.id !== productId);
+      cartRef.current = nextCart;
+      setCart(nextCart);
+      toast({ title: "Eliminado del carrito", description: `${targetItem.name} ha sido eliminado del carrito.` });
+      return;
+    }
+
+    const inventoryProductId = getInventoryProductId(targetItem);
+    const inventoryProduct = productsById.get(inventoryProductId) ?? targetItem;
+    if (isProductOutOfStock(inventoryProduct)) {
+      const nextCart = previousCart.filter((item) => item.id !== productId);
+      cartRef.current = nextCart;
+      setCart(nextCart);
+      toast({ title: "Producto agotado", description: `${inventoryProduct.name} ya no está disponible.`, variant: "destructive" });
+      return;
+    }
+
+    const otherQuantity = getCartQuantityForProduct(
+      previousCart.filter((item) => item.id !== productId),
+      inventoryProductId,
+    );
+    const maximumForLine = inventoryProduct.stock === undefined
+      ? quantity
+      : Math.max(0, inventoryProduct.stock - otherQuantity);
+    const safeQuantity = Math.min(quantity, maximumForLine);
+
+    if (safeQuantity < quantity) {
+      toast({
+        title: "Stock máximo alcanzado",
+        description: `Solo hay ${inventoryProduct.stock} unidades disponibles de ${inventoryProduct.name}.`,
+        variant: "destructive",
+      });
+    }
+
+    const nextCart = safeQuantity <= 0
+      ? previousCart.filter((item) => item.id !== productId)
+      : previousCart.map((item) => item.id === productId ? { ...item, quantity: safeQuantity } : item);
+    cartRef.current = nextCart;
+    setCart(nextCart);
   }, [toast]);
+
+  const canAddToCart = useCallback((product: Product) => (
+    canAddProduct(product, getCartQuantityForProduct(cart, product.id))
+  ), [cart]);
+
+  const canIncrementItem = useCallback((productId: string) => {
+    const item = cart.find((cartItem) => cartItem.id === productId);
+    if (!item) return false;
+    const inventoryProductId = getInventoryProductId(item);
+    const inventoryProduct = productsById.get(inventoryProductId) ?? item;
+    return canAddProduct(inventoryProduct, getCartQuantityForProduct(cart, inventoryProductId));
+  }, [cart]);
 
   const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
   const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   const clearCart = useCallback(() => {
+    cartRef.current = [];
     setCart([]);
     setAppliedCoupon(null);
   }, []);
@@ -149,6 +247,8 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     addToCart,
     removeFromCart,
     updateQuantity,
+    canAddToCart,
+    canIncrementItem,
     clearCart,
     cartCount,
     cartTotal,

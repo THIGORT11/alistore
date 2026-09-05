@@ -28,6 +28,7 @@ export default function CartSheet() {
     cart,
     removeFromCart,
     updateQuantity,
+    canIncrementItem,
     cartCount,
     cartTotal,
     appliedCoupon,
@@ -125,6 +126,8 @@ export default function CartSheet() {
                             size="icon"
                             className="h-7 w-7"
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            disabled={!canIncrementItem(item.id)}
+                            aria-label={canIncrementItem(item.id) ? `Añadir otra unidad de ${item.name}` : `Stock máximo de ${item.name} alcanzado`}
                             >
                             <Plus className="h-3.5 w-3.5" />
                             </Button>

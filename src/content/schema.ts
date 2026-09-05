@@ -34,7 +34,7 @@ export const productSchema = z.object({
   tags: z.array(z.string().min(1)),
   aiHint: z.string(),
   availability: z.enum(['available', 'out_of_stock']),
-  stock: z.number().int().nonnegative().optional(),
+  stock: z.number().int().nonnegative().nullish().transform((value) => value ?? undefined),
   featured: z.boolean(),
   active: z.boolean(),
   sortOrder: sortOrderSchema,
@@ -50,6 +50,12 @@ export const productSchema = z.object({
 }).refine((product) => product.originalPrice === undefined || product.originalPrice > product.price, {
   message: 'originalPrice debe ser mayor que price cuando el producto tiene descuento',
   path: ['originalPrice'],
+}).refine((product) => product.availability !== 'available' || product.stock !== 0, {
+  message: 'Un producto disponible no puede tener stock 0',
+  path: ['stock'],
+}).refine((product) => product.availability !== 'out_of_stock' || product.stock === undefined || product.stock === 0, {
+  message: 'Un producto agotado no puede tener stock positivo',
+  path: ['stock'],
 });
 
 export const catalogSchema = z.object({

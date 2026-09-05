@@ -10,6 +10,7 @@ import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
 import { cn } from '@/lib/utils';
 import { getProductPricing } from '@/lib/product-pricing';
+import { getProductStockLabel, hasNewProductTag, isProductOutOfStock } from '@/lib/product-stock';
 import ProductCustomizationDialog from './ProductCustomizationDialog';
 
 interface ProductCardProps {
@@ -18,9 +19,12 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
-  const { addToCart } = useCart();
+  const { addToCart, canAddToCart } = useCart();
   const isWishlisted = isInWishlist(product.id);
-  const isOutOfStock = product.availability === 'out_of_stock';
+  const isOutOfStock = isProductOutOfStock(product);
+  const hasNewTag = hasNewProductTag(product);
+  const stockLabel = getProductStockLabel(product);
+  const isAtStockLimit = !isOutOfStock && !canAddToCart(product);
   const pricing = getProductPricing(product);
 
   const handleWishlistToggle = () => {
@@ -34,9 +38,18 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="flex flex-col overflow-hidden h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
       <CardHeader className="p-0 relative">
-        {(product.featured || product.tags?.includes('nuevo')) && (
-          <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md shadow-sm z-10 pointer-events-none">
-            {product.featured ? storeConfig.catalog.featuredBadgeLabel : storeConfig.catalog.newBadgeLabel}
+        {(product.featured || hasNewTag) && (
+          <div className="absolute top-2 left-2 z-10 flex flex-col items-start gap-1 pointer-events-none">
+            {product.featured ? (
+              <span className="rounded-md bg-red-600 px-2 py-1 text-xs font-bold text-white shadow-sm">
+                {storeConfig.catalog.featuredBadgeLabel}
+              </span>
+            ) : null}
+            {hasNewTag ? (
+              <span className="rounded-md bg-primary px-2 py-1 text-xs font-bold text-primary-foreground shadow-sm">
+                {storeConfig.catalog.newBadgeLabel}
+              </span>
+            ) : null}
           </div>
         )}
         <div className="w-full aspect-[3/2] bg-card flex items-center justify-center">
@@ -85,6 +98,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             </span>
           )}
         </div>
+        {stockLabel ? (
+          <p className={`mt-2 text-sm font-medium ${isOutOfStock ? 'text-destructive' : 'text-muted-foreground'}`}>
+            {stockLabel}
+          </p>
+        ) : null}
       </CardContent>
       <CardFooter className="p-4 pt-0">
         {isOutOfStock ? (
@@ -93,15 +111,15 @@ export default function ProductCard({ product }: ProductCardProps) {
           </Button>
         ) : product.customization ? (
           <ProductCustomizationDialog product={product}>
-            <Button className="w-full">
+            <Button className="w-full" disabled={isAtStockLimit}>
               <ShoppingCart className="mr-2 h-4 w-4" />
-              Añadir al carrito
+              {isAtStockLimit ? 'Máximo en el carrito' : 'Añadir al carrito'}
             </Button>
           </ProductCustomizationDialog>
         ) : (
-          <Button onClick={() => addToCart(product)} className="w-full">
+          <Button onClick={() => addToCart(product)} className="w-full" disabled={isAtStockLimit}>
             <ShoppingCart className="mr-2 h-4 w-4" />
-            Añadir al carrito
+            {isAtStockLimit ? 'Máximo en el carrito' : 'Añadir al carrito'}
           </Button>
         )}
       </CardFooter>

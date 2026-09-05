@@ -2,10 +2,27 @@ import nodemailer from 'nodemailer';
 import { NextRequest, NextResponse } from 'next/server';
 import { generateEmailHtml, generateAdminEmailHtml } from '@/lib/email-template';
 import { storeConfig } from '@/content/store';
+import { products } from '@/content/catalog';
+import type { CartItem } from '@/context/CartContext';
+import { getStockValidationError } from '@/lib/product-stock';
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, cart, total, orderDetails } = await req.json();
+    const { name, email, cart, total } = await req.json() as {
+      name: string;
+      email: string;
+      cart?: CartItem[];
+      total: number;
+    };
+
+    if (!cart?.length) {
+      return NextResponse.json({ success: false, error: 'El carrito está vacío' }, { status: 400 });
+    }
+
+    const stockError = getStockValidationError(cart, products);
+    if (stockError) {
+      return NextResponse.json({ success: false, error: stockError }, { status: 409 });
+    }
 
     if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
       console.error('Missing GMAIL_USER or GMAIL_PASS environment variables');
@@ -32,15 +49,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'Failed to connect to email server' }, { status: 500 });
     }
 
-    // Generate HTML content
-    // Fallback to orderDetails string if cart is not available (though it should be)
-    const customerHtml = cart
-      ? generateEmailHtml(name, cart, total)
-      : `<pre>${orderDetails}</pre>`;
-
-    const adminHtml = cart
-      ? generateAdminEmailHtml(name, email, cart, total)
-      : `<pre>${orderDetails}</pre>`;
+    // Generate HTML content after validating the submitted inventory quantities.
+    const customerHtml = generateEmailHtml(name, cart, total);
+    const adminHtml = generateAdminEmailHtml(name, email, cart, total);
 
     // 📦 Email to the customer
     await transporter.sendMail({

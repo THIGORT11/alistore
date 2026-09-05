@@ -105,7 +105,7 @@ export default function CheckoutDialog() {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error('Hubo un problema al enviar la confirmación del pedido.');
+        throw new Error(result.error || 'Hubo un problema al enviar la confirmación del pedido.');
       }
 
       toast({
@@ -123,7 +123,7 @@ export default function CheckoutDialog() {
       console.error('Failed to process order:', error);
       toast({
         title: 'Error al procesar el pedido',
-        description: 'Hubo un problema al enviar tu pedido. Por favor, inténtalo de nuevo.',
+        description: error instanceof Error ? error.message : 'Hubo un problema al enviar tu pedido. Por favor, inténtalo de nuevo.',
         variant: 'destructive',
       });
     }

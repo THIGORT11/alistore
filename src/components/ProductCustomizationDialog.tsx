@@ -25,7 +25,7 @@ interface ProductCustomizationDialogProps {
 export default function ProductCustomizationDialog({ product, children }: ProductCustomizationDialogProps) {
   const [open, setOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-  const { addToCart } = useCart();
+  const { addToCart, canAddToCart } = useCart();
   const customization = product.customization;
 
   if (!customization) return children;
@@ -41,7 +41,7 @@ export default function ProductCustomizationDialog({ product, children }: Produc
       name: additions.length > 0 ? `${product.name} (${additions.join(" y ")})` : product.name,
       price: product.price + priceDelta,
       originalPrice: product.originalPrice === undefined ? undefined : product.originalPrice + priceDelta,
-    });
+    }, product.id);
     setOpen(false);
     setSelectedOptions([]);
   };
@@ -85,9 +85,9 @@ export default function ProductCustomizationDialog({ product, children }: Produc
           </div>
         </div>
         <DialogFooter>
-          <Button onClick={handleAddToCart}>
+          <Button onClick={handleAddToCart} disabled={!canAddToCart(product)}>
             <ShoppingCart className="mr-2 h-4 w-4" />
-            Añadir al carrito
+            {canAddToCart(product) ? 'Añadir al carrito' : 'Máximo en el carrito'}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -25,10 +25,11 @@ Esta carpeta es la fuente de verdad que debe modificar el futuro dashboard. Los 
 Cada producto referencia una categoría mediante `categoryId`. No se puede eliminar una categoría mientras existan productos que la referencien: primero hay que reasignarlos o eliminarlos. Desactivar una categoría también oculta sus productos.
 
 - `availability`: `available` o `out_of_stock`.
+- `stock`: es opcional. Ausente o `null` significa stock no controlado y no muestra cantidades. Con `availability: available` debe ser un entero positivo; `0` exige `availability: out_of_stock`. Un producto `out_of_stock` no puede declarar stock positivo.
 - `featured`: muestra el distintivo de destacado y sitúa el producto antes que los no destacados.
 - `active`: permite retirar un producto sin perder su registro.
 - `sortOrder`: controla el orden dentro del catálogo después de los destacados.
-- `tags`: el tag `nuevo` conserva el distintivo actual de novedad.
+- `tags`: el tag `nuevo` muestra el distintivo de novedad sin sustituir al de destacado; ambos pueden aparecer simultáneamente y los demás tags se conservan.
 - `customization`: es opcional y define opciones de personalización, recargos y textos sin lógica específica por producto.
 - `price`: precio efectivo que paga el cliente. Sin rebaja, también es el precio base.
 - `originalPrice`: precio base opcional cuando el producto está rebajado. Si existe, debe ser estrictamente mayor que `price`; el porcentaje se calcula en la interfaz y no se almacena.
