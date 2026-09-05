@@ -40,6 +40,7 @@ export default function ProductCustomizationDialog({ product, children }: Produc
       id: `${product.id}${chosenOptions.map((option) => option.cartSuffix).join("")}`,
       name: additions.length > 0 ? `${product.name} (${additions.join(" y ")})` : product.name,
       price: product.price + priceDelta,
+      originalPrice: product.originalPrice === undefined ? undefined : product.originalPrice + priceDelta,
     });
     setOpen(false);
     setSelectedOptions([]);

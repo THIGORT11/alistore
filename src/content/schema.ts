@@ -47,8 +47,8 @@ export const productSchema = z.object({
       footer: z.string().min(1),
     }),
   }).optional(),
-}).refine((product) => product.originalPrice === undefined || product.originalPrice >= product.price, {
-  message: 'originalPrice no puede ser inferior a price',
+}).refine((product) => product.originalPrice === undefined || product.originalPrice > product.price, {
+  message: 'originalPrice debe ser mayor que price cuando el producto tiene descuento',
   path: ['originalPrice'],
 });
 

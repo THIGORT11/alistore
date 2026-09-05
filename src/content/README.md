@@ -30,6 +30,8 @@ Cada producto referencia una categoría mediante `categoryId`. No se puede elimi
 - `sortOrder`: controla el orden dentro del catálogo después de los destacados.
 - `tags`: el tag `nuevo` conserva el distintivo actual de novedad.
 - `customization`: es opcional y define opciones de personalización, recargos y textos sin lógica específica por producto.
+- `price`: precio efectivo que paga el cliente. Sin rebaja, también es el precio base.
+- `originalPrice`: precio base opcional cuando el producto está rebajado. Si existe, debe ser estrictamente mayor que `price`; el porcentaje se calcula en la interfaz y no se almacena.
 
 ## Promociones
 

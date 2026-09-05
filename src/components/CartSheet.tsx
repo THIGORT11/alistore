@@ -19,6 +19,7 @@ import CheckoutDialog from "./CheckoutDialog";
 import { storeConfig } from "@/content/store";
 import { promotionConfig } from "@/content/promotions";
 import { findCoupon } from "@/lib/promotions";
+import { getProductPricing } from "@/lib/product-pricing";
 
 export default function CartSheet() {
   const [promoCode, setPromoCode] = useState("");
@@ -79,8 +80,10 @@ export default function CartSheet() {
           <>
             <ScrollArea className="flex-1 -mx-6">
               <div className="px-6 divide-y divide-border">
-                {cart.map((item) => (
-                  <div key={item.id} className="flex items-center gap-4 py-4">
+                {cart.map((item) => {
+                  const pricing = getProductPricing(item);
+
+                  return <div key={item.id} className="flex items-center gap-4 py-4">
                     <Image
                       src={item.images[0]}
                       alt={item.name}
@@ -126,11 +129,14 @@ export default function CartSheet() {
                             <Plus className="h-3.5 w-3.5" />
                             </Button>
                         </div>
-                        <p className="text-sm font-semibold">{storeConfig.currency.symbol}{item.price.toFixed(2)}</p>
+                        <div className="flex flex-wrap items-baseline justify-end gap-x-1.5">
+                          {item.originalPrice !== undefined ? <span className="text-xs text-muted-foreground line-through">{storeConfig.currency.symbol}{pricing.basePrice.toFixed(2)}</span> : null}
+                          <span className="text-sm font-semibold text-primary">{storeConfig.currency.symbol}{pricing.currentPrice.toFixed(2)}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  </div>;
+                })}
               </div>
             </ScrollArea>
             <SheetFooter className="mt-auto pt-4 border-t">

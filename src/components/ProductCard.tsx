@@ -9,6 +9,7 @@ import { Heart, ShoppingCart } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
 import { cn } from '@/lib/utils';
+import { getProductPricing } from '@/lib/product-pricing';
 import ProductCustomizationDialog from './ProductCustomizationDialog';
 
 interface ProductCardProps {
@@ -20,6 +21,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
   const isWishlisted = isInWishlist(product.id);
   const isOutOfStock = product.availability === 'out_of_stock';
+  const pricing = getProductPricing(product);
 
   const handleWishlistToggle = () => {
     if (isWishlisted) {
@@ -68,15 +70,20 @@ export default function ProductCard({ product }: ProductCardProps) {
             </p>
           )}
         </div>
-        <div className="pt-4 flex items-baseline">
-          {product.originalPrice && (
-            <span className="text-sm text-muted-foreground line-through mr-2">
-              {storeConfig.currency.symbol}{product.originalPrice.toFixed(2)}
+        <div className="pt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+          {product.originalPrice !== undefined && (
+            <span className="text-sm text-muted-foreground line-through decoration-1">
+              {storeConfig.currency.symbol}{pricing.basePrice.toFixed(2)}
             </span>
           )}
           <span className="text-xl font-semibold text-primary">
-            {storeConfig.currency.symbol}{product.price.toFixed(2)}
+            {storeConfig.currency.symbol}{pricing.currentPrice.toFixed(2)}
           </span>
+          {pricing.discountPercentage !== undefined && (
+            <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary" aria-label={`${pricing.discountPercentage}% de descuento`}>
+              −{pricing.discountPercentage}%
+            </span>
+          )}
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
