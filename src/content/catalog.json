@@ -1257,6 +1257,42 @@
       "featured": false,
       "active": true,
       "sortOrder": 580
+    },
+    {
+      "id": "60",
+      "name": "Mini pack Snoopy + libreta archivadora",
+      "description": "Un pack perfecto para la vuelta al cole",
+      "price": 12,
+      "images": [
+        "https://i.imgur.com/zWjuPGs.jpeg"
+      ],
+      "categoryId": "packs",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 590
+    },
+    {
+      "id": "61",
+      "name": "Pack gatito pusheen + libreta archivadora",
+      "description": "Un pack perfecto para la vuelta al cole",
+      "price": 12,
+      "images": [
+        "https://i.imgur.com/koe1yU5.jpeg"
+      ],
+      "categoryId": "packs",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 600
     }
   ]
 }
