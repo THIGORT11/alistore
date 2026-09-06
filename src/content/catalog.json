@@ -156,8 +156,8 @@
         "playa"
       ],
       "aiHint": "beach stitch",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 50
@@ -196,8 +196,8 @@
         "stitch"
       ],
       "aiHint": "stitch figure",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 70
