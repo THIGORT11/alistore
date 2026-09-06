@@ -238,6 +238,7 @@
       ],
       "aiHint": "minnie mouse",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 90
@@ -417,6 +418,7 @@
       ],
       "aiHint": "doll book pack",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 180
@@ -497,8 +499,8 @@
         "baby born"
       ],
       "aiHint": "baby born accessories",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 220
@@ -518,8 +520,8 @@
         "dumbo"
       ],
       "aiHint": "dumbo diapers",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 230
