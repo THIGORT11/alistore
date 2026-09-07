@@ -4,41 +4,57 @@
     {
       "id": "vip-plata",
       "name": "Descuento VIP Plata",
-      "displayLabel": "Descuento VIP Plata",
       "active": true,
       "discountType": "percentage",
       "discountValue": 10,
+      "sortOrder": 10,
+      "displayLabel": "Descuento VIP Plata",
       "appliesTo": "order",
-      "loyaltyLevels": ["Plata"],
+      "loyaltyLevels": [
+        "Plata"
+      ],
       "everyNthPurchase": 2,
-      "stackable": false,
-      "sortOrder": 10
+      "stackable": false
     },
     {
       "id": "vip-oro",
       "name": "Descuento VIP Oro",
-      "displayLabel": "Descuento VIP Oro",
       "active": true,
       "discountType": "percentage",
       "discountValue": 15,
+      "sortOrder": 20,
+      "displayLabel": "Descuento VIP Oro",
       "appliesTo": "order",
-      "loyaltyLevels": ["Oro"],
+      "loyaltyLevels": [
+        "Oro"
+      ],
       "everyNthPurchase": 2,
-      "stackable": false,
-      "sortOrder": 20
+      "stackable": false
     }
   ],
   "coupons": [
     {
       "id": "cum-bs",
       "name": "Código CUM BS",
-      "code": "CUM BS",
       "active": true,
       "discountType": "percentage",
       "discountValue": 50,
+      "sortOrder": 10,
+      "code": "CUM BS",
       "usageLimitPerDevice": 1,
-      "legacyStorageKeys": ["babystore-promo-cum-bs-used"],
-      "sortOrder": 10
+      "legacyStorageKeys": [
+        "babystore-promo-cum-bs-used"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "CZBS40",
+      "active": true,
+      "discountType": "percentage",
+      "discountValue": 40,
+      "sortOrder": 20,
+      "code": "CZBS40",
+      "usageLimitPerDevice": 1
     }
   ],
   "banners": []
