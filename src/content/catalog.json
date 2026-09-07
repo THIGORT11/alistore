@@ -137,6 +137,7 @@
       ],
       "aiHint": "doll bath time",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 40
