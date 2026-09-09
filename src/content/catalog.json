@@ -1296,26 +1296,6 @@
       "featured": false,
       "active": true,
       "sortOrder": 600
-    },
-    {
-      "id": "62",
-      "name": "2 pañales erizo (copia)",
-      "description": "Pack de dos pañales con diseño de erizo",
-      "price": 2.25,
-      "images": [
-        "https://i.imgur.com/THW8YWq.jpeghttps://"
-      ],
-      "categoryId": "accesorios",
-      "tags": [
-        "accesorios",
-        "pañales",
-        "dumbo"
-      ],
-      "aiHint": "dumbo diapers",
-      "availability": "out_of_stock",
-      "featured": false,
-      "active": true,
-      "sortOrder": 610
     }
   ]
 }
