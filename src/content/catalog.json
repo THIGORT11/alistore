@@ -589,8 +589,8 @@
         "kuromy"
       ],
       "aiHint": "kuromy backpack",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 250
@@ -831,8 +831,8 @@
         "gatito"
       ],
       "aiHint": "pusheen cat pack",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 370
@@ -1215,8 +1215,8 @@
         "labiales"
       ],
       "aiHint": "lipstick surprise box",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 560
@@ -1254,7 +1254,8 @@
         "sorpresa"
       ],
       "aiHint": "surprise ball",
-      "availability": "available",
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 580
