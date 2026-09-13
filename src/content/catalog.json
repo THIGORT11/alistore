@@ -540,7 +540,7 @@
       ],
       "aiHint": "cottom doll",
       "availability": "available",
-      "stock": 10,
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 240,
@@ -691,6 +691,7 @@
       ],
       "aiHint": "school uniform",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 300
