@@ -498,8 +498,7 @@
         "baby born"
       ],
       "aiHint": "baby born accessories",
-      "availability": "out_of_stock",
-      "stock": 0,
+      "availability": "available",
       "featured": false,
       "active": true,
       "sortOrder": 220
