@@ -1253,8 +1253,7 @@
         "sorpresa"
       ],
       "aiHint": "surprise ball",
-      "availability": "out_of_stock",
-      "stock": 0,
+      "availability": "available",
       "featured": false,
       "active": true,
       "sortOrder": 580
