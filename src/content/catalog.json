@@ -1309,6 +1309,22 @@
       "featured": false,
       "active": true,
       "sortOrder": 610
+    },
+    {
+      "id": "63",
+      "name": "Pack Hello Kitty and friends ",
+      "description": "Diviértete con este pack completo de Hello Kitty y sus amigos ",
+      "price": 8,
+      "images": [
+        "https://i.imgur.com/8foA8AF.jpeg"
+      ],
+      "categoryId": "packs",
+      "tags": [],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 620
     }
   ]
 }
