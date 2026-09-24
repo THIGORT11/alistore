@@ -1303,7 +1303,9 @@
         "https://i.imgur.com/geoLFl7.jpeg"
       ],
       "categoryId": "accesorios",
-      "tags": [],
+      "tags": [
+        "nuevo"
+      ],
       "aiHint": "",
       "availability": "available",
       "featured": false,
@@ -1319,7 +1321,9 @@
         "https://i.imgur.com/8foA8AF.jpeg"
       ],
       "categoryId": "packs",
-      "tags": [],
+      "tags": [
+        "nuevo"
+      ],
       "aiHint": "",
       "availability": "available",
       "featured": false,
