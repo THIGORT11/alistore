@@ -1293,6 +1293,22 @@
       "featured": false,
       "active": true,
       "sortOrder": 600
+    },
+    {
+      "id": "62",
+      "name": "Mini estuche de gatito",
+      "description": "Un mini estuche que te podrás llevar a todas partes, es perfecto!",
+      "price": 2.2,
+      "images": [
+        "https://i.imgur.com/geoLFl7.jpeg"
+      ],
+      "categoryId": "accesorios",
+      "tags": [],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 610
     }
   ]
 }
