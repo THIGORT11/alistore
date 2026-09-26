@@ -931,7 +931,8 @@
         "dorables"
       ],
       "aiHint": "dorables surprise bag",
-      "availability": "available",
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 420
@@ -1214,8 +1215,8 @@
         "labiales"
       ],
       "aiHint": "lipstick surprise box",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 560
@@ -1235,6 +1236,7 @@
       ],
       "aiHint": "surprise collectible figure",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 570
