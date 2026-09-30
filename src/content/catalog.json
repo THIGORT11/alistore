@@ -60,6 +60,12 @@
       "name": "Canastillas",
       "active": true,
       "sortOrder": 100
+    },
+    {
+      "id": "halloween",
+      "name": "Halloween ",
+      "active": true,
+      "sortOrder": 110
     }
   ],
   "products": [
@@ -1325,6 +1331,60 @@
       "featured": false,
       "active": true,
       "sortOrder": 620
+    },
+    {
+      "id": "64",
+      "name": "Bálsamo labial de fantasma ",
+      "description": "Con este labial tus labios quedarán súper bonitos ",
+      "price": 1.5,
+      "images": [
+        "https://i.imgur.com/S1jmT4z.jpeg"
+      ],
+      "categoryId": "halloween",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 630
+    },
+    {
+      "id": "65",
+      "name": "Bolso de esqueleto ",
+      "description": "Este bolso tan divertido es perfecto para hacer truco o trato y todo lo que quieras",
+      "price": 2.2,
+      "images": [
+        "https://i.imgur.com/pwr31YV.jpeg"
+      ],
+      "categoryId": "halloween",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 640
+    },
+    {
+      "id": "66",
+      "name": "Bolsa de calabaza ",
+      "description": "Con esta bolsa podrás hacer de todo, ir de truco o trato, de compras...",
+      "price": 2.1,
+      "images": [
+        "https://i.imgur.com/h8uphHF.jpeg"
+      ],
+      "categoryId": "halloween",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 650
     }
   ]
 }
