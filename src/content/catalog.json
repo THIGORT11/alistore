@@ -1219,8 +1219,7 @@
         "labiales"
       ],
       "aiHint": "lipstick surprise box",
-      "availability": "out_of_stock",
-      "stock": 0,
+      "availability": "available",
       "featured": false,
       "active": true,
       "sortOrder": 560
