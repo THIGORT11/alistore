@@ -957,6 +957,7 @@
       ],
       "aiHint": "hello kitty surprise bag",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 430
@@ -1238,8 +1239,8 @@
         "sorpresa"
       ],
       "aiHint": "surprise collectible figure",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 570
