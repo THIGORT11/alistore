@@ -1385,6 +1385,24 @@
       "featured": false,
       "active": true,
       "sortOrder": 650
+    },
+    {
+      "id": "67",
+      "name": "Bolsa sorpresa de peluche",
+      "description": "Una bolsa sorpresa con un peluche en su interior, no te aguantarás la emoción ",
+      "price": 17.99,
+      "images": [
+        "https://i.imgur.com/1wOef4W.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 660
     }
   ]
 }
