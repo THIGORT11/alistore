@@ -129,26 +129,6 @@
       "sortOrder": 30
     },
     {
-      "id": "4",
-      "name": "Sara hora del baño",
-      "description": "Sara está lista para un baño relajante. Incluye accesorios de baño para que la diversión nunca termine.",
-      "price": 51.75,
-      "images": [
-        "https://i.imgur.com/8eqj85o.jpeg"
-      ],
-      "categoryId": "munecos",
-      "tags": [
-        "muñeco",
-        "baño"
-      ],
-      "aiHint": "doll bath time",
-      "availability": "available",
-      "stock": 1,
-      "featured": false,
-      "active": true,
-      "sortOrder": 40
-    },
-    {
       "id": "5",
       "name": "Stitch playero",
       "description": "Figura de Stitch listo para un día de playa.",
@@ -956,8 +936,8 @@
         "hello kitty"
       ],
       "aiHint": "hello kitty surprise bag",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 430
