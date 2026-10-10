@@ -1382,6 +1382,24 @@
       "featured": false,
       "active": true,
       "sortOrder": 660
+    },
+    {
+      "id": "68",
+      "name": "Anouk cumpleaños ",
+      "description": "Anouk está lista para su cumpleaños de un año con muchas sorpresas y diversión incluida",
+      "price": 22.1,
+      "images": [
+        "https://i.imgur.com/Kfd7NM7.jpeg"
+      ],
+      "categoryId": "munecos",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 670
     }
   ]
 }
