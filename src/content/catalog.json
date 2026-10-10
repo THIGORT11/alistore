@@ -957,8 +957,8 @@
         "kuromi"
       ],
       "aiHint": "kuromi surprise bag",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 440
