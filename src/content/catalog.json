@@ -936,8 +936,7 @@
         "hello kitty"
       ],
       "aiHint": "hello kitty surprise bag",
-      "availability": "out_of_stock",
-      "stock": 0,
+      "availability": "available",
       "featured": false,
       "active": true,
       "sortOrder": 430

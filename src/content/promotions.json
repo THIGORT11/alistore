@@ -55,6 +55,16 @@
       "sortOrder": 20,
       "code": "CZBS40",
       "usageLimitPerDevice": 1
+    },
+    {
+      "id": "3",
+      "name": "PISA24",
+      "active": true,
+      "discountType": "percentage",
+      "discountValue": 24,
+      "sortOrder": 30,
+      "code": "PISA24",
+      "usageLimitPerDevice": 1
     }
   ],
   "banners": []
