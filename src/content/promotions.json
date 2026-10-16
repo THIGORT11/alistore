@@ -59,7 +59,7 @@
     {
       "id": "3",
       "name": "PISA24",
-      "active": true,
+      "active": false,
       "discountType": "percentage",
       "discountValue": 24,
       "sortOrder": 30,
