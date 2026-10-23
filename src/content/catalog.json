@@ -222,8 +222,8 @@
         "disney"
       ],
       "aiHint": "minnie mouse",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 90
@@ -342,6 +342,7 @@
       ],
       "aiHint": "doll clothes",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 150
@@ -402,8 +403,8 @@
         "libro"
       ],
       "aiHint": "doll book pack",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 180
@@ -524,8 +525,8 @@
         "sweety"
       ],
       "aiHint": "cottom doll",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 240,
@@ -674,8 +675,8 @@
         "uniforme"
       ],
       "aiHint": "school uniform",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 300
@@ -1178,8 +1179,8 @@
         "maquillaje"
       ],
       "aiHint": "makeup surprise box",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 550
@@ -1199,8 +1200,8 @@
         "labiales"
       ],
       "aiHint": "lipstick surprise box",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 560
