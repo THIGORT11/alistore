@@ -208,27 +208,6 @@
       "sortOrder": 80
     },
     {
-      "id": "9",
-      "name": "Minnie mouse",
-      "description": "Figura clásica de Minnie Mouse.",
-      "price": 3.75,
-      "images": [
-        "https://i.imgur.com/huE2yWw.jpeg"
-      ],
-      "categoryId": "figuras",
-      "tags": [
-        "figura",
-        "minnie",
-        "disney"
-      ],
-      "aiHint": "minnie mouse",
-      "availability": "out_of_stock",
-      "stock": 0,
-      "featured": false,
-      "active": true,
-      "sortOrder": 90
-    },
-    {
       "id": "10",
       "name": "Caja premium",
       "description": "Muñeco + accesorio + ropa + peluche",
