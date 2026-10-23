@@ -322,7 +322,7 @@
       ],
       "aiHint": "toy food",
       "availability": "available",
-      "stock": 10,
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 140
@@ -858,6 +858,7 @@
       ],
       "aiHint": "wipes can",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 390
@@ -878,6 +879,7 @@
       ],
       "aiHint": "stationery box",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 400
@@ -1240,6 +1242,7 @@
       ],
       "aiHint": "surprise ball",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 580
@@ -1374,6 +1377,7 @@
       ],
       "aiHint": "",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 660
