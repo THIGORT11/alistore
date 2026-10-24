@@ -817,6 +817,7 @@
       ],
       "aiHint": "wipes soda",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 380
@@ -1220,8 +1221,8 @@
         "sorpresa"
       ],
       "aiHint": "surprise ball",
-      "availability": "available",
-      "stock": 1,
+      "availability": "out_of_stock",
+      "stock": 0,
       "featured": false,
       "active": true,
       "sortOrder": 580
@@ -1238,6 +1239,7 @@
       "tags": [],
       "aiHint": "",
       "availability": "available",
+      "stock": 1,
       "featured": false,
       "active": true,
       "sortOrder": 590
