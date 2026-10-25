@@ -1380,6 +1380,42 @@
       "featured": false,
       "active": true,
       "sortOrder": 670
+    },
+    {
+      "id": "69",
+      "name": "Caja sorpresa de mini figura",
+      "description": "Esta caja lleva una mini figura en su interior, figura sorpresa súper bonita",
+      "price": 3.99,
+      "images": [
+        "https://i.imgur.com/m1NEgwq.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 680
+    },
+    {
+      "id": "70",
+      "name": "Máquina de garea de bourriquet",
+      "description": "Es como una máquina de garra de verdad pero en miniatura, lleva 4 bolitas",
+      "price": 6.5,
+      "images": [
+        "https://i.imgur.com/Zo8FVRe.jpeg"
+      ],
+      "categoryId": "accesorios",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 690
     }
   ]
 }
