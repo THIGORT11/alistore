@@ -36,7 +36,7 @@
     {
       "id": "cum-bs",
       "name": "Código CUM BS",
-      "active": true,
+      "active": false,
       "discountType": "percentage",
       "discountValue": 50,
       "sortOrder": 10,
@@ -49,7 +49,7 @@
     {
       "id": "2",
       "name": "CZBS40",
-      "active": true,
+      "active": false,
       "discountType": "percentage",
       "discountValue": 40,
       "sortOrder": 20,
