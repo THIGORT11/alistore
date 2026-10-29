@@ -1414,6 +1414,60 @@
       "featured": false,
       "active": true,
       "sortOrder": 690
+    },
+    {
+      "id": "71",
+      "name": "Estuche sorpresa",
+      "description": "Este estuche kawaii contiene 5 sorpresas divertidas en su interior ",
+      "price": 8.99,
+      "images": [
+        "https://i.imgur.com/6OdzfQ5.jpeg"
+      ],
+      "categoryId": "bolsas-sorpresa",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 700
+    },
+    {
+      "id": "72",
+      "name": "Pack de 2 bolígrafos halloween ",
+      "description": "Estos divertidos bolígrafos de calabaza y murciélago son perfectos para celebrar el halloween con alegría y creatividad ",
+      "price": 4,
+      "images": [
+        "https://i.imgur.com/oe19cpm.jpeg"
+      ],
+      "categoryId": "halloween",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 710
+    },
+    {
+      "id": "73",
+      "name": "Caja sorpresa de 1 labial de halloween ",
+      "description": "Esta caja tematizada de halloween contiene 1 labial súper halloween ",
+      "price": 4.5,
+      "images": [
+        "https://i.imgur.com/v18L97S.jpeg"
+      ],
+      "categoryId": "halloween",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 720
     }
   ]
 }
