@@ -1348,9 +1348,7 @@
         "https://i.imgur.com/1wOef4W.jpeg"
       ],
       "categoryId": "bolsas-sorpresa",
-      "tags": [
-        "nuevo"
-      ],
+      "tags": [],
       "aiHint": "",
       "availability": "out_of_stock",
       "stock": 0,
@@ -1367,9 +1365,7 @@
         "https://i.imgur.com/Kfd7NM7.jpeg"
       ],
       "categoryId": "munecos",
-      "tags": [
-        "nuevo"
-      ],
+      "tags": [],
       "aiHint": "",
       "availability": "available",
       "featured": false,
