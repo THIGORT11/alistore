@@ -503,8 +503,7 @@
         "sweety"
       ],
       "aiHint": "cottom doll",
-      "availability": "out_of_stock",
-      "stock": 0,
+      "availability": "available",
       "featured": false,
       "active": true,
       "sortOrder": 240,
