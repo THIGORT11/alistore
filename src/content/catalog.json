@@ -1463,6 +1463,24 @@
       "featured": false,
       "active": true,
       "sortOrder": 720
+    },
+    {
+      "id": "74",
+      "name": "Café de 30 toallitas",
+      "description": "Café que contiene 30 toallitas",
+      "price": 1.5,
+      "images": [
+        "https://i.imgur.com/3Ofl7qO.jpeg"
+      ],
+      "categoryId": "accesorios",
+      "tags": [
+        "nuevo"
+      ],
+      "aiHint": "",
+      "availability": "available",
+      "featured": false,
+      "active": true,
+      "sortOrder": 730
     }
   ]
 }
